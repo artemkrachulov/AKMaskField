@@ -6,7 +6,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <mutableArray key="fontawesome-webfont.ttf">
+        <mutableArray key="FontAwesome.otf">
             <string>FontAwesome</string>
             <string>FontAwesome</string>
             <string>FontAwesome</string>
@@ -46,9 +46,9 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="maskPlaceholder" value="ACBD-ACBD-ACBD-ACBD"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="maskPlaceholder" value="xxxx-xxxx-xxxx-xxxx"/>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="maskShow" value="NO"/>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="mask" value="--{dddd}-{dddd}-"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="mask" value="{dddd}-{dddd}-{dddd}-{dddd}"/>
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oH5-oG-C8W">
