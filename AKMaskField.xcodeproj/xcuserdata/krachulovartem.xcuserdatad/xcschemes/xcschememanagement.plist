@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>AKMaskFIeld.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+		<key>AKTextFieldMask.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>0</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>437112FA1A4B22EF00FF6252</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4371130F1A4B22EF00FF6252</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>43ED58AE1A72434300E3EBB6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>43ED58B81A72434300E3EBB6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>
