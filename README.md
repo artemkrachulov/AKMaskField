@@ -60,7 +60,7 @@ Mask Placeholder: xxxx-xxxx-xxxx-xxxx
 <p><code>.maskPlaceholder</code> or <code>Mask Placeholder</code></p>
 <p>String property display text which will see user. Placeholder can be:</p>
 <ul class="task-list">
-<li><b>1</b> character length. In this case char character will be copied to full mask lenght. (default "*")
+<li><b>1</b> character length. In this case char character will be copied to full mask length. (default "*")
 <pre>
 self.filed.mask = "{dddd}-{DDDD}-{WaWa}-{aaaa}"
 self.filed.maskPlaceholder = "Z"
