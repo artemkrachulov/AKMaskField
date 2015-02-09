@@ -6,83 +6,6 @@
 //  Copyright (c) 2015 The Krachulovs. All rights reserved.
 //
 
-/*
-
--   Set new mask properties for AKMaskField:
-
-    self.card.mask = "{dddd}-{dddd}-{dddd}-{dddd}"
-    self.card.maskShow = false
-    self.card.maskPlaceholder = "xxxxx-xxxx-xxxx-xxxx" or "x" or "QWER-ASDF-ZXCV-TYUI"
-
-    Note:  Placeholder must have:
-    a) same lenght as output mask text 
-    b) 1 char (will be copied to full mask lenght) x -> "xxxxx-xxxx-xxxx-xxxx"
-
--   Set new text property for textField:
-
-    self.card.text = "5654-3423-5127-4562"
-    self.card.maskFieldUpdate()
-
--   Get mask properties:
-
-    self.card.maskStatus = "Clear" / "Incomplete" / "Complete"
-
-    1. Properties that you specified
-
-    self.card.mask = "{dddd}-{dddd}-{dddd}-{dddd}"
-    self.card.maskShow = false
-    self.card.maskPlaceholder = "x"
-
-    2. Processed properties
-
-    self.card.maskClear = dddd-dddd-dddd-dddd
-    self.card.maskPlaceholderText = "xxxxx-xxxx-xxxx-xxxx"
-
-    3. Object
-    
-    self.card.maskObject = [
-        [chars: [
-            [range: 0..<1, status: false],
-            [range: 1..<2, status: false], 
-            [range: 2..<3, status: false], 
-            [range: 3..<4, status: false]], 
-        range       : 0..<4,
-        mask        : dddd,
-        placeholder : "xxxx",
-        status      : false],
-        [ ... ],
-        [ ... ],
-        [ ... ]
-    ]
-
--   Using delegate UITextFieldDelegate
-
-    Note: We use 2 delegate methods from UITextFieldDelegate in our class AKMaskField:
-    - textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool
-    - func textFieldDidBeginEditing(textField: UITextField)
-
-    To avoid problems with mask, duplicate mask methods in UITextFieldDelegate methods.
-
-    Example:
-
-    1. Attach deledate
-
-    self.card.delegate = self
-
-    2. Use methods
-
-    func textFieldDidBeginEditing(textField: UITextField) {
-        self.card.maskFieldDidBeginEditing(textField)
-    }
-
-    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-        return self.maskField(textField, shouldChangeCharactersInRange: range, replacementString: string)
-    }
-
-
-
-*/
-
 import UIKit
 
 /*
@@ -117,6 +40,7 @@ extension String {
         return self.stringByReplacingOccurrencesOfString(target, withString: withString, options: options, range: self.convertRange(range))
     }
     public func subStringWithRange(aRange: Range<Int>) -> String {
+
         return self.substringWithRange(self.convertRange(aRange))
     }
 }
@@ -129,8 +53,7 @@ extension String {
 @objc protocol AKMaskFieldDelegate {
     optional func maskFieldDidBeginEditing(maskField: AKMaskField)
 
-    optional func maskField(maskField: AKMaskField, madeEvent: String, withText oldText: String!, inRange oldTextRange: NSRange, withText newText: String)
-    
+    optional func maskField(maskField: AKMaskField, madeEvent: String, withText oldText: String, inRange oldTextRange: NSRange, withText newText: String)
     optional func maskField(maskField: AKMaskField, replaceText oldText: String, inRange oldTextRange: NSRange, withText newText: String)
     optional func maskField(maskField: AKMaskField, insertText text: String, inRange range: NSRange)
     optional func maskField(maskField: AKMaskField, deleteText text: String, inRange range: NSRange)
@@ -166,15 +89,26 @@ class AKMaskField: UITextField, UITextFieldDelegate {
     // Only readable
     private(set) var maskClear                  : String!                           // Ex : (iai)-iiii-aaa
     private      var maskClearCharsLength       : Int       = 0
-    private      var _maskOut                   : String!
-    private      var maskOut                    : String! {                         // Ex : (**2)-2342-33*
+    private      var maskOut                    : String!
+    /*private      var maskOut                    : String! {                         // Ex : (**2)-2342-33*
         get {
+            
+            
+            var p = self.maskPlaceholderText == self._maskPlaceholderText ?
+            
+            println("self.maskPlaceholderText :\(self.maskPlaceholderText)")
+            
+            println("self._maskPlaceholderText :\(self._maskPlaceholderText)")
+            
+            println("self._maskOut :\(self._maskOut)")
+            
+            
             return self._maskOut != nil ? self._maskOut : self.maskPlaceholderText
         }
         set {
             self._maskOut = newValue
         }
-    }
+    }*/
     private(set) var maskPlaceholderText       : String!                           // Ex : (***)-****-***
     private(set) var maskObject                : Array<Dictionary<String, Any>>!   // nil
                  var maskStatus                : String! {                         // Clear / Incomplete / Complete
@@ -186,6 +120,7 @@ class AKMaskField: UITextField, UITextFieldDelegate {
     // In-class using
     private var _mask                           : String!
     private var _maskPlaceholder                : String    = "*"
+    private var _maskPlaceholderText            : Bool!
     private var _maskShow                       : Bool      = false
     
     // Full access
@@ -260,9 +195,6 @@ class AKMaskField: UITextField, UITextFieldDelegate {
                     
                     // Set Placeholder
                     self.maskPlaceholder = self._maskPlaceholder
-                    
-                    // Refresh
-                    self.maskFieldUpdate()
                 }
             }
         }
@@ -314,8 +246,15 @@ class AKMaskField: UITextField, UITextFieldDelegate {
                 }
                 
                 // Push chages
-                self.maskObject             = _maskObject
+                self.maskObject            = _maskObject
                 self.maskPlaceholderText   = _maskPlaceholderText
+                
+                if self._maskPlaceholder == "*" {
+                    self._maskPlaceholderText = true
+                }
+                
+                
+                self.maskOut            = _maskPlaceholderText
                 
                 // Refresh
                 self.maskFieldUpdate()
@@ -330,7 +269,7 @@ class AKMaskField: UITextField, UITextFieldDelegate {
     */
     func maskFieldUpdate() {
         if self.maskObject != nil {
-        
+ 
             var text       : String     = self.text
             var maskOut    : String     = self.maskOut
             
@@ -353,19 +292,20 @@ class AKMaskField: UITextField, UITextFieldDelegate {
     func maskFieldDidBeginEditing(textField: UITextField) {
         if self.maskObject != nil {
 
-            var caret       : Int       = 0
+            var caret       : Int!
             var position    : UITextPosition!
             
             switch self.maskFieldStatus() {
-                case "Clear":
-                    position = self.beginningOfDocument
-                case "Complete":
-                    position = self.endOfDocument
+            case "Complete":
+                
+                caret = 0
+                position = self.endOfDocument
                 default:
                     position = self.beginningOfDocument
                     
                     for block: Dictionary<String, Any> in self.maskObject {
                         for char: Dictionary<String, Any>  in block["chars"] as [Dictionary<String, Any>] {
+                            
                             if !(char["status"] as Bool) {
                                 
                                 caret = (char["range"] as Range<Int>).startIndex
@@ -373,9 +313,8 @@ class AKMaskField: UITextField, UITextFieldDelegate {
                                 break
                             }
                         }
-                        if caret != 0 { break }
+                        if caret != nil { break }
                     }
-                
             }
             
             // Set caret to not filled char
@@ -395,7 +334,9 @@ class AKMaskField: UITextField, UITextFieldDelegate {
             var _maskOut        : String        = self.maskOut
             let range           : Range<Int>    = range.toRange()!
             
-            let oldText         : String!       = _maskOut.subStringWithRange(range)
+            
+            let oldText         : String        = _maskOut.subStringWithRange(range)
+            
             var oldChar         : Character!
 
             var maskChar        : Character!
@@ -404,13 +345,12 @@ class AKMaskField: UITextField, UITextFieldDelegate {
             var next            : Bool          = false
             
             var caret           : Int           = range.startIndex
-            var _blockIndex     : Int!
-            var _rangeIndex     : Int!
-
+ 
             let charsToReplace  : Int           = self.repaceChars(inText: &_maskOut, withRange: range)
             var charsReplaced   : Int           = 0
             
             let newText: String                 = string
+            
             for newChar: Character in newText {
 
                 // Break from loop if pasted lenght go out mask
@@ -421,35 +361,20 @@ class AKMaskField: UITextField, UITextFieldDelegate {
                     oldChar = _maskOut[advance(_maskOut.startIndex, caret)]
                 }
                 
-                // Check if old char in not same
-                if oldChar != newChar {
+                // If block char
+                var (inBlock, _blockIndex, _rangeIndex) = self.inBlock(caret)
+                
+                
+                if oldChar == newChar && !inBlock {
+                    caret++
+                } else {
                     
                     // Ignore this if we process new char
                     if !next {
-                        for (blockIndex: Int, block:Dictionary<String, Any>) in enumerate(self.maskObject) {
-                            
-                            let blockRange = block["range"] as Range<Int>
-
-                            if caret > blockRange.startIndex && caret < blockRange.endIndex {
-                                
-                                // Carets for char updates
-                                _blockIndex = blockIndex
-                                _rangeIndex = blockRange.startIndex
-                                
-                                break
-                            } else {
-                                if caret <= blockRange.startIndex {
-                                    
-                                    // Carets for char updates
-                                    _blockIndex = blockIndex
-                                    _rangeIndex = blockRange.startIndex
-                                    
-                                    // Caret in block
-                                    caret  = blockRange.startIndex
-                                    
-                                    break
-                                }
-                            }
+                        
+                        // Caret in block
+                        if caret <= _rangeIndex {
+                            caret = _rangeIndex
                         }
                         
                         if _blockIndex == nil || _rangeIndex == nil { caret = countElements(_maskOut); break }
@@ -476,7 +401,7 @@ class AKMaskField: UITextField, UITextFieldDelegate {
                         next = true
                     } else {
                         next = false
-                        
+
                         // Update out text
                         _maskOut = _maskOut.stringByReplacingOccurrencesOfString(
                                         ".",
@@ -494,8 +419,6 @@ class AKMaskField: UITextField, UITextFieldDelegate {
                         caret++
                         
                     }
-                } else {
-                    caret++
                 }
             }
             
@@ -529,7 +452,13 @@ class AKMaskField: UITextField, UITextFieldDelegate {
             
             // Event
             if event != nil {
-                events!.maskField?(self, madeEvent: event, withText: oldText, inRange: range.toNSRange(), withText: newText)
+                events?.maskField?(
+                                self,
+                    madeEvent:  event,
+                    withText:   oldText,
+                    inRange:    range.toNSRange(),
+                    withText:   newText
+                )
             }
             
             return false
@@ -569,6 +498,43 @@ class AKMaskField: UITextField, UITextFieldDelegate {
             }
         }
         return status
+    }
+    
+    private func inBlock(caret: Int) -> (inBlock: Bool, _blockIndex: Int!, _rangeIndex: Int!) {
+        
+        var _blockIndex     : Int!
+        var _rangeIndex     : Int!
+        
+        var inBlock         : Bool!
+        
+        for (blockIndex: Int, block:Dictionary<String, Any>) in enumerate(self.maskObject) {
+            
+            let blockRange = block["range"] as Range<Int>
+            
+            if caret >= blockRange.startIndex && caret < blockRange.endIndex {
+                
+                // Carets for char updates
+                _blockIndex = blockIndex
+                _rangeIndex = blockRange.startIndex
+                
+                inBlock = true
+                
+                break
+            } else {
+                inBlock = false
+                
+                if caret <= blockRange.startIndex {
+                    
+                    // Carets for char updates
+                    _blockIndex = blockIndex
+                    _rangeIndex = blockRange.startIndex
+                    
+                    break
+                }
+            }
+        }
+        
+        return (inBlock, _blockIndex, _rangeIndex)    
     }
     
     private func findMatches(inString string: String, usingPattern pattern: String) -> [AnyObject] {

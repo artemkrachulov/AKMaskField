@@ -10,13 +10,13 @@ import UIKit
 
 class ViewController: UIViewController, UITextFieldDelegate, AKMaskFieldDelegate {
     
-    
-    @IBOutlet var card: AKMaskField!
-
+    @IBOutlet weak var card: AKMaskField!
+    @IBOutlet weak var phone: AKMaskField!
+    @IBOutlet weak var key: AKMaskField!
+    @IBOutlet weak var license: AKMaskField!
     
     @IBOutlet var indicators: [UIView]!
     @IBOutlet var clipboard: [UILabel]!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,16 +24,15 @@ class ViewController: UIViewController, UITextFieldDelegate, AKMaskFieldDelegate
         
         // delegates
         self.card.events = self
+        self.phone.events = self
+        self.key.events = self
+        self.license.events = self
         
         // Draw indicators
         for indicator in indicators {
             indicator.layer.cornerRadius    = 10
         }
     }
-    
-    
-   
-
     
     @IBAction func clipboard(sender: UIButton) {
         
@@ -55,6 +54,12 @@ class ViewController: UIViewController, UITextFieldDelegate, AKMaskFieldDelegate
             switch tag {
                 case 0,1,2:
                     self.card.becomeFirstResponder()
+                case 3,4,5:
+                    self.phone.becomeFirstResponder()
+                case 6,7:
+                    self.key.becomeFirstResponder()
+                case 8:
+                    self.license.becomeFirstResponder()
                 default:
                     println("Tag out of range")
             }
@@ -66,6 +71,9 @@ class ViewController: UIViewController, UITextFieldDelegate, AKMaskFieldDelegate
     // Hide on click out the field
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         self.card.resignFirstResponder()
+        self.phone.resignFirstResponder()
+        self.key.resignFirstResponder()
+        self.license.resignFirstResponder()
         self.view.endEditing(true)
     }
     
@@ -73,12 +81,9 @@ class ViewController: UIViewController, UITextFieldDelegate, AKMaskFieldDelegate
     -------------------------------
     // MARK: Delegates
     -------------------------------
-    */    
-    func maskFieldDidBeginEditing(maskField: AKMaskField) {
-        println(maskField)
-    }
-    func maskField(maskField: AKMaskField, madeEvent: String, withText oldText: String!, inRange oldTextRange: NSRange, withText newText: String) {
-        
+    */
+    func maskField(maskField: AKMaskField, madeEvent: String, withText oldText: String, inRange oldTextRange: NSRange, withText newText: String) {
+    
         // Status animation
         var statusColor: UIColor?
         switch maskField.maskStatus {
@@ -110,7 +115,6 @@ class ViewController: UIViewController, UITextFieldDelegate, AKMaskFieldDelegate
             eventColor = UIColor(red: 231/255, green: 76/255, blue: 60/255, alpha: 0.5)
         }
         
-        
         UIView.animateWithDuration(0.05, delay: 0, options: UIViewAnimationOptions.CurveEaseIn, animations: { () -> Void in
             
             maskField.backgroundColor = eventColor
@@ -123,17 +127,6 @@ class ViewController: UIViewController, UITextFieldDelegate, AKMaskFieldDelegate
                     
                 }, completion: nil)
         }
-        
-        println(maskField.maskObject)
-    }
-    func maskField(maskField: AKMaskField, replaceText oldText: String, inRange oldTextRange: NSRange, withText newText: String) {
-        println(maskField, oldText, oldTextRange, newText)
-    }
-    func maskField(maskField: AKMaskField, insertText text: String, inRange range: NSRange) {
-        println(maskField, text, range)
-    }
-    func maskField(maskField: AKMaskField, deleteText text: String, inRange range: NSRange) {
-        println(maskField, text, range)
     }
 }
 

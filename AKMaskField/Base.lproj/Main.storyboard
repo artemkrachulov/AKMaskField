@@ -6,7 +6,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <mutableArray key="FontAwesome.otf">
+        <mutableArray key="fontawesome-webfont.ttf">
             <string>FontAwesome</string>
             <string>FontAwesome</string>
             <string>FontAwesome</string>
@@ -41,13 +41,12 @@
                                     <rect key="frame" x="16" y="20" width="568" height="21"/>
                                 </variation>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="saT-Qn-8Yk" customClass="AKMaskField" customModule="AKMaskField" customModuleProvider="target">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="xxxx-xxxx-xxxx-xxxx" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="saT-Qn-8Yk" customClass="AKMaskField" customModule="AKMaskField" customModuleProvider="target">
                                 <rect key="frame" x="11" y="29" width="540" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="maskPlaceholder" value="xxxx-xxxx-xxxx-xxxx"/>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="maskShow" value="NO"/>
                                     <userDefinedRuntimeAttribute type="string" keyPath="mask" value="{dddd}-{dddd}-{dddd}-{dddd}"/>
                                 </userDefinedRuntimeAttributes>
                             </textField>
@@ -129,12 +128,17 @@
                                     <rect key="frame" x="16" y="156" width="568" height="21"/>
                                 </variation>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8Zk-qU-Qaw" customClass="AKMaskField" customModule="AKMaskField" customModuleProvider="target">
+                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8Zk-qU-Qaw" customClass="AKMaskField" customModule="AKMaskField" customModuleProvider="target">
                                 <rect key="frame" x="11" y="165" width="540" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="mask" value="+38 ({ddd}) {ddd}-{dd}-{dd}"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="maskPlaceholder" value="+38 (___) ___-__-__"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="maskShow" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                             </textField>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6in-vL-jvf">
+                            <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6in-vL-jvf">
                                 <rect key="frame" x="559" y="170" width="20" height="20"/>
                                 <color key="backgroundColor" red="0.94509803921568625" green="0.94509803921568625" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -154,7 +158,7 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5551234567" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A4D-ST-PSO">
+                            <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5551234567" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A4D-ST-PSO">
                                 <rect key="frame" x="11" y="203" width="75" height="22"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -163,15 +167,18 @@
                                     <rect key="frame" x="16" y="223" width="75" height="22"/>
                                 </variation>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WSi-6o-bkM">
+                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WSi-6o-bkM">
                                 <rect key="frame" x="69" y="203" width="22" height="22"/>
                                 <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="15"/>
                                 <state key="normal" title=""/>
                                 <variation key="heightClass=regular" fixedFrame="YES">
                                     <rect key="frame" x="74" y="223" width="22" height="22"/>
                                 </variation>
+                                <connections>
+                                    <action selector="clipboard:" destination="sNv-MH-Sdi" eventType="touchUpInside" id="8G2-xn-ujk"/>
+                                </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="385551234567" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7dJ-ag-leG">
+                            <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="385551234567" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7dJ-ag-leG">
                                 <rect key="frame" x="99" y="203" width="91" height="22"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -180,15 +187,18 @@
                                     <rect key="frame" x="104" y="223" width="91" height="22"/>
                                 </variation>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2c3-qv-AGu">
+                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2c3-qv-AGu">
                                 <rect key="frame" x="168" y="203" width="22" height="22"/>
                                 <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="15"/>
                                 <state key="normal" title=""/>
                                 <variation key="heightClass=regular" fixedFrame="YES">
                                     <rect key="frame" x="173" y="223" width="22" height="22"/>
                                 </variation>
+                                <connections>
+                                    <action selector="clipboard:" destination="sNv-MH-Sdi" eventType="touchUpInside" id="pX8-Eb-gT6"/>
+                                </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+38 (555) 123-45-67" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4xh-HL-LMj">
+                            <label opaque="NO" userInteractionEnabled="NO" tag="5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+38 (555) 123-45-67" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4xh-HL-LMj">
                                 <rect key="frame" x="198" y="203" width="117" height="22"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -197,14 +207,6 @@
                                     <rect key="frame" x="203" y="223" width="117" height="22"/>
                                 </variation>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NzS-cL-C5s">
-                                <rect key="frame" x="293" y="203" width="22" height="22"/>
-                                <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="15"/>
-                                <state key="normal" title=""/>
-                                <variation key="heightClass=regular" fixedFrame="YES">
-                                    <rect key="frame" x="298" y="223" width="22" height="22"/>
-                                </variation>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Product key / License" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VGA-mo-2Kv">
                                 <rect key="frame" x="11" y="253" width="568" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -214,12 +216,17 @@
                                     <rect key="frame" x="16" y="273" width="568" height="21"/>
                                 </variation>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fO6-xD-hVB">
+                            <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fO6-xD-hVB" customClass="AKMaskField" customModule="AKMaskField" customModuleProvider="target">
                                 <rect key="frame" x="11" y="282" width="540" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="mask" value="{aa}/{d} {d} {d}-{ddd}-{dd}"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="maskShow" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="maskPlaceholder" value="AA/N N N-NNN-NN"/>
+                                </userDefinedRuntimeAttributes>
                             </textField>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yC0-gn-W2g">
+                            <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yC0-gn-W2g">
                                 <rect key="frame" x="559" y="287" width="20" height="20"/>
                                 <color key="backgroundColor" red="0.94509803921568625" green="0.94509803921568625" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -239,7 +246,7 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ABC123456789" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u4z-F8-qa6">
+                            <label opaque="NO" userInteractionEnabled="NO" tag="6" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AB12345678" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u4z-F8-qa6">
                                 <rect key="frame" x="11" y="320" width="96" height="22"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -248,37 +255,46 @@
                                     <rect key="frame" x="16" y="340" width="96" height="22"/>
                                 </variation>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NRq-bX-BK2">
+                            <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NRq-bX-BK2">
                                 <rect key="frame" x="85" y="320" width="22" height="22"/>
                                 <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="15"/>
                                 <state key="normal" title=""/>
                                 <variation key="heightClass=regular" fixedFrame="YES">
-                                    <rect key="frame" x="90" y="340" width="22" height="22"/>
+                                    <rect key="frame" x="76" y="340" width="22" height="22"/>
                                 </variation>
+                                <connections>
+                                    <action selector="clipboard:" destination="sNv-MH-Sdi" eventType="touchUpInside" id="kgq-Wi-ZJJ"/>
+                                </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ABC/1 2 3-456-7-8-9" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HHY-kh-aW0">
+                            <label opaque="NO" userInteractionEnabled="NO" tag="7" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AB/1 2 3-456-78" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HHY-kh-aW0">
                                 <rect key="frame" x="115" y="320" width="121" height="22"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=regular" fixedFrame="YES">
-                                    <rect key="frame" x="120" y="340" width="121" height="22"/>
+                                    <rect key="frame" x="105" y="340" width="121" height="22"/>
                                 </variation>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rWL-O9-hkg">
+                            <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rWL-O9-hkg">
                                 <rect key="frame" x="214" y="320" width="22" height="22"/>
                                 <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="15"/>
                                 <state key="normal" title=""/>
                                 <variation key="heightClass=regular" fixedFrame="YES">
-                                    <rect key="frame" x="219" y="340" width="22" height="22"/>
+                                    <rect key="frame" x="184" y="340" width="22" height="22"/>
                                 </variation>
+                                <connections>
+                                    <action selector="clipboard:" destination="sNv-MH-Sdi" eventType="touchUpInside" id="4h4-iH-3Uo"/>
+                                </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NV7-0s-3E4">
+                            <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="past code here" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NV7-0s-3E4" customClass="AKMaskField" customModule="AKMaskField" customModuleProvider="target">
                                 <rect key="frame" x="11" y="370" width="540" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="mask" value="{.............................}"/>
+                                </userDefinedRuntimeAttributes>
                             </textField>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M45-xF-UM1">
+                            <view tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M45-xF-UM1">
                                 <rect key="frame" x="559" y="375" width="20" height="20"/>
                                 <color key="backgroundColor" red="0.94509803921568625" green="0.94509803921568625" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -298,7 +314,7 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="a2.4R~43*f4S3Q-2WE30)233(dD96" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eBh-eD-ucF">
+                            <label opaque="NO" userInteractionEnabled="NO" tag="8" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="a2.4R~43*f4S3Q-2WE30)233(dD96" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eBh-eD-ucF">
                                 <rect key="frame" x="11" y="408" width="185" height="22"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -307,13 +323,16 @@
                                     <rect key="frame" x="16" y="428" width="185" height="22"/>
                                 </variation>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WOV-Wk-Vkh">
+                            <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WOV-Wk-Vkh">
                                 <rect key="frame" x="174" y="408" width="22" height="22"/>
                                 <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="15"/>
                                 <state key="normal" title=""/>
                                 <variation key="heightClass=regular" fixedFrame="YES">
                                     <rect key="frame" x="179" y="428" width="22" height="22"/>
                                 </variation>
+                                <connections>
+                                    <action selector="clipboard:" destination="sNv-MH-Sdi" eventType="touchUpInside" id="JMf-VV-gl7"/>
+                                </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Note: Use       button to copy/paste text into field like example" translatesAutoresizingMaskIntoConstraints="NO" id="Ug6-e6-oH2">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
@@ -722,6 +741,17 @@
                                     <action selector="clipboard:" destination="sNv-MH-Sdi" eventType="touchUpInside" id="iHr-or-odv"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NzS-cL-C5s">
+                                <rect key="frame" x="293" y="203" width="22" height="22"/>
+                                <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="15"/>
+                                <state key="normal" title=""/>
+                                <variation key="heightClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="298" y="223" width="22" height="22"/>
+                                </variation>
+                                <connections>
+                                    <action selector="clipboard:" destination="sNv-MH-Sdi" eventType="touchUpInside" id="HbU-7x-8a5"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -806,7 +836,6 @@
                                 <exclude reference="7dJ-ag-leG"/>
                                 <exclude reference="2c3-qv-AGu"/>
                                 <exclude reference="4xh-HL-LMj"/>
-                                <exclude reference="NzS-cL-C5s"/>
                                 <exclude reference="VGA-mo-2Kv"/>
                                 <exclude reference="fO6-xD-hVB"/>
                                 <exclude reference="yC0-gn-W2g"/>
@@ -838,6 +867,7 @@
                                 <exclude reference="QFb-Up-ejx"/>
                                 <exclude reference="61z-hi-WLG"/>
                                 <exclude reference="xVp-D6-Ptt"/>
+                                <exclude reference="NzS-cL-C5s"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="8kI-58-CyZ"/>
@@ -922,7 +952,6 @@
                                 <include reference="7dJ-ag-leG"/>
                                 <include reference="2c3-qv-AGu"/>
                                 <include reference="4xh-HL-LMj"/>
-                                <include reference="NzS-cL-C5s"/>
                                 <include reference="VGA-mo-2Kv"/>
                                 <include reference="fO6-xD-hVB"/>
                                 <include reference="yC0-gn-W2g"/>
@@ -954,6 +983,7 @@
                                 <include reference="QFb-Up-ejx"/>
                                 <include reference="61z-hi-WLG"/>
                                 <include reference="xVp-D6-Ptt"/>
+                                <include reference="NzS-cL-C5s"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="8kI-58-CyZ"/>
@@ -1023,6 +1053,9 @@
                     </view>
                     <connections>
                         <outlet property="card" destination="saT-Qn-8Yk" id="kOP-LY-jiG"/>
+                        <outlet property="key" destination="fO6-xD-hVB" id="Bx6-P6-Q28"/>
+                        <outlet property="license" destination="NV7-0s-3E4" id="5A6-Fb-pvN"/>
+                        <outlet property="phone" destination="8Zk-qU-Qaw" id="qQt-kR-nvS"/>
                         <outletCollection property="indicators" destination="oH5-oG-C8W" collectionClass="NSMutableArray" id="FJG-mm-kXA"/>
                         <outletCollection property="indicators" destination="6in-vL-jvf" collectionClass="NSMutableArray" id="IX0-Ps-SQP"/>
                         <outletCollection property="indicators" destination="yC0-gn-W2g" collectionClass="NSMutableArray" id="Cm3-to-hBP"/>
@@ -1037,6 +1070,12 @@
                         <outletCollection property="clipboard" destination="Fc3-5L-nkA" collectionClass="NSMutableArray" id="mFc-gF-q8e"/>
                         <outletCollection property="clipboard" destination="VeU-bR-HI7" collectionClass="NSMutableArray" id="e4c-ag-2Rx"/>
                         <outletCollection property="clipboard" destination="af1-gE-HCc" collectionClass="NSMutableArray" id="iIF-8D-xk5"/>
+                        <outletCollection property="clipboard" destination="A4D-ST-PSO" collectionClass="NSMutableArray" id="CVA-oZ-Tbb"/>
+                        <outletCollection property="clipboard" destination="7dJ-ag-leG" collectionClass="NSMutableArray" id="sDU-ct-KTF"/>
+                        <outletCollection property="clipboard" destination="4xh-HL-LMj" collectionClass="NSMutableArray" id="gJF-0Z-tqx"/>
+                        <outletCollection property="clipboard" destination="u4z-F8-qa6" collectionClass="NSMutableArray" id="YZj-mU-RpC"/>
+                        <outletCollection property="clipboard" destination="HHY-kh-aW0" collectionClass="NSMutableArray" id="AOQ-oF-h2H"/>
+                        <outletCollection property="clipboard" destination="eBh-eD-ucF" collectionClass="NSMutableArray" id="uje-Vz-mFx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OYr-Bu-5Xb" userLabel="First Responder" sceneMemberID="firstResponder"/>
