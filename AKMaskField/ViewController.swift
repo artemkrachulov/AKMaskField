@@ -23,10 +23,10 @@ class ViewController: UIViewController, UITextFieldDelegate, AKMaskFieldDelegate
         // Do any additional setup after loading the view, typically from a nib.
         
         // delegates
-        self.card.events = self
-        self.phone.events = self
-        self.key.events = self
-        self.license.events = self
+        self.card.maskDelegate = self
+        self.phone.maskDelegate = self
+        self.key.maskDelegate = self
+        self.license.maskDelegate = self
         
         // Draw indicators
         for indicator in indicators {
@@ -69,7 +69,7 @@ class ViewController: UIViewController, UITextFieldDelegate, AKMaskFieldDelegate
     }
 
     // Hide on click out the field
-    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {        
         self.card.resignFirstResponder()
         self.phone.resignFirstResponder()
         self.key.resignFirstResponder()
@@ -77,21 +77,29 @@ class ViewController: UIViewController, UITextFieldDelegate, AKMaskFieldDelegate
         self.view.endEditing(true)
     }
     
+    @IBAction func clearFields(sender: AnyObject) {
+        card.text = ""
+        phone.text = ""
+        key.text = ""
+        license.text = ""
+    }
+    
     /*
     -------------------------------
     // MARK: Delegates
     -------------------------------
     */
-    func maskField(maskField: AKMaskField, madeEvent: String, withText oldText: String, inRange oldTextRange: NSRange, withText newText: String) {
+    func maskField(maskField: AKMaskField, shouldChangeCharacters oldString: String, InRange range: NSRange, replacementString withString: String) {
+        
     
         // Status animation
         var statusColor: UIColor?
-        switch maskField.maskStatus {
-        case "Clear":
+        switch maskField.maskFieldStatus {
+        case .Clear:
             statusColor = UIColor(red: 241/255, green: 241/255, blue: 241/255, alpha: 1.0)
-        case "Incomplete":
+        case .Incomplete:
             statusColor = UIColor(red: 52/255, green: 152/255, blue: 219/255, alpha: 1.0)
-        case "Complete":
+        case .Complete:
             statusColor = UIColor(red: 0/255, green: 219/255, blue: 86/255, alpha: 1.0)
         default:
             statusColor = UIColor.clearColor()
@@ -103,16 +111,19 @@ class ViewController: UIViewController, UITextFieldDelegate, AKMaskFieldDelegate
             }, completion: nil)
         
         // Event animation
+        
+        println(maskField.maskFieldEvent.hashValue)
+        
         var eventColor: UIColor?
-        switch madeEvent {
-        case "Insert":
-            eventColor = UIColor(red: 241/255, green: 241/255, blue: 241/255, alpha: 1.0)
-        case "Replace":
-            eventColor = UIColor(red: 140/255, green: 190/255, blue: 178/255, alpha: 0.5)
-        case "Delete":
-            eventColor = UIColor(red: 243/255, green: 181/255, blue: 98/255, alpha: 0.5)
-        default:
-            eventColor = UIColor(red: 231/255, green: 76/255, blue: 60/255, alpha: 0.5)
+        switch maskField.maskFieldEvent {
+            case .Insert:
+                eventColor = UIColor(red: 241/255, green: 241/255, blue: 241/255, alpha: 1.0)
+            case .Replace:
+                eventColor = UIColor(red: 140/255, green: 190/255, blue: 178/255, alpha: 0.5)
+            case .Delete:
+                eventColor = UIColor(red: 243/255, green: 181/255, blue: 98/255, alpha: 0.5)
+            default:
+                eventColor = UIColor(red: 231/255, green: 76/255, blue: 60/255, alpha: 0.5)
         }
         
         UIView.animateWithDuration(0.05, delay: 0, options: UIViewAnimationOptions.CurveEaseIn, animations: { () -> Void in
