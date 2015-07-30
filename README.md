@@ -20,12 +20,11 @@
 <p><b>Code:</b></p>
 <pre>
 self.filed.mask = "{dddd}-{DDDD}-{WaWa}-{aaaa}"
-self.filed.maskShow = true
-self.filed.maskPlaceholder = "xxxx-xxxx-xxxx-xxxx"
+self.filed.maskShowTemplate = true
+self.filed.maskTemplate = "xxxx-xxxx-xxxx-xxxx"
 
 // Set new text property for textField
 self.field.text = "5654-3423-5127-4562"
-self.card.maskFieldUpdate()
 </pre>
 <p><b>Storyboard:</b></p>
 <pre>
