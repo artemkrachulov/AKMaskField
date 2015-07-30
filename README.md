@@ -14,7 +14,7 @@
 <li>smart copy/past text features</li>
 </ul>
 <h2><a id="user-content-demo" class="anchor" href="#demo" aria-hidden="true"><span class="octicon octicon-link"></span></a>Demo</h2>
-<img src="https://raw.githubusercontent.com/artemkrachulov/AKMaskField/master/Assete/preview.png" alt="preview.png">
+<img src="https://raw.githubusercontent.com/artemkrachulov/AKMaskField/master/Assets/preview.png" alt="preview.png">
 <h2><a id="user-content-usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
 <p>Include AKMaskField.swift file to your project. Set UITextField as AKMaskField custom class. Define your masks properties:</p>
 <p><b>Code:</b></p>
