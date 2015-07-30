@@ -93,7 +93,7 @@ class ViewController: UIViewController, UITextFieldDelegate, AKMaskFieldDelegate
     
         // Status animation
         var statusColor: UIColor?
-        switch maskField.maskFieldStatus {
+        switch maskField.maskStatus {
         case .Clear:
             statusColor = UIColor(red: 241/255, green: 241/255, blue: 241/255, alpha: 1.0)
         case .Incomplete:
@@ -112,7 +112,7 @@ class ViewController: UIViewController, UITextFieldDelegate, AKMaskFieldDelegate
         // Event animation
         
         var eventColor: UIColor?
-        switch maskField.maskFieldEvent {
+        switch maskField.maskEvent {
             case .Insert:
                 eventColor = UIColor(red: 241/255, green: 241/255, blue: 241/255, alpha: 1.0)
             case .Replace:

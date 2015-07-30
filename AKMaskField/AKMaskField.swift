@@ -47,7 +47,7 @@ extension String {
 // MARK: - Enums
 // --------------------------------------------------------------------------------------------------- //
 
-enum AKMaskFieldSEvets {
+enum AKMaskFieldEvets {
     
     case None
     case Insert
@@ -85,8 +85,8 @@ class AKMaskField: UITextField, UITextFieldDelegate {
         var status: Bool
         var range: Range<Int>
         var mask: String
-        var text: String
-        var placeholder: String
+//        var text: String
+        var template: String
         var chars: [AKMaskFieldBlockChars]
     }
     
@@ -102,9 +102,9 @@ class AKMaskField: UITextField, UITextFieldDelegate {
     var maskDelegate: AKMaskFieldDelegate?
     
     /* */
-    private(set) var maskFieldStatus : AKMaskFieldStatus = .Clear
+    private(set) var maskStatus : AKMaskFieldStatus = .Clear
     
-    private(set) var maskFieldEvent : AKMaskFieldSEvets = .None
+    private(set) var maskEvent : AKMaskFieldEvets = .None
     
     private var isUpdateEvent: Bool!
 
@@ -193,8 +193,8 @@ class AKMaskField: UITextField, UITextFieldDelegate {
                             status : false,
                             range : Range(start: blockRange.startIndex - (i * 2) - 1, end: blockRange.endIndex - (i * 2) - 1 ),
                             mask : blockMask,
-                            text : "",
-                            placeholder : "",
+//                            text : "",
+                            template : "",
                             chars : chars
                         )
                         
@@ -275,7 +275,7 @@ class AKMaskField: UITextField, UITextFieldDelegate {
                     
                     maskTemplateText = maskTemplateText.stringByReplacingOccurrencesOfString("(.+)", withString: blockTemplate, options: .RegularExpressionSearch, range:blockRange)
                     
-                    maskObject[i].placeholder = blockTemplate
+                    maskObject[i].template = blockTemplate
                 }
                 
                 /* Save pocessed mask text */
@@ -329,7 +329,7 @@ class AKMaskField: UITextField, UITextFieldDelegate {
                 
             } else {
                 
-                self.text = maskFieldStatus == .Clear ? "" : maskText
+                self.text = maskStatus == .Clear ? "" : maskText
             }
         }
         
@@ -346,7 +346,7 @@ class AKMaskField: UITextField, UITextFieldDelegate {
             var caret: Int = 0
             var position = self.beginningOfDocument
             
-            switch maskFieldStatus {
+            switch maskStatus {
                 case .Complete:
                     
                     caret = count(maskTemplateText)
@@ -505,32 +505,32 @@ class AKMaskField: UITextField, UITextFieldDelegate {
             
             /* Events */
             
-            var event: AKMaskFieldSEvets!
+            var event: AKMaskFieldEvets!
             
             if charsReplaced == charsToReplace && caretPosition == range.startIndex {
                 
                 if caretPosition == 0 && range.startIndex == 0 {
                     
-                    maskFieldEvent = .Delete
+                    maskEvent = .Delete
                 } else {
                     
-                    maskFieldEvent = .None
+                    maskEvent = .None
                 }
             } else if charsReplaced != 0 && charsToReplace != 0 {
                 
-                maskFieldEvent = .Replace
+                maskEvent = .Replace
             } else if charsReplaced == 0  {
                 
                 if caretPosition != range.startIndex {
                     
-                    maskFieldEvent = .Insert
+                    maskEvent = .Insert
                 } else {
                     
-                    maskFieldEvent = .Delete
+                    maskEvent = .Delete
                 }
             } else {
                 
-                maskFieldEvent = .Insert
+                maskEvent = .Insert
             }
             
             /* Status */
@@ -554,15 +554,15 @@ class AKMaskField: UITextField, UITextFieldDelegate {
             
             if charsFilled == 0 {
                 
-                maskFieldStatus = .Clear
+                maskStatus = .Clear
                 
             } else if charsFilled == charsTotal {
                 
-                maskFieldStatus = .Complete
+                maskStatus = .Complete
                 
             } else {
                 
-                maskFieldStatus = .Incomplete
+                maskStatus = .Incomplete
             }
             
             /* Update Field */
