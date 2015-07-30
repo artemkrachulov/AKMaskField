@@ -29,8 +29,8 @@ self.field.text = "5654-3423-5127-4562"
 <p><b>Storyboard:</b></p>
 <pre>
 Mask: {dddd}-{DDDD}-{WaWa}-{aaaa}
-Mask Show: On
-Mask Placeholder: xxxx-xxxx-xxxx-xxxx
+Mask Show Template: On
+Mask Template: xxxx-xxxx-xxxx-xxxx
 </pre>
 <h2><a id="user-content-properties" class="anchor" href="#properties" aria-hidden="true"><span class="octicon octicon-link"></span></a>Properties</h2>
 <h3><a id="user-content-masks" class="anchor" href="#static-masks" aria-hidden="true"><span class="octicon octicon-link"></span></a>Mask</h3>
@@ -48,21 +48,21 @@ Mask Placeholder: xxxx-xxxx-xxxx-xxxx
 </ul>
 <p>Example:</p>
 <pre>{dddd}-{DDDD}-{WaWa}-{aaaa}</pre>
-<h3><a id="user-content-show" class="anchor" href="#static-show" aria-hidden="true"><span class="octicon octicon-link"></span></a>Show</h3>
-<p><code>.maskShow</code> or <code>Mask Show</code></p>
-<p>Boolean property which define mask view status. Similar as default placeholder actions. Can have 2 states:</p>
+<h3><a id="user-content-show" class="anchor" href="#static-show" aria-hidden="true"><span class="octicon octicon-link"></span></a>Show Template</h3>
+<p><code>.maskShowTemplate</code> or <code>Mask Show Template</code></p>
+<p>Boolean property which define mask view template. Similar as default placeholder actions. Can have 2 states:</p>
 <ul class="task-list">
 <li><b>On (true)</b> - Mask always visible. Overrides default UITextField placeholder</li>
 <li><b>Off (false)</b> - Mask visible if user type text. If mask field don't have any user text field will be empty or show default UITextField placeholder (default)</li>
 </ul>
-<h3><a id="user-content-placeholder" class="anchor" href="#static-placeholder" aria-hidden="true"><span class="octicon octicon-link"></span></a>Placeholder</h3>
-<p><code>.maskPlaceholder</code> or <code>Mask Placeholder</code></p>
-<p>String property display text which will see user. Placeholder can be:</p>
+<h3><a id="user-content-placeholder" class="anchor" href="#static-placeholder" aria-hidden="true"><span class="octicon octicon-link"></span></a>Template</h3>
+<p><code>.maskTemplate</code> or <code>Mask Template</code></p>
+<p>String property display text which will see user. Template can be:</p>
 <ul class="task-list">
 <li><b>1</b> character length. In this case char character will be copied to full mask length. (default "*")
 <pre>
 self.filed.mask = "{dddd}-{DDDD}-{WaWa}-{aaaa}"
-self.filed.maskPlaceholder = "Z"
+self.filed.maskTemplate = "Z"
 
 // Text in mask filed
 // ZZZZ-ZZZZ-ZZZZ-ZZZZ
@@ -71,7 +71,7 @@ self.filed.maskPlaceholder = "Z"
 <li><b>Same lenght</b> as mask(without brackets)
 <pre>
 self.filed.mask = "{dddd}-{DDDD}-{WaWa}-{aaaa}"      // 19 characters  
-self.filed.maskPlaceholder = "ABCD-EFGH-IJKL-MNOP"   // 19 characters
+self.filed.maskTemplate = "ABCD-EFGH-IJKL-MNOP"   // 19 characters
 
 // Text in mask filed
 // ABCD-EFGH-IJKL-MNOP
