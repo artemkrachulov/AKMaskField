@@ -127,7 +127,7 @@ class AKMaskField: UITextField, UITextFieldDelegate {
     
     private(set) var maskWithoutBrackets: String!
     
-    private var _maskShow  = false
+    private var _maskShowTemplate  = false
     
     private var _maskTemplate: String!
     
@@ -216,14 +216,14 @@ class AKMaskField: UITextField, UITextFieldDelegate {
         Example: True / False
     */
     
-    @IBInspectable var maskShow: Bool {
+    @IBInspectable var maskShowTemplate: Bool {
         get {
             
-            return _maskShow
+            return _maskShowTemplate
         }
         set {
             
-            _maskShow = newValue
+            _maskShowTemplate = newValue
             
             /* Refresh */
             
@@ -323,7 +323,7 @@ class AKMaskField: UITextField, UITextFieldDelegate {
     func updateMaskField() {
         if self.maskObject.count > 0 && maskText != text {
             
-            if maskShow {
+            if maskShowTemplate {
                 
                 text = maskText
                 

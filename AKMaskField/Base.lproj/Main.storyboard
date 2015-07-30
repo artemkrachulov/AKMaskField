@@ -47,7 +47,7 @@
                                 <textInputTraits key="textInputTraits"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="mask" value="{dddd}-{dddd}-{dddd}-{dddd}"/>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="maskShow" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="maskShowTemplate" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oH5-oG-C8W">
@@ -242,7 +242,7 @@
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="mask" value="+38 ({ddd}) {ddd}-{dd}-{dd}"/>
                                     <userDefinedRuntimeAttribute type="string" keyPath="maskTemplate" value="+38 (___) ___-__-__"/>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="maskShow" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="maskShowTemplate" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6in-vL-jvf">
@@ -436,7 +436,7 @@
                                 <textInputTraits key="textInputTraits"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="mask" value="{aa}/{d} {d} {d}-{ddd}-{dd}"/>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="maskShow" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="maskShowTemplate" value="YES"/>
                                     <userDefinedRuntimeAttribute type="string" keyPath="maskTemplate" value="AA/N N N-NNN-NN"/>
                                 </userDefinedRuntimeAttributes>
                             </textField>

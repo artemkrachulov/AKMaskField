@@ -89,8 +89,7 @@ class ViewController: UIViewController, UITextFieldDelegate, AKMaskFieldDelegate
     // MARK: Delegates
     -------------------------------
     */
-    func maskField(maskField: AKMaskField, shouldChangeCharacters oldString: String, InRange range: NSRange, replacementString withString: String) {
-        
+    func maskField(maskField: AKMaskField, shouldChangeCharacters oldString: String, InRange range: NSRange, replacementString withString: String) {        
     
         // Status animation
         var statusColor: UIColor?
@@ -111,8 +110,6 @@ class ViewController: UIViewController, UITextFieldDelegate, AKMaskFieldDelegate
             }, completion: nil)
         
         // Event animation
-        
-        println(maskField.maskFieldEvent.hashValue)
         
         var eventColor: UIColor?
         switch maskField.maskFieldEvent {
