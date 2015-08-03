@@ -71,7 +71,7 @@ enum AKMaskFieldStatus {
     
     optional func maskFieldDidBeginEditing(maskField: AKMaskField)
     
-    optional func maskField(maskField: AKMaskField, shouldChangeCharacters oldString: String, InRange range: NSRange, replacementString withString: String)
+    optional func maskField(maskField: AKMaskField, shouldChangeCharacters oldString: String, inRange range: NSRange, replacementString withString: String)
 }
 
 // MARK: - Class
