@@ -12,8 +12,6 @@
 	<dict>
 		<key>9441B72A876448A863874E6A08969E710D1F58D1</key>
 		<string>https://github.com/artemkrachulov/AKMaskField.git</string>
-		<key>A62B54A530661A47E6EAF9F8891D137D2D4F21B6</key>
-		<string>https://bitbucket.org/artemkrachulov/projects.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>AKMaskField.xcodeproj</string>
@@ -21,8 +19,6 @@
 	<dict>
 		<key>9441B72A876448A863874E6A08969E710D1F58D1</key>
 		<string>../..</string>
-		<key>A62B54A530661A47E6EAF9F8891D137D2D4F21B6</key>
-		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/artemkrachulov/AKMaskField.git</string>
@@ -32,14 +28,6 @@
 	<string>9441B72A876448A863874E6A08969E710D1F58D1</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
-		<dict>
-			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
-			<string>public.vcs.git</string>
-			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>A62B54A530661A47E6EAF9F8891D137D2D4F21B6</string>
-			<key>IDESourceControlWCCName</key>
-			<string></string>
-		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>

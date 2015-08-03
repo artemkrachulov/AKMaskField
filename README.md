@@ -1,153 +1,279 @@
-# AKMaskField
+AKMaskField is Swift plugin.
 
-<p>AKMaskField is Swift plugin.</p>
-<p>AKMaskField allows a user to more easily enter fixed width input where you would like them to enter the data in a certain format (dates,phone numbers, etc)</p>
-<p><b>Features:</b></p>
-<ul class="task-list">
-<li>easy to use from code or storyboard</li>
-<li>smart mask placeholder</li>
-<li>mask field status callbacks</li>
-<li>lots of delegates</li>
-<li>regex-mask support</li>
-<li>dynamic-mask support</li>
-<li>fast field processing</li>
-<li>smart copy/past text features</li>
-</ul>
-<h2><a id="user-content-demo" class="anchor" href="#demo" aria-hidden="true"><span class="octicon octicon-link"></span></a>Demo</h2>
-<img src="https://raw.githubusercontent.com/artemkrachulov/AKMaskField/master/Extra/preview.png" alt="preview.png">
-<h2><a id="user-content-usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
-<p>Include AKMaskField.swift file to your project. Set UITextField as AKMaskField custom class. Define your masks properties:</p>
-<p><b>Code:</b></p>
-<pre>
-self.filed.mask = "{dddd}-{DDDD}-{WaWa}-{aaaa}"
-self.filed.maskShow = true
-self.filed.maskPlaceholder = "xxxx-xxxx-xxxx-xxxx"
+AKMaskField allows the user to enter easily data in the fixed quantity and in certain format (credit cards, telephone numbers, dates, etc.). The developer needs to adjust a format of a mask and a template. The mask consists of symbols and blocks. Each block consists of symbols of a certain type (number, letter, symbol). The template in turn represents a mask with hidden symbols in each block.
 
-// Set new text property for textField
-self.field.text = "5654-3423-5127-4562"
-self.card.maskFieldUpdate()
-</pre>
-<p><b>Storyboard:</b></p>
-<pre>
-Mask: {dddd}-{DDDD}-{WaWa}-{aaaa}
-Mask Show: On
-Mask Placeholder: xxxx-xxxx-xxxx-xxxx
-</pre>
-<h2><a id="user-content-properties" class="anchor" href="#properties" aria-hidden="true"><span class="octicon octicon-link"></span></a>Properties</h2>
-<h3><a id="user-content-masks" class="anchor" href="#static-masks" aria-hidden="true"><span class="octicon octicon-link"></span></a>Mask</h3>
-<p><code>.mask</code> or <code>Mask</code></p>
-<p>String property which define whole mask text. Text contain blocks with characters and any text outside blocks. All mask blocks must be defined in brackets <code>{</code> ... <code>}</code>.</p>
-<p>Example:</p>
-<pre>{dddd}-{ddddd}-{dddd}-{dddd}</pre>
-<p>Each character may be validated by type. The following mask definitions are predefined:</p>
-<ul class="task-list">
-<li><b>d</b> - Number, Decimal Digit</li>
-<li><b>D</b> - Match any character that is not a decimal digit</li>
-<li><b>W</b> - Match a non-word character</li>
-<li><b>a</b> - Match alphabet</li>
-<li><b>.</b> - Match any character (default)</li>
-</ul>
-<p>Example:</p>
-<pre>{dddd}-{DDDD}-{WaWa}-{aaaa}</pre>
-<h3><a id="user-content-show" class="anchor" href="#static-show" aria-hidden="true"><span class="octicon octicon-link"></span></a>Show</h3>
-<p><code>.maskShow</code> or <code>Mask Show</code></p>
-<p>Boolean property which define mask view status. Similar as default placeholder actions. Can have 2 states:</p>
-<ul class="task-list">
-<li><b>On (true)</b> - Mask always visible. Overrides default UITextField placeholder</li>
-<li><b>Off (false)</b> - Mask visible if user type text. If mask field don't have any user text field will be empty or show default UITextField placeholder (default)</li>
-</ul>
-<h3><a id="user-content-placeholder" class="anchor" href="#static-placeholder" aria-hidden="true"><span class="octicon octicon-link"></span></a>Placeholder</h3>
-<p><code>.maskPlaceholder</code> or <code>Mask Placeholder</code></p>
-<p>String property display text which will see user. Placeholder can be:</p>
-<ul class="task-list">
-<li><b>1</b> character length. In this case char character will be copied to full mask length. (default "*")
-<pre>
-self.filed.mask = "{dddd}-{DDDD}-{WaWa}-{aaaa}"
-self.filed.maskPlaceholder = "Z"
+**Main features:**
 
-// Text in mask filed
-// ZZZZ-ZZZZ-ZZZZ-ZZZZ
-</pre>
-</li>
-<li><b>Same lenght</b> as mask(without brackets)
-<pre>
-self.filed.mask = "{dddd}-{DDDD}-{WaWa}-{aaaa}"      // 19 characters  
-self.filed.maskPlaceholder = "ABCD-EFGH-IJKL-MNOP"   // 19 characters
+* easy in use
+* possibility to setup input field from a code or Settings Panel
+* smart template
+* the status and action callbacks
+* support of dynamic change of a mask
+* fast processing of a input field
+* smart user input actions: to copy / insert
 
-// Text in mask filed
-// ABCD-EFGH-IJKL-MNOP
-</pre>
-</li>
-</ul>
-<h2><a id="user-content-properties" class="anchor" href="#properties" aria-hidden="true"><span class="octicon octicon-link"></span></a>Callback properties</h2>
-<h3><a id="user-content-status" class="anchor" href="#static-status" aria-hidden="true"><span class="octicon octicon-link"></span></a>Status</h3>
-<p><code>.maskStatus</code></p>
-<p>String property return mask status in real time. Mask can have 3 states:</p>
-<ul class="task-list">
-<li><b>Clear</b> - User not filled any characters block</li>
-<li><b>Incomplete</b> - At least 1 character is filled</li>
-<li><b>Complete</b> - All characters blocks is filled</li>
-</ul>
-<h3><a id="user-content-object" class="anchor" href="#static-object" aria-hidden="true"><span class="octicon octicon-link"></span></a>Object</h3>
-<p><code>.maskObject</code></p>
-<p>Dictionary type contain all mask blocks with properties.</p>
-<pre>
-[[
-  range       : 0..&lt;4,
-  mask        : "dddd",
-  placeholder : "xxxx",
-  status      : false,
-  chars: [
-    [ range: 0..&lt;1, status: false ],
-    [ range: 1..&lt;2, status: false ], 
-    [ range: 2..&lt;3, status: false ], 
-    [ range: 3..&lt;4, status: false ]
-  ]
-], 
-[ ... ],
-[ ... ],
-[ ... ]]
-</pre>
-<h2><a id="user-content-events" class="anchor" href="#events" aria-hidden="true"><span class="octicon octicon-link"></span></a>Events</h2>
-<p>You can use AKMaskFieldDelegate protocol to control all mask field events:</p>
-<pre>
+**Preview**
+
+![Demp](https://raw.githubusercontent.com/artemkrachulov/AKMaskField/master/Assets/preview.png)
+
+## Usage
+
+Add the _AKMaskField.swift_ file to the project (To copy the file it has to be chosen). Create a field of the class _UITextField_ and specify to it the class _AKMaskField_ in the Inspector / Accessory Panel. Attributes or in a code specify necessary attributes in a tab:
+
+**Attributes tab**
+
+```text
+Mask: {dddd}-{dddd}-{dddd}-{dddd}
+Mask Template: xxxx-xxxx-xxxx-xxxx
+Mask Show Template: On
+
+// Input field
+xxxx-xxxx-xxxx-xxxx
+
+// Default text attributes settings
+Text: 0123
+
+// Input field
+0123-xxxx-xxxx-xxxx
+```
+
+**The code**
+
+```text
+field.mask = "{dddd}-{dddd}-{dddd}-{dddd}"
+field.maskTemplate = "xxxx-xxxx-xxxx-xxxx"
+field.maskShowTemplate = true
+
+// Input field
+xxxx-xxxx-xxxx-xxxx
+
+// Default text attributes settings
+field.text = 0123
+
+// Input field
+0123-xxxx-xxxx-xxxx
+```
+
+## Properties
+
+### Mask
+
+`.mask` property / _mask_ key path / **Mask** attribute
+
+**Type**: String
+
+**Access**: get set
+
+**Default value**: __*__
+
+Defines a type of a mask. A String contains blocks with symbols separated by any string out of blocks. Open and close each block a special symbol.
+
+Symbols in the block define certain type of data. The predetermined types:
+
+* **d** - Number, decimal number from 0 to 9
+* **D** - Any symbol, except decimal number
+* **W** - Not an alphabetic symbol
+* **a** - Alphabetic symbol, a-Z
+* **.** - Corresponds to any symbol (by default)
+
+Example:
+
+```text
+{dddd}-{DDDD}-{WaWa}-{aaaa}
+```
+
+### Template
+
+`.maskTemplate` property / _maskTemplate_ key path / **Mask Template** attribute
+
+**Type**: String
+
+**Access**: get set
+
+**Default value**: __*__
+
+Text template with the hidden symbols of a mask which is seen by the user. Can be in a look:
+
+* **1 character**
+
+  In this case the symbol will be copied in compliance of length of each block of a mask.
+
+Example:
+
+```text
+// Mask
+{dddd}-{DDDD}-{WaWa}-{aaaa}
+
+// Template
+Z
+
+// Input field
+ZZZZ-ZZZZ-ZZZZ-ZZZZ
+```
+
+* **Any characters**
+
+  In this case the quantity of characters of a template has to be equal to quantity of characters of a mask without brackets.
+
+Example:
+
+```text
+// Mask
+// 19 characters
+{dddd}-{DDDD}-{WaWa}-{aaaa}
+
+// Template
+// 19 characters
+ABCD-EFGH-IJKL-MNOP
+
+// Input field
+ABCD-EFGH-IJKL-MNOP
+```
+
+### Visible mask tempalte
+
+`.maskShowTemplate` property / _maskShowTemplate_ key path / **Mask Show Template** attribute
+
+**Type**: Bool
+
+**Access**: get set
+
+**Default value**: false (Default value)
+
+Вefine will a user see a template if the field doesn't contain the entered character and has the status the "Clear" field. Can have 2 states:
+
+* **On (true)** - The template is visible always. Replaces field placeholder.
+* **Off (false)** - The template is displayed if the field contains the entered symbols. If the field has no the symbols entered by the user, standard placeholder of a field will be displayed.
+
+### Block brackets
+
+`.maskBlockBrackets` property
+
+**Type**: Array
+
+**Access**: get set
+
+**Default value**: `{` and `}`
+
+Two characters (open and close) that can be changed in the code.
+
+Example:
+
+```swift
+// Brackets
+field.maskBlockBrackets = ["[", "]"]
+
+// Mask
+field.mask = [dddd]-[DDDD]-[WaWa]-[aaaa]
+```
+
+### Mask object
+
+`.maskObject` property
+
+**Type**: Array
+
+**Access**: get
+
+**Default value**: Empty attay
+
+Contain all information about mask blocks.
+
+Example:
+
+```swift
+// Get first block
+let block = self.field.maskObject[0]
+
+print("Block index in the mask \(block.index)") // Int
+print("The block is filled or isn't filled: \(block.status)") // true - filled, false - isn't filled
+print("The block position in a mask: \(block.range)") // Range<Int>
+print("Block mask: \(block.mask)") // String
+print("Block template: \(block.template)") // String
+print("A characters inside the block: \(block.chars)") // Array<AKMaskFieldBlockChars>
+
+// Get first character
+let char = block.chars[0]
+
+print("A character is filled or isn't filled : \(char.status)") // true - filled, false - isn't filled
+print("A character position in a mask: \(char.range)") // Range<Int>
+```
+
+### Mask status
+
+`.maskStatus` property
+
+**Type**: Enum
+
+**Access**: get
+
+**Default value**: `.Clear` - Empty
+
+Define a condition of a field at the moment. The field has 3 states:
+
+* **.Clear** - Empty (pure), isn't present the filled character
+* **.Incomplete** - isn't filled at least one character is entered
+* **.Complete** - Filled all character are entered
+
+### User events
+
+`.maskEvent` property
+
+**Type**: Enum
+
+**Access**: get
+
+**Default value**: `.None`
+
+Define a user events. The user can make 4 events:
+
+* **.None** - Not events
+* **.Insert** - Enter
+* **.Delete** - Delete
+* **.Replace** - Select / Enter
+
+### Delegates
+
+`.maskDelegate` property
+
+Define an event which the user carries out with the field. Optional methods. Methods:
+
+* maskFieldDidBeginEditing(maskField: AKMaskField)
+
+  Called when the cursor is placed in the field
+
+* maskField(maskField: AKMaskField, shouldChangeCharacters oldString: String, InRange range: NSRange, replacementString withString: String)
+
+  Called when the user make any event
+
+Example:
+
+```swift
 override func viewDidLoad() {
   super.viewDidLoad()
-  // Do any additional setup after loading the view, typically from a nib.
 
-  self.field.events = self
+  field.maskDelegate = self
 }
 
-func maskFieldDidBeginEditing(maskField: AKMaskField) { 
-  // Detect when you place caret into the field
-  println("Your mask field \(maskField)")
+// Delegate methods
+func maskFieldDidBeginEditing(maskField: AKMaskField) {
+    print("Объект класса: \(maskField)")
 }
 
-func maskField(maskField: AKMaskField, madeEvent: String, withText oldText: String!, inRange oldTextRange: NSRange, withText newText: String) {
+func maskField(maskField: AKMaskField, shouldChangeCharacters oldString: String, InRange range: NSRange, replacementString withString: String) {
+    print("Mask object: \(maskField)")
+    print("The text before an event: \(maskField.oldString)")
+    print("Range of text before event: \(maskField.range)")
+    print("The text after an event: \(maskField.withString)")
+    print("A field status after an event: \(maskField.maskStatus)")
+    print("An event: \(maskField.maskEvent)")
+}
+```
 
-  // Detect any text changing in the field
-  println("Your mask field \(maskField)")
-  println("Text events \(madeEvent)")      // "Insert", "Replace", "Delete", "Error"
-  println("Text \(oldText) and range \(oldTextRange) before event")
-  println("Text after event \(newText)")
-}
+### Author
 
-// Event separated by type 
-func maskField(maskField: AKMaskField, replaceText oldText: String, inRange oldTextRange: NSRange, withText newText: String) {}
-func maskField(maskField: AKMaskField, insertText text: String, inRange range: NSRange) {}
-func maskField(maskField: AKMaskField, deleteText text: String, inRange range: NSRange) {}
-</pre>
-<h2><a id="user-content-delegates" class="anchor" href="#delegates" aria-hidden="true"><span class="octicon octicon-link"></span></a>Delegates</h2>
-<p>We use 2 delegate methods from UITextFieldDelegate in our class AKMaskField. To avoid problems with mask, duplicate mask methods in UITextFieldDelegate methods:</p>
-<pre>
-func textFieldDidBeginEditing(textField: UITextField) {
-  self.card.maskFieldDidBeginEditing(textField)
-}
-func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-  return self.maskField(textField, shouldChangeCharactersInRange: range, replacementString: string)
-}
-</pre>
-<h2><a id="user-content-author" class="anchor" href="#author" aria-hidden="true"><span class="octicon octicon-link"></span></a>Author</h2>
-<p>Artem Krachulov, <a href="mailto:artem.krachulov@gmail.com">artem.krachulov@gmail.com</a></p>
-<h2><a id="user-content-license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
-<p>Released under the <a href="http://www.opensource.org/licenses/MIT">MIT license</a>.</p>
+Artem Krachulov: [website](http://www.artemkrachulov.com/), [artem.krachulov@gmail.com](artem.krachulov@gmail.com)
+
+### License
+
+Released under the [MIT license](http://www.opensource.org/licenses/MIT)
