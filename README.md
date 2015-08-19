@@ -242,7 +242,7 @@ func maskField(maskField: AKMaskField, shouldChangeCharacters oldString: String,
 
 ### Author
 
-Artem Krachulov: [www.artemkrachulov.com](http://www.artemkrachulov.com/), email [artem.krachulov@gmail.com](artem.krachulov@gmail.com)
+Artem Krachulov: [www.artemkrachulov.com](http://www.artemkrachulov.com/), email [artem.krachulov@gmail.com](mailto:artem.krachulov@gmail.com)
 
 ### License
 
