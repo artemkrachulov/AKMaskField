@@ -239,3 +239,11 @@ func maskField(maskField: AKMaskField, shouldChangeCharacters oldString: String,
     print("An event: \(maskField.maskEvent)")
 }
 ```
+
+### Author
+
+Artem Krachulov: [www.artemkrachulov.com](http://www.artemkrachulov.com/), email [artem.krachulov@gmail.com](artem.krachulov@gmail.com)
+
+### License
+
+Released under the [MIT license](http://www.opensource.org/licenses/MIT)
