@@ -249,7 +249,7 @@ func maskField(maskField: AKMaskField, shouldChangeCharacters oldString: String,
 
 ```swift
 var enteredText: String = ""
-for block in card.maskObject {
+for block in self.field.maskObject {
 
     for char in block.chars {
         if char.status { enteredText += String(char.text) }
