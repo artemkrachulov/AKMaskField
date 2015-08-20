@@ -27,7 +27,6 @@ extension String {
     public func convertRange(range: Range<Int>) -> Range<String.Index> {
         
         let startIndex = advance(self.startIndex, range.startIndex)
-        
         let endIndex = advance(startIndex, range.endIndex - range.startIndex)
         
         return Range<String.Index>(start: startIndex, end: endIndex)
@@ -85,13 +84,15 @@ class AKMaskField: UITextField, UITextFieldDelegate {
         var status: Bool
         var range: Range<Int>
         var mask: String
-//        var text: String
+        var text: String
         var template: String
         var chars: [AKMaskFieldBlockChars]
     }
     
     struct AKMaskFieldBlockChars {
+        var index: Int
         var status: Bool
+        var text: Character
         var range: Range<Int>
     }
     
@@ -178,11 +179,13 @@ class AKMaskField: UITextField, UITextFieldDelegate {
                         
                         var chars = [AKMaskFieldBlockChars]()
                         
-                        for y in blockRange {
+                        for (y, index) in enumerate(blockRange) {
                             
                             var charObject = AKMaskFieldBlockChars(
+                                index : y,
                                 status : false,
-                                range : Range(start: y - 1, end: y)
+                                text : maskTemplateDefaultChar,
+                                range : Range(start: index - 1, end: index)
                             )
                         
                             chars.append(charObject)
@@ -193,7 +196,7 @@ class AKMaskField: UITextField, UITextFieldDelegate {
                             status : false,
                             range : Range(start: blockRange.startIndex - (i * 2) - 1, end: blockRange.endIndex - (i * 2) - 1 ),
                             mask : blockMask,
-//                            text : "",
+                            text : "",
                             template : "",
                             chars : chars
                         )
@@ -276,6 +279,14 @@ class AKMaskField: UITextField, UITextFieldDelegate {
                     maskTemplateText = maskTemplateText.stringByReplacingOccurrencesOfString("(.+)", withString: blockTemplate, options: .RegularExpressionSearch, range:blockRange)
                     
                     maskObject[i].template = blockTemplate
+                    maskObject[i].text = blockTemplate
+                    
+                    var chars = maskObject[i].chars
+                    for (y, char) in enumerate(blockTemplate) {
+                        
+                        chars[y].text = char
+                    }
+                    maskObject[i].chars = chars
                 }
                 
                 /* Save pocessed mask text */
@@ -360,7 +371,7 @@ class AKMaskField: UITextField, UITextFieldDelegate {
                             
                             if !char.status {
                                 
-                                caret = char.range.startIndex
+                                caret = char.index
                                 
                                 break
                             }
@@ -417,7 +428,7 @@ class AKMaskField: UITextField, UITextFieldDelegate {
             
             _maskText = _maskText.stringByReplacingOccurrencesOfString(".+", withString: maskTemplateText.subStringWithRange(range), options: .RegularExpressionSearch, range: range)
             
-            resetText(inRange: range)
+            clearText(inRange: range)
             
             /* Replace current Character with noew one */
             
@@ -488,8 +499,7 @@ class AKMaskField: UITextField, UITextFieldDelegate {
                         
                         /* Update charachter state */
                         
-                        
-                        updateChar(caretPosition - blockRangeStart, inBlock: block, toState: true)
+                        updateBlock(block, character: newChar, atIndex: caretPosition - blockRangeStart)
                         
                         /* Update Replaced chars and Carret counter */
                         
@@ -575,7 +585,7 @@ class AKMaskField: UITextField, UITextFieldDelegate {
             
             /* Send delegate */
             
-            maskDelegate?.maskField!(self, shouldChangeCharacters: oldText, InRange: range.toNSRange(), replacementString: newText)
+            maskDelegate?.maskField!(self, shouldChangeCharacters: oldText, inRange: range.toNSRange(), replacementString: newText)
         
             return false
             
@@ -639,24 +649,25 @@ class AKMaskField: UITextField, UITextFieldDelegate {
         }
     }
 
-    private func updateChar(index: Int, inBlock block: AKMaskFieldBlock, toState state: Bool) {
+    private func updateBlock(block: AKMaskFieldBlock, character: Character!, atIndex index: Int) {
     
-        /* Get Chars */
-        
+        // Copy
         var chars = block.chars
+        var text = block.text
         
-        /* Set Char State */
+        // Check char
+        let isChar = character != nil        
         
-        chars[index].status = state
+        // Switch to mask char if nil
+        let newChar = isChar ? String(character) : block.template.subStringWithRange(index..<index+1)
+        text.replaceRange(text.convertRange(index..<index+1), with: newChar)
         
-        /* Save Chars */
+        // Save
+        chars[index].text = Character(newChar)
+        chars[index].status = isChar
         
-        maskObject[block.index].chars = chars
-        
-        /* Update Block State */
-        
+        // Update Block Status        
         var charsFilled: Int = 0
-        
         for char in chars {
             if char.status {
                 
@@ -664,10 +675,12 @@ class AKMaskField: UITextField, UITextFieldDelegate {
             }
         }
         
-        maskObject[block.index].status = block.range.toNSRange().length == charsFilled ? true : false
+        maskObject[block.index].status = block.range.toNSRange().length == charsFilled
+        maskObject[block.index].text = text
+        maskObject[block.index].chars = chars
     }
     
-    private func resetText(inRange range: Range<Int>) {
+    private func clearText(inRange range: Range<Int>) {
         
         if range.toNSRange().length > 0 {
             for index in range {
@@ -679,7 +692,7 @@ class AKMaskField: UITextField, UITextFieldDelegate {
                     if  index >= blockRange.startIndex && index < blockRange.endIndex {
                         
                         // Set empty char to false
-                        updateChar(index - blockRange.startIndex, inBlock: block, toState: false)
+                        updateBlock(block, character: nil, atIndex: index - blockRange.startIndex)
                         
                         break
                     }
