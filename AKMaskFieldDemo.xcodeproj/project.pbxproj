@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 47;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		435D02FE1B9894160055A54B /* AKMaskField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435D02FD1B9894160055A54B /* AKMaskField.swift */; };
 		437113011A4B22EF00FF6252 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437113001A4B22EF00FF6252 /* AppDelegate.swift */; };
 		437113031A4B22EF00FF6252 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437113021A4B22EF00FF6252 /* ViewController.swift */; };
 		437113061A4B22EF00FF6252 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 437113041A4B22EF00FF6252 /* Main.storyboard */; };
@@ -18,7 +19,6 @@
 		437129351A7786C500C4D494 /* fontawesome-webfont.woff in Resources */ = {isa = PBXBuildFile; fileRef = 4371292F1A7786C500C4D494 /* fontawesome-webfont.woff */; };
 		437129361A7786C500C4D494 /* fontawesome-webfont.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 437129301A7786C500C4D494 /* fontawesome-webfont.woff2 */; };
 		437129371A7786C500C4D494 /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = 437129311A7786C500C4D494 /* FontAwesome.otf */; };
-		43ED58D01A7244AE00E3EBB6 /* AKMaskField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4307CBE21A6170DE00351719 /* AKMaskField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,15 +32,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4307CBE21A6170DE00351719 /* AKMaskField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AKMaskField.swift; sourceTree = "<group>"; };
-		437112FB1A4B22EF00FF6252 /* AKMaskField.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AKMaskField.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		435D02FD1B9894160055A54B /* AKMaskField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AKMaskField.swift; sourceTree = "<group>"; };
+		437112FB1A4B22EF00FF6252 /* AKMaskFieldDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AKMaskFieldDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		437112FF1A4B22EF00FF6252 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		437113001A4B22EF00FF6252 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		437113021A4B22EF00FF6252 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		437113051A4B22EF00FF6252 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		437113071A4B22EF00FF6252 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		4371130A1A4B22EF00FF6252 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		437113101A4B22EF00FF6252 /* AKMaskFieldTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AKMaskFieldTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		437113101A4B22EF00FF6252 /* AKMaskFieldDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AKMaskFieldDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4371292C1A7786C500C4D494 /* fontawesome-webfont.eot */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fontawesome-webfont.eot"; sourceTree = "<group>"; };
 		4371292D1A7786C500C4D494 /* fontawesome-webfont.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "fontawesome-webfont.svg"; sourceTree = "<group>"; };
 		4371292E1A7786C500C4D494 /* fontawesome-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fontawesome-webfont.ttf"; sourceTree = "<group>"; };
@@ -69,11 +69,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		435D02FC1B9894160055A54B /* AKMaskField */ = {
+			isa = PBXGroup;
+			children = (
+				435D02FD1B9894160055A54B /* AKMaskField.swift */,
+			);
+			path = AKMaskField;
+			sourceTree = "<group>";
+		};
 		437112F21A4B22EF00FF6252 = {
 			isa = PBXGroup;
 			children = (
-				437112FD1A4B22EF00FF6252 /* AKMaskField */,
-				43ED58BF1A72434300E3EBB6 /* AKMaskFIeldTests */,
+				435D02FC1B9894160055A54B /* AKMaskField */,
+				437112FD1A4B22EF00FF6252 /* AKMaskFieldDemo */,
+				43ED58BF1A72434300E3EBB6 /* AKMaskFIeldDemoTests */,
 				437112FC1A4B22EF00FF6252 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -81,17 +90,16 @@
 		437112FC1A4B22EF00FF6252 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				437112FB1A4B22EF00FF6252 /* AKMaskField.app */,
-				437113101A4B22EF00FF6252 /* AKMaskFieldTests.xctest */,
+				437112FB1A4B22EF00FF6252 /* AKMaskFieldDemo.app */,
+				437113101A4B22EF00FF6252 /* AKMaskFieldDemoTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		437112FD1A4B22EF00FF6252 /* AKMaskField */ = {
+		437112FD1A4B22EF00FF6252 /* AKMaskFieldDemo */ = {
 			isa = PBXGroup;
 			children = (
 				437113001A4B22EF00FF6252 /* AppDelegate.swift */,
-				4307CBE21A6170DE00351719 /* AKMaskField.swift */,
 				437113021A4B22EF00FF6252 /* ViewController.swift */,
 				437113041A4B22EF00FF6252 /* Main.storyboard */,
 				437113091A4B22EF00FF6252 /* LaunchScreen.xib */,
@@ -99,7 +107,7 @@
 				4371292B1A7786C500C4D494 /* fonts */,
 				437112FE1A4B22EF00FF6252 /* Supporting Files */,
 			);
-			path = AKMaskField;
+			path = AKMaskFieldDemo;
 			sourceTree = "<group>";
 		};
 		437112FE1A4B22EF00FF6252 /* Supporting Files */ = {
@@ -123,13 +131,13 @@
 			path = fonts;
 			sourceTree = "<group>";
 		};
-		43ED58BF1A72434300E3EBB6 /* AKMaskFIeldTests */ = {
+		43ED58BF1A72434300E3EBB6 /* AKMaskFIeldDemoTests */ = {
 			isa = PBXGroup;
 			children = (
 				43ED58C21A72434300E3EBB6 /* AKMaskFIeldTests.swift */,
 				43ED58C01A72434300E3EBB6 /* Supporting Files */,
 			);
-			path = AKMaskFIeldTests;
+			path = AKMaskFIeldDemoTests;
 			sourceTree = "<group>";
 		};
 		43ED58C01A72434300E3EBB6 /* Supporting Files */ = {
@@ -143,9 +151,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		437112FA1A4B22EF00FF6252 /* AKMaskField */ = {
+		437112FA1A4B22EF00FF6252 /* AKMaskFieldDemo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4371131A1A4B22EF00FF6252 /* Build configuration list for PBXNativeTarget "AKMaskField" */;
+			buildConfigurationList = 4371131A1A4B22EF00FF6252 /* Build configuration list for PBXNativeTarget "AKMaskFieldDemo" */;
 			buildPhases = (
 				437112F71A4B22EF00FF6252 /* Sources */,
 				437112F81A4B22EF00FF6252 /* Frameworks */,
@@ -155,14 +163,14 @@
 			);
 			dependencies = (
 			);
-			name = AKMaskField;
+			name = AKMaskFieldDemo;
 			productName = AKTextFieldMask;
-			productReference = 437112FB1A4B22EF00FF6252 /* AKMaskField.app */;
+			productReference = 437112FB1A4B22EF00FF6252 /* AKMaskFieldDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
-		4371130F1A4B22EF00FF6252 /* AKMaskFieldTests */ = {
+		4371130F1A4B22EF00FF6252 /* AKMaskFieldDemoTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4371131D1A4B22EF00FF6252 /* Build configuration list for PBXNativeTarget "AKMaskFieldTests" */;
+			buildConfigurationList = 4371131D1A4B22EF00FF6252 /* Build configuration list for PBXNativeTarget "AKMaskFieldDemoTests" */;
 			buildPhases = (
 				4371130C1A4B22EF00FF6252 /* Sources */,
 				4371130D1A4B22EF00FF6252 /* Frameworks */,
@@ -173,9 +181,9 @@
 			dependencies = (
 				437113121A4B22EF00FF6252 /* PBXTargetDependency */,
 			);
-			name = AKMaskFieldTests;
+			name = AKMaskFieldDemoTests;
 			productName = AKTextFieldMaskTests;
-			productReference = 437113101A4B22EF00FF6252 /* AKMaskFieldTests.xctest */;
+			productReference = 437113101A4B22EF00FF6252 /* AKMaskFieldDemoTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -185,20 +193,18 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0610;
-				ORGANIZATIONNAME = "The Krachulovs";
+				ORGANIZATIONNAME = "Artem Krachulov";
 				TargetAttributes = {
 					437112FA1A4B22EF00FF6252 = {
 						CreatedOnToolsVersion = 6.1.1;
-						DevelopmentTeam = 5JV4U8LEZ8;
 					};
 					4371130F1A4B22EF00FF6252 = {
 						CreatedOnToolsVersion = 6.1.1;
-						TestTargetID = 437112FA1A4B22EF00FF6252;
 					};
 				};
 			};
-			buildConfigurationList = 437112F61A4B22EF00FF6252 /* Build configuration list for PBXProject "AKMaskField" */;
-			compatibilityVersion = "Xcode 3.2";
+			buildConfigurationList = 437112F61A4B22EF00FF6252 /* Build configuration list for PBXProject "AKMaskFieldDemo" */;
+			compatibilityVersion = "Xcode 6.3";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -210,8 +216,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				437112FA1A4B22EF00FF6252 /* AKMaskField */,
-				4371130F1A4B22EF00FF6252 /* AKMaskFieldTests */,
+				437112FA1A4B22EF00FF6252 /* AKMaskFieldDemo */,
+				4371130F1A4B22EF00FF6252 /* AKMaskFieldDemoTests */,
 			);
 		};
 /* End PBXProject section */
@@ -249,7 +255,7 @@
 			files = (
 				437113031A4B22EF00FF6252 /* ViewController.swift in Sources */,
 				437113011A4B22EF00FF6252 /* AppDelegate.swift in Sources */,
-				43ED58D01A7244AE00E3EBB6 /* AKMaskField.swift in Sources */,
+				435D02FE1B9894160055A54B /* AKMaskField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,7 +271,7 @@
 /* Begin PBXTargetDependency section */
 		437113121A4B22EF00FF6252 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 437112FA1A4B22EF00FF6252 /* AKMaskField */;
+			target = 437112FA1A4B22EF00FF6252 /* AKMaskFieldDemo */;
 			targetProxy = 437113111A4B22EF00FF6252 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -374,9 +380,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				INFOPLIST_FILE = AKMaskField/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/AKMaskFieldDemo/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = AKMaskField;
+				PRODUCT_NAME = AKMaskFieldDemo;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -386,9 +392,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				INFOPLIST_FILE = AKMaskField/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/AKMaskFieldDemo/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = AKMaskField;
+				PRODUCT_NAME = AKMaskFieldDemo;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
@@ -396,7 +402,6 @@
 		4371131E1A4B22EF00FF6252 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -405,32 +410,29 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = AKMaskFieldTests/Info.plist;
+				INFOPLIST_FILE = AKMaskFieldDemoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = AKMaskFieldTests;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AKMaskField.app/AKMaskField";
+				PRODUCT_NAME = AKMaskFieldDemoTests;
 			};
 			name = Debug;
 		};
 		4371131F1A4B22EF00FF6252 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = AKMaskFieldTests/Info.plist;
+				INFOPLIST_FILE = AKMaskFieldDemoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = AKMaskFieldTests;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AKMaskField.app/AKMaskField";
+				PRODUCT_NAME = AKMaskFieldDemoTests;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		437112F61A4B22EF00FF6252 /* Build configuration list for PBXProject "AKMaskField" */ = {
+		437112F61A4B22EF00FF6252 /* Build configuration list for PBXProject "AKMaskFieldDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				437113181A4B22EF00FF6252 /* Debug */,
@@ -439,7 +441,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4371131A1A4B22EF00FF6252 /* Build configuration list for PBXNativeTarget "AKMaskField" */ = {
+		4371131A1A4B22EF00FF6252 /* Build configuration list for PBXNativeTarget "AKMaskFieldDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4371131B1A4B22EF00FF6252 /* Debug */,
@@ -448,7 +450,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4371131D1A4B22EF00FF6252 /* Build configuration list for PBXNativeTarget "AKMaskFieldTests" */ = {
+		4371131D1A4B22EF00FF6252 /* Build configuration list for PBXNativeTarget "AKMaskFieldDemoTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4371131E1A4B22EF00FF6252 /* Debug */,

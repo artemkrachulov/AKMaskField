@@ -207,7 +207,7 @@ class AKMaskField: UITextField, UITextFieldDelegate {
                     }
                     
                     // Set Placeholder
-                    self.maskTemplate = String(maskTemplateDefaultChar)
+                    self.maskTemplate = _maskTemplate ?? String(maskTemplateDefaultChar)
                 }
             }
         }
@@ -254,26 +254,35 @@ class AKMaskField: UITextField, UITextFieldDelegate {
                 
                 maskTemplateText = maskWithoutBrackets
                 
-                var useTempaleChar = false
-                if !newValue.isEmpty || count(newValue) != count(maskWithoutBrackets) {
+                var copy = true
+                var copyChar = String(maskTemplateDefaultChar)
+                
+                if count(_maskTemplate) == count(maskWithoutBrackets) {
                     
-                    useTempaleChar = true
+                    copy = false
+                } else {
+                    
+                    if count(_maskTemplate) == 1 {
+                    
+                        copyChar = _maskTemplate
+                    }
                 }
                 
+
                 for (i, block) in enumerate(maskObject) {
                     
                     let blockRange = block.range
                     var blockTemplate = ""
                     
-                    if (useTempaleChar)  {
+                    if copy {
                         
                         for _ in blockRange {
                             
-                            blockTemplate += String(maskTemplateDefaultChar)
+                            blockTemplate += copyChar
                         }
                     } else  {
                         
-                        blockTemplate = newValue.subStringWithRange(blockRange)
+                        blockTemplate = _maskTemplate.subStringWithRange(blockRange)
                     }
                     
                     maskTemplateText = maskTemplateText.stringByReplacingOccurrencesOfString("(.+)", withString: blockTemplate, options: .RegularExpressionSearch, range:blockRange)

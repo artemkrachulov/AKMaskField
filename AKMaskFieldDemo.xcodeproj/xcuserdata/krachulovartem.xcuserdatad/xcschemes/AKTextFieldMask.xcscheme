@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "437112FA1A4B22EF00FF6252"
-               BuildableName = "AKMaskField.app"
-               BlueprintName = "AKMaskField"
-               ReferencedContainer = "container:AKMaskField.xcodeproj">
+               BuildableName = "AKMaskFieldDemo.app"
+               BlueprintName = "AKMaskFieldDemo"
+               ReferencedContainer = "container:AKMaskFieldDemo.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "4371130F1A4B22EF00FF6252"
-               BuildableName = "AKMaskFieldTests.xctest"
-               BlueprintName = "AKMaskFieldTests"
-               ReferencedContainer = "container:AKMaskField.xcodeproj">
+               BuildableName = "AKMaskFieldDemoTests.xctest"
+               BlueprintName = "AKMaskFieldDemoTests"
+               ReferencedContainer = "container:AKMaskFieldDemo.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -45,7 +45,7 @@
                BlueprintIdentifier = "43ED58B81A72434300E3EBB6"
                BuildableName = "AKMaskFIeldTests.xctest"
                BlueprintName = "AKMaskFIeldTests"
-               ReferencedContainer = "container:AKMaskField.xcodeproj">
+               ReferencedContainer = "container:AKMaskFieldDemo.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -61,9 +61,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "4371130F1A4B22EF00FF6252"
-               BuildableName = "AKMaskFieldTests.xctest"
-               BlueprintName = "AKMaskFieldTests"
-               ReferencedContainer = "container:AKMaskField.xcodeproj">
+               BuildableName = "AKMaskFieldDemoTests.xctest"
+               BlueprintName = "AKMaskFieldDemoTests"
+               ReferencedContainer = "container:AKMaskFieldDemo.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -73,7 +73,7 @@
                BlueprintIdentifier = "43ED58B81A72434300E3EBB6"
                BuildableName = "AKMaskFIeldTests.xctest"
                BlueprintName = "AKMaskFIeldTests"
-               ReferencedContainer = "container:AKMaskField.xcodeproj">
+               ReferencedContainer = "container:AKMaskFieldDemo.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -81,9 +81,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "437112FA1A4B22EF00FF6252"
-            BuildableName = "AKMaskField.app"
-            BlueprintName = "AKMaskField"
-            ReferencedContainer = "container:AKMaskField.xcodeproj">
+            BuildableName = "AKMaskFieldDemo.app"
+            BlueprintName = "AKMaskFieldDemo"
+            ReferencedContainer = "container:AKMaskFieldDemo.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -101,9 +101,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "437112FA1A4B22EF00FF6252"
-            BuildableName = "AKMaskField.app"
-            BlueprintName = "AKMaskField"
-            ReferencedContainer = "container:AKMaskField.xcodeproj">
+            BuildableName = "AKMaskFieldDemo.app"
+            BlueprintName = "AKMaskFieldDemo"
+            ReferencedContainer = "container:AKMaskFieldDemo.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -120,9 +120,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "437112FA1A4B22EF00FF6252"
-            BuildableName = "AKMaskField.app"
-            BlueprintName = "AKMaskField"
-            ReferencedContainer = "container:AKMaskField.xcodeproj">
+            BuildableName = "AKMaskFieldDemo.app"
+            BlueprintName = "AKMaskFieldDemo"
+            ReferencedContainer = "container:AKMaskFieldDemo.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
