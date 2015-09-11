@@ -23,7 +23,7 @@
         <!--View Controller-->
         <scene sceneID="AzA-K8-f4h">
             <objects>
-                <viewController id="sNv-MH-Sdi" customClass="ViewController" customModule="AKMaskField" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="sNv-MH-Sdi" customClass="ViewController" customModule="AKMaskFieldDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="RGC-Yv-9Sr"/>
                         <viewControllerLayoutGuide type="bottom" id="ALr-3d-qz9"/>
@@ -37,11 +37,11 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
-                                <variation key="heightClass=regular" fixedFrame="YES">
+                                <variation key="heightClass=regular" ambiguous="YES" misplaced="YES">
                                     <rect key="frame" x="16" y="20" width="568" height="21"/>
                                 </variation>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="saT-Qn-8Yk" customClass="AKMaskField" customModule="AKMaskField" customModuleProvider="target">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="saT-Qn-8Yk" customClass="AKMaskField" customModule="AKMaskFieldDemo" customModuleProvider="target">
                                 <rect key="frame" x="11" y="29" width="540" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -50,6 +50,9 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="maskShowTemplate" value="YES"/>
                                     <userDefinedRuntimeAttribute type="string" keyPath="maskTemplate" value="X"/>
                                 </userDefinedRuntimeAttributes>
+                                <variation key="heightClass=regular-widthClass=regular" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="11" y="29" width="740" height="30"/>
+                                </variation>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oH5-oG-C8W">
                                 <rect key="frame" x="559" y="34" width="20" height="20"/>
@@ -86,7 +89,7 @@
                                         <exclude reference="RDv-Fj-pYz"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular" fixedFrame="YES">
+                                <variation key="heightClass=regular" ambiguous="YES" misplaced="YES">
                                     <rect key="frame" x="16" y="87" width="115" height="22"/>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
@@ -110,7 +113,7 @@
                                         <exclude reference="wv3-b6-4tH"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular" fixedFrame="YES">
+                                <variation key="heightClass=regular" ambiguous="YES" misplaced="YES">
                                     <rect key="frame" x="109" y="87" width="22" height="22"/>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
@@ -138,7 +141,7 @@
                                         <exclude reference="gX4-TU-utP"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular" fixedFrame="YES">
+                                <variation key="heightClass=regular" ambiguous="YES" misplaced="YES">
                                     <rect key="frame" x="139" y="87" width="123" height="22"/>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
@@ -162,7 +165,7 @@
                                         <exclude reference="zxb-qf-xo4"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular" fixedFrame="YES">
+                                <variation key="heightClass=regular" ambiguous="YES" misplaced="YES">
                                     <rect key="frame" x="240" y="87" width="22" height="22"/>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
@@ -190,7 +193,7 @@
                                         <exclude reference="pob-DZ-cDU"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular" fixedFrame="YES">
+                                <variation key="heightClass=regular" ambiguous="YES" misplaced="YES">
                                     <rect key="frame" x="16" y="106" width="128" height="22"/>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
@@ -214,7 +217,7 @@
                                         <exclude reference="Zhg-dt-QUm"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular" fixedFrame="YES">
+                                <variation key="heightClass=regular" ambiguous="YES" misplaced="YES">
                                     <rect key="frame" x="122" y="106" width="22" height="22"/>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
@@ -232,11 +235,11 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
-                                <variation key="heightClass=regular" fixedFrame="YES">
+                                <variation key="heightClass=regular" ambiguous="YES" misplaced="YES">
                                     <rect key="frame" x="16" y="156" width="568" height="21"/>
                                 </variation>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8Zk-qU-Qaw" customClass="AKMaskField" customModule="AKMaskField" customModuleProvider="target">
+                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8Zk-qU-Qaw" customClass="AKMaskField" customModule="AKMaskFieldDemo" customModuleProvider="target">
                                 <rect key="frame" x="11" y="165" width="540" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -245,6 +248,9 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="maskTemplate" value="+38 (___) ___-__-__"/>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="maskShowTemplate" value="YES"/>
                                 </userDefinedRuntimeAttributes>
+                                <variation key="heightClass=regular-widthClass=regular" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="11" y="165" width="740" height="30"/>
+                                </variation>
                             </textField>
                             <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6in-vL-jvf">
                                 <rect key="frame" x="559" y="170" width="20" height="20"/>
@@ -281,7 +287,7 @@
                                         <exclude reference="BAN-Qh-6RT"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular" fixedFrame="YES">
+                                <variation key="heightClass=regular" ambiguous="YES" misplaced="YES">
                                     <rect key="frame" x="16" y="223" width="75" height="22"/>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
@@ -305,7 +311,7 @@
                                         <exclude reference="mAh-C1-0U1"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular" fixedFrame="YES">
+                                <variation key="heightClass=regular" ambiguous="YES" misplaced="YES">
                                     <rect key="frame" x="74" y="223" width="22" height="22"/>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
@@ -333,7 +339,7 @@
                                         <exclude reference="Gfm-cC-lX9"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular" fixedFrame="YES">
+                                <variation key="heightClass=regular" ambiguous="YES" misplaced="YES">
                                     <rect key="frame" x="104" y="223" width="91" height="22"/>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
@@ -357,7 +363,7 @@
                                         <exclude reference="uEz-N4-W0U"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular" fixedFrame="YES">
+                                <variation key="heightClass=regular" ambiguous="YES" misplaced="YES">
                                     <rect key="frame" x="173" y="223" width="22" height="22"/>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
@@ -385,7 +391,7 @@
                                         <exclude reference="ePs-b4-aXZ"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular" fixedFrame="YES">
+                                <variation key="heightClass=regular" ambiguous="YES" misplaced="YES">
                                     <rect key="frame" x="203" y="223" width="117" height="22"/>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
@@ -409,7 +415,7 @@
                                         <exclude reference="qfc-xm-FRO"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular" fixedFrame="YES">
+                                <variation key="heightClass=regular" ambiguous="YES" misplaced="YES">
                                     <rect key="frame" x="298" y="223" width="22" height="22"/>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
@@ -427,11 +433,11 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
-                                <variation key="heightClass=regular" fixedFrame="YES">
+                                <variation key="heightClass=regular" ambiguous="YES" misplaced="YES">
                                     <rect key="frame" x="16" y="273" width="568" height="21"/>
                                 </variation>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fO6-xD-hVB" customClass="AKMaskField" customModule="AKMaskField" customModuleProvider="target">
+                            <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fO6-xD-hVB" customClass="AKMaskField" customModule="AKMaskFieldDemo" customModuleProvider="target">
                                 <rect key="frame" x="11" y="282" width="540" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -440,6 +446,9 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="maskShowTemplate" value="YES"/>
                                     <userDefinedRuntimeAttribute type="string" keyPath="maskTemplate" value="AA/N N N-NNN-NN"/>
                                 </userDefinedRuntimeAttributes>
+                                <variation key="heightClass=regular-widthClass=regular" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="11" y="282" width="740" height="30"/>
+                                </variation>
                             </textField>
                             <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yC0-gn-W2g">
                                 <rect key="frame" x="559" y="287" width="20" height="20"/>
@@ -476,7 +485,7 @@
                                         <exclude reference="gTF-eu-vf1"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular" fixedFrame="YES">
+                                <variation key="heightClass=regular" ambiguous="YES" misplaced="YES">
                                     <rect key="frame" x="16" y="340" width="96" height="22"/>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
@@ -500,7 +509,7 @@
                                         <exclude reference="Czg-Wg-KXV"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular" fixedFrame="YES">
+                                <variation key="heightClass=regular" ambiguous="YES" misplaced="YES">
                                     <rect key="frame" x="76" y="340" width="22" height="22"/>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
@@ -528,7 +537,7 @@
                                         <exclude reference="GQ8-1L-K6I"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular" fixedFrame="YES">
+                                <variation key="heightClass=regular" ambiguous="YES" misplaced="YES">
                                     <rect key="frame" x="105" y="340" width="121" height="22"/>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
@@ -552,7 +561,7 @@
                                         <exclude reference="qqf-nq-fXg"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular" fixedFrame="YES">
+                                <variation key="heightClass=regular" ambiguous="YES" misplaced="YES">
                                     <rect key="frame" x="184" y="340" width="22" height="22"/>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
@@ -600,7 +609,7 @@
                                         <exclude reference="wLw-dt-n9m"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular" fixedFrame="YES">
+                                <variation key="heightClass=regular" ambiguous="YES" misplaced="YES">
                                     <rect key="frame" x="16" y="428" width="185" height="22"/>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
@@ -624,7 +633,7 @@
                                         <exclude reference="pZc-1P-D1i"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular" fixedFrame="YES">
+                                <variation key="heightClass=regular" ambiguous="YES" misplaced="YES">
                                     <rect key="frame" x="179" y="428" width="22" height="22"/>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
@@ -1055,13 +1064,16 @@
                                     <action selector="clearFields:" destination="sNv-MH-Sdi" eventType="touchUpInside" id="yZs-sa-n4h"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="past code here" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NV7-0s-3E4" customClass="AKMaskField" customModule="AKMaskField" customModuleProvider="target">
+                            <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="past code here" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NV7-0s-3E4" customClass="AKMaskField" customModule="AKMaskFieldDemo" customModuleProvider="target">
                                 <rect key="frame" x="11" y="370" width="540" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="mask" value="{.............................}"/>
                                 </userDefinedRuntimeAttributes>
+                                <variation key="heightClass=regular-widthClass=regular" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="11" y="370" width="740" height="30"/>
+                                </variation>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1528,9 +1540,9 @@
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="card" destination="saT-Qn-8Yk" id="kOP-LY-jiG"/>
-                        <outlet property="key" destination="fO6-xD-hVB" id="Bx6-P6-Q28"/>
-                        <outlet property="license" destination="NV7-0s-3E4" id="5A6-Fb-pvN"/>
+                        <outlet property="card" destination="saT-Qn-8Yk" id="Afh-6i-TrR"/>
+                        <outlet property="key" destination="fO6-xD-hVB" id="R5O-qB-Dov"/>
+                        <outlet property="license" destination="NV7-0s-3E4" id="sRU-jf-RDt"/>
                         <outlet property="phone" destination="8Zk-qU-Qaw" id="qQt-kR-nvS"/>
                         <outletCollection property="indicators" destination="oH5-oG-C8W" collectionClass="NSMutableArray" id="FJG-mm-kXA"/>
                         <outletCollection property="indicators" destination="6in-vL-jvf" collectionClass="NSMutableArray" id="IX0-Ps-SQP"/>

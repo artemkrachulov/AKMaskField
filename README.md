@@ -14,7 +14,7 @@ AKMaskField allows the user to enter easily data in the fixed quantity and in ce
 
 **Preview**
 
-![Demp](https://raw.githubusercontent.com/artemkrachulov/AKMaskField/master/Assets/preview.png)
+![Preview](https://raw.githubusercontent.com/artemkrachulov/AKMaskField/master/Assets/preview.png)
 
 ## Usage
 

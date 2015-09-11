@@ -20,7 +20,6 @@ class ViewController: UIViewController, UITextFieldDelegate, AKMaskFieldDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         
         // delegates
         self.card.maskDelegate = self
@@ -30,7 +29,7 @@ class ViewController: UIViewController, UITextFieldDelegate, AKMaskFieldDelegate
         
         // Draw indicators
         for indicator in indicators {
-            indicator.layer.cornerRadius    = 10
+            indicator.layer.cornerRadius = 10
         }
     }
     

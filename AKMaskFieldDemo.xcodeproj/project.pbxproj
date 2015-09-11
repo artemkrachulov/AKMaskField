@@ -3,11 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 47;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		435D02FE1B9894160055A54B /* AKMaskField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435D02FD1B9894160055A54B /* AKMaskField.swift */; };
+		436D0DF51BA2A9590077EFA2 /* Range.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436D0DF31BA2A9590077EFA2 /* Range.swift */; };
+		436D0DF61BA2A9590077EFA2 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436D0DF41BA2A9590077EFA2 /* String.swift */; };
 		437113011A4B22EF00FF6252 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437113001A4B22EF00FF6252 /* AppDelegate.swift */; };
 		437113031A4B22EF00FF6252 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437113021A4B22EF00FF6252 /* ViewController.swift */; };
 		437113061A4B22EF00FF6252 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 437113041A4B22EF00FF6252 /* Main.storyboard */; };
@@ -33,6 +35,8 @@
 
 /* Begin PBXFileReference section */
 		435D02FD1B9894160055A54B /* AKMaskField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AKMaskField.swift; sourceTree = "<group>"; };
+		436D0DF31BA2A9590077EFA2 /* Range.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Range.swift; sourceTree = "<group>"; };
+		436D0DF41BA2A9590077EFA2 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		437112FB1A4B22EF00FF6252 /* AKMaskFieldDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AKMaskFieldDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		437112FF1A4B22EF00FF6252 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		437113001A4B22EF00FF6252 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -72,9 +76,19 @@
 		435D02FC1B9894160055A54B /* AKMaskField */ = {
 			isa = PBXGroup;
 			children = (
+				436D0DF21BA2A9590077EFA2 /* SwiftExtensions */,
 				435D02FD1B9894160055A54B /* AKMaskField.swift */,
 			);
 			path = AKMaskField;
+			sourceTree = "<group>";
+		};
+		436D0DF21BA2A9590077EFA2 /* SwiftExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				436D0DF31BA2A9590077EFA2 /* Range.swift */,
+				436D0DF41BA2A9590077EFA2 /* String.swift */,
+			);
+			path = SwiftExtensions;
 			sourceTree = "<group>";
 		};
 		437112F21A4B22EF00FF6252 = {
@@ -192,7 +206,7 @@
 		437112F31A4B22EF00FF6252 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0610;
+				LastUpgradeCheck = 0640;
 				ORGANIZATIONNAME = "Artem Krachulov";
 				TargetAttributes = {
 					437112FA1A4B22EF00FF6252 = {
@@ -204,7 +218,7 @@
 				};
 			};
 			buildConfigurationList = 437112F61A4B22EF00FF6252 /* Build configuration list for PBXProject "AKMaskFieldDemo" */;
-			compatibilityVersion = "Xcode 6.3";
+			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -253,9 +267,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				436D0DF61BA2A9590077EFA2 /* String.swift in Sources */,
 				437113031A4B22EF00FF6252 /* ViewController.swift in Sources */,
 				437113011A4B22EF00FF6252 /* AppDelegate.swift in Sources */,
 				435D02FE1B9894160055A54B /* AKMaskField.swift in Sources */,
+				436D0DF51BA2A9590077EFA2 /* Range.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
