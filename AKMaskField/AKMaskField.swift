@@ -18,22 +18,8 @@ import UIKit
 // MARK: - Enums
 // --------------------------------------------------------------------------------------------------- //
 
-enum AKMaskFieldEvets {
-    
-    case None
-    case Insert
-    case Delete
-    case Replace
-    
-    case Update
-}
 
-enum AKMaskFieldStatus {
-    
-    case Clear
-    case Incomplete
-    case Complete
-}
+
 
 /* Structs for MaskObject */
 
@@ -72,8 +58,7 @@ struct AKMaskFieldBlockChars {
 // --------------------------------------------------------------------------------------------------- //
 class AKMaskField: UITextField {
     
-    
-    
+
     /// String value with brackets
     ///
     /// Usage
@@ -222,28 +207,34 @@ class AKMaskField: UITextField {
         }
     }
     
+    
+    // MARK: - Configuring mask
+    //         _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+    
+    var maskBlockBrackets: [Character] = ["{", "}"]
+    
+    
+    private(set) var maskObject: [AKMaskFieldBlock]!
+    private(set) var maskStatus: AKMaskFieldStatus = .Clear
+    enum AKMaskFieldStatus {
+        
+        case Clear
+        case Incomplete
+        case Complete
+    }
+    
+    private(set) var maskEvent: AKMaskFieldEvet = .None
+    enum AKMaskFieldEvet {
+        case None
+        case Insert
+        case Delete
+        case Replace
+    }
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
-    
-    // MARK: - Properties
-    // --------------------------------------------------------------------------------------------------- //
-    
-    /* Protocol */
-    var maskDelegate: AKMaskFieldDelegate?
+    weak var maskDelegate: AKMaskFieldDelegate?
     
     /* */
-    private(set) var maskStatus: AKMaskFieldStatus = .Clear
-    
-    private(set) var maskEvent: AKMaskFieldEvets = .None
+
     
     
     
@@ -256,7 +247,7 @@ class AKMaskField: UITextField {
     // MARK: -  Configuring mask
     //         _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
     
-    var maskBlockBrackets: [Character] = ["{", "}"]
+
     
     
     
@@ -268,8 +259,7 @@ class AKMaskField: UITextField {
     
     private(set) var maskText: String!
     
-    private(set) var maskObject = [AKMaskFieldBlock]()
-    
+
     /*  - - - - - - - - - - - - - - -- - - - - - -
         Copy of maskObjectproperty after mask initialisation
         Using, if need to clear field
