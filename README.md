@@ -29,8 +29,6 @@ Create a text field `UITextField` and set a class `AKMaskField` in the Inspector
 
 Drag field to view controller class. Create outlet.
 
-### Storyboard
-
 ```swift
 @IBOutlet weak var field: AKMaskField!
 ```
@@ -61,7 +59,7 @@ Same initialization as `UITextField` class.
 
 ## Properties
 
-### Displaying mask
+### Displaying the mask
 
 ```swift
 var mask: String
@@ -85,8 +83,7 @@ The initial value of this property is `nil`.
 var maskTemplate: String
 ```
 
-The string that represents the mask with replacing format symbol with template characters.<br>
-You can set:
+The string that represents the mask with replacing format symbol with template characters. Can be set:
 
 | Characters count                         | Description    |
 | :--------------------------------------- | :------------- |
@@ -103,16 +100,16 @@ var maskShowTemplate: Bool
 A Boolean value indicating will be mask template shows after initialization.<br>
 The initial value of this property is `false`.
 
-### Configuring mask
+### Configuring the mask
 
 ```swift
 var maskBlockBrackets: [Character]
 ```
 
-An array with two characters (opening and closing bracket for bock mask).<br>
+An array with two characters (opening and closing bracket for the bock mask).<br>
 The initial values in this array is `{` and `}`.
 
-### Mask object
+### The mask object
 
 ```swift
 var maskObject: [AKMaskFieldBlock]! {get}
@@ -121,77 +118,86 @@ var maskObject: [AKMaskFieldBlock]! {get}
 An array with all blocks mask. Each array value defined as `AKMaskFieldBlock` structure.<br>
 The initial value of this property is `nil`.
 
-#### Mask block
+#### The block `AKMaskFieldBlock` mask
 
 ```swift
 var index: Int
 ```
 
 The block index in the mask.
-
+<br>
+<br>
 ```swift
 var status: Bool
 ```
 
 A Boolean value that determines is the block filled in current moment.
-
+<br>
+<br>
 ```swift
 var range: Range<Int>
 ```
 
 The block position in the mask string.
-
+<br>
+<br>
 ```swift
 var mask: String
 ```
 
 The block string (without brackets).
-
+<br>
+<br>
 ```swift
 var text: String
 ```
 
 Entered characters in the block.
-
+<br>
+<br>
 ```swift
 var template: String
 ```
 
 The block template string.
-
+<br>
+<br>
 ```swift
 var chars: [AKMaskFieldBlockChars]
 ```
 
 An array with all characters mask in certain block. Each character value defined as `AKMaskFieldBlockChars` structure.
 
-#### The block characters
+#### The characters `AKMaskFieldBlockChars` block
 
 ```swift
 var index: Int
 ```
 
 The character index in the block.
-
+<br>
+<br>
 ```swift
 var status: Bool
 ```
 
 A Boolean value that determines is the character filled in current moment.
-
+<br>
+<br>
 ```swift
 var text: String
 ```
 
 Entered character.
-
+<br>
+<br>
 ```swift
 var range: Range<Int>
 ```
 
 Character position in the mask string.
 
-### Status mask and user events
+### Status of the mask and an user events
 
 ```swift
 var maskStatus: AKMaskFieldStatus
@@ -214,7 +220,8 @@ enum AKMaskFieldStatus {
 | **Complete**   | All characters was entered. |
 
 The initial value of this property is `AKMaskFieldStatus.Clear`.
-
+<br>
+<br>
 ```swift
 var maskEvent: AKMaskFieldEvet
 ```
@@ -247,7 +254,7 @@ weak var maskDelegate: AKMaskFieldDelegate?
 
 A mask field delegate responds to editing-related messages from the text field. You can use the delegate to respond to the text entered by the user and to some special commands, such as when the return button is pressed.
 
-## Delegate methods
+## The delegate methods
 
 ```swift
 optional func maskFieldDidBeginEditing(maskField: AKMaskField)

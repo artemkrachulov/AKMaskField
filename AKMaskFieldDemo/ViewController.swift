@@ -21,7 +21,6 @@ class ViewController: UIViewController, UITextFieldDelegate, AKMaskFieldDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         // delegates
         self.card.maskDelegate = self
         self.phone.maskDelegate = self

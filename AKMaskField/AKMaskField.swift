@@ -1,69 +1,30 @@
 //
 //  AKMaskField.swift
 //  AKMaskField
+//  GitHub: https://github.com/artemkrachulov/AKMaskField
 //
-//  Created by Krachulov Artem on 1/10/15.
-//  Copyright (c) 2015 The Krachulovs. All rights reserved.
+//  Created by Krachulov Artem
+//  Copyright (c) 2015 Krachulov Artem. All rights reserved.
+//  Website: http://www.artemkrachulov.com/
 //
 
 import UIKit
 
-// MARK: - Extension
-// --------------------------------------------------------------------------------------------------- //
-
-
-
-
-
-// MARK: - Enums
-// --------------------------------------------------------------------------------------------------- //
-
-
-
-
-/* Structs for MaskObject */
-
-struct AKMaskFieldBlock {
-    
-    var index: Int
-    var status: Bool
-    var range: Range<Int>
-    var mask: String
-    var text: String
-    var template: String
-    var chars: [AKMaskFieldBlockChars]
-}
-
-struct AKMaskFieldBlockChars {
-    
-    var index: Int
-    var status: Bool
-    var text: Character
-    var range: Range<Int>
-}
-
-
-
 // MARK: - AKMaskFieldDelegate
 //         _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
-
 @objc protocol AKMaskFieldDelegate {
-    
     optional func maskFieldDidBeginEditing(maskField: AKMaskField)
     optional func maskField(maskField: AKMaskField, shouldChangeCharacters oldString: String, inRange range: NSRange, replacementString withString: String)
 }
 
-// MARK: - Class
+// MARK: - AKMaskField
 // --------------------------------------------------------------------------------------------------- //
 class AKMaskField: UITextField {
     
-
-    /// String value with brackets
-    ///
-    /// Usage
-    ///
-    ///  field.mask = "{dddd}-{ddddd}-{dddd}-{dddd}"
+    // MARK: - Displaying the mask
+    //         _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+    
     @IBInspectable var mask: String {
         get { return _mask }
         set {
@@ -113,11 +74,6 @@ class AKMaskField: UITextField {
         }
     }
     
-    /// Mask template status
-    ///
-    /// Usage
-    ///
-    ///  maskShowTemplate = true
     @IBInspectable var maskShowTemplate: Bool {
         get { return _maskShowTemplate }
         set {
@@ -136,11 +92,6 @@ class AKMaskField: UITextField {
         }
     }
     
-    /// Mask template status
-    ///
-    /// Usage
-    ///
-    ///  maskShowTemplate = true
     @IBInspectable var maskTemplate: String {
         get { return _maskTemplate }
         set {
@@ -199,22 +150,27 @@ class AKMaskField: UITextField {
                 maskText = maskTemplateText
                 
                 // Save object if in future user will clear mask field
-                maskObjectClear = maskObject
+                maskObjectClean = maskObject
                 
                 // Set new text
-                maskField(self, shouldChangeCharactersInRange: NSMakeRange(0, 0), replacementString: text)
+                textField(self, shouldChangeCharactersInRange: NSMakeRange(0, 0), replacementString: text)
             }
         }
     }
     
-    
-    // MARK: - Configuring mask
+    // MARK: - Configuring the mask
     //         _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
     
     var maskBlockBrackets: [Character] = ["{", "}"]
     
+    // MARK: - The mask object
+    //         _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
     
     private(set) var maskObject: [AKMaskFieldBlock]!
+    
+    // MARK: - Status of the mask and an user events
+    //         _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+    
     private(set) var maskStatus: AKMaskFieldStatus = .Clear
     enum AKMaskFieldStatus {
         
@@ -231,53 +187,27 @@ class AKMaskField: UITextField {
         case Replace
     }
 
+    // MARK: - Accessing the Delegate
+    //         _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+    
     weak var maskDelegate: AKMaskFieldDelegate?
-    
-    /* */
 
-    
-    
-    
     // Flags
     private var flagUpdateEvent: Bool!
 
-    
-    
-    
-    // MARK: -  Configuring mask
-    //         _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
-    
-
-    
-    
-    
-    
-    
-    
-    
+    // Saved properties
     private var _mask: String!
+    private var _maskShowTemplate  = false
+    private var _maskTemplate: String!
+    
+    
+    private(set) var maskWithoutBrackets: String!
+    private var maskTemplateDefaultChar: Character = "*"
+    private(set) var maskTemplateText: String!
     
     private(set) var maskText: String!
     
-
-    /*  - - - - - - - - - - - - - - -- - - - - - -
-        Copy of maskObjectproperty after mask initialisation
-        Using, if need to clear field
-    */
-    
-    private var maskObjectClear = [AKMaskFieldBlock]()
-    
-    private(set) var maskWithoutBrackets: String!
-    
-    private var _maskShowTemplate  = false
-    
-    private var _maskTemplate: String!
-    
-    private(set) var maskTemplateText: String!
-    
-    private var maskTemplateDefaultChar: Character = "*"
-    
-    
+    private var maskObjectClean: [AKMaskFieldBlock]!
     
     // MARK: - Draw
     //         _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
@@ -290,10 +220,6 @@ class AKMaskField: UITextField {
         // This observer used on manual updatind text property
         addObserver(self, forKeyPath: "text", options: nil, context: nil)
     }
-    
-
-    
-    
     
     func refresh() {
 
@@ -310,155 +236,43 @@ class AKMaskField: UITextField {
     }
     
     func reset() {
-        
         maskObject = [AKMaskFieldBlock]()
         text = ""
     }
     
-    
-    
-    
-    
-    func maskFieldDidBeginEditing(textField: UITextField) {
-        
-        if maskObject.count > 0 {
-
-            var position = 0
-//            var position = beginningOfDocument
-            
-            switch maskStatus {
-                case .Complete:
-                    
-                    position = count(maskTemplateText)
-//                    position = endOfDocument
-                
-                case .Incomplete:
-//                    position = beginningOfDocument
-                    
-                    for block in maskObject {
-                        for char in block.chars {
-                            
-                            
-                            if !char.status {
-                                
-                                position = char.range.startIndex
-                                
-                                break
-                            }
-                        }
-                        if position != 0 { break }
-                    }
-                default: ()
-            }
-            
-            // Move caret to new position if field on focus
-             moveCaretToPosition(position)
-            
-            // Delegate
-            maskDelegate?.maskFieldDidBeginEditing?(self)
-        }
-    }
-    
-    func maskField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-
-        // Set flags
-        flagUpdateEvent = false
-        
-        // Change chars
-        if maskObject.count > 0 {
-
-            let range = range.toRange()!
-            
-            // Copy
-            var _maskText = maskText as String
-            let charactersToChange = _maskText.subStringWithRange(range)
-            
-            // Step 1
-            // Replace current string with template string
-            _maskText = _maskText.stringByReplacingOccurrencesOfString(".+", withString: maskTemplateText.subStringWithRange(range), options: .RegularExpressionSearch, aRange: range)
-            
-            // Step 2
-            // Clear exist chars in text, with replacing with mask template char
-            resetStringInRange(range)
-            
-            // Step 3
-            // Replace current string with new one
-            let chars = replaceStringInRange(&_maskText, range: range, bStr: string)
-            
-            // Step 4
-            // Save
-            maskText = _maskText
-            
-            // Step 5
-            // Set current event to property
-            
-            var event: AKMaskFieldEvets!
-            if chars.replaced == chars.toReplace && chars.position == range.startIndex {
-                if  chars.position == 0 && range.startIndex == 0 {
-                    
-                    maskEvent = .Delete
-                } else {
-                    maskEvent = .None
-                }
-            } else if  chars.replaced != 0 &&  chars.toReplace != 0 {                
-                maskEvent = .Replace
-            } else if  chars.replaced == 0  {
-                if  chars.position != range.startIndex {
-                    maskEvent = .Insert
-                } else {
-                    maskEvent = .Delete
-                }
-            } else {
-                maskEvent = .Insert
-            }
-            
-            // Step 6
-            // Set current status to property
-            
-            var filled = 0
-            var total = 0
-            
-            for block in maskObject {
-                for char in block.chars  {
-                    if char.status {
-                        filled++
-                    }
-                }
-                total += block.range.toNSRange().length
-            }
-            if filled == 0 {
-                maskStatus = .Clear
-                
-            } else if filled == total {
-                maskStatus = .Complete
-                
-            } else {
-                maskStatus = .Incomplete
-            }
-            
-            // Step 7
-            // Refresh field
-            refresh()
-                
-            // Step 8
-            // Move caret to new position if field on focus
-            
-            moveCaretToPosition(chars.position)
-            
-            // Step 9
-            // Send delegate
-            maskDelegate?.maskField!(self, shouldChangeCharacters: charactersToChange, inRange: range.toNSRange(), replacementString: string)
-        
-            return false
-            
-        } else {
-            
-            return true
-        }
-    }
-    
     // MARK: - Helper Methods
     //         _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+    
+    private func updateBlock(block: AKMaskFieldBlock, character: Character!, atIndex index: Int) {
+        
+        // Copy
+        var chars = block.chars
+        var text = block.text
+        
+        // Check char
+        let isChar = character != nil
+        
+        // Switch to mask char if nil
+        let newChar = isChar ? String(character) : block.template.subStringWithRange(index..<index+1)
+        text.replaceRange(index..<index+1, with: newChar)
+        
+        // Save
+        chars[index].text = Character(newChar)
+        chars[index].status = isChar
+        
+        // Update Block Status
+        var charsFilled: Int = 0
+        for char in chars {
+            if char.status {
+                
+                charsFilled++
+            }
+        }
+        
+        maskObject[block.index].status = block.range.toNSRange().length == charsFilled
+        maskObject[block.index].text = text
+        maskObject[block.index].chars = chars
+    }
     
     private func resetStringInRange(range: Range<Int>) {
         
@@ -589,10 +403,8 @@ class AKMaskField: UITextField {
     
     private func findMatches(inString string: String, usingPattern pattern: String) -> [AnyObject] {
         
-        var error : NSError?
-        
-        let expression : NSRegularExpression = NSRegularExpression(pattern: pattern, options: .CaseInsensitive, error: &error)!
-        
+        var error: NSError?
+        let expression = NSRegularExpression(pattern: pattern, options: .CaseInsensitive, error: &error)!
         let matches = expression.matchesInString(string, options: nil, range: NSMakeRange(0, count(string)))
         
         return matches
@@ -600,45 +412,13 @@ class AKMaskField: UITextField {
     
     private func moveCaretToPosition(position: Int) {
     
-        if let beginningOfDocument: UITextPosition = self.beginningOfDocument {
+        if let beginningOfDocument: UITextPosition = beginningOfDocument {
             
-            let caretPosition = self.positionFromPosition(beginningOfDocument, offset: position)
-            self.selectedTextRange  = self.textRangeFromPosition(caretPosition, toPosition: caretPosition)
+            let caretPosition = positionFromPosition(beginningOfDocument, offset: position)
+            selectedTextRange  = textRangeFromPosition(caretPosition, toPosition: caretPosition)
         }
-    }
-
-    private func updateBlock(block: AKMaskFieldBlock, character: Character!, atIndex index: Int) {
-    
-        // Copy
-        var chars = block.chars
-        var text = block.text
-        
-        // Check char
-        let isChar = character != nil        
-        
-        // Switch to mask char if nil
-        let newChar = isChar ? String(character) : block.template.subStringWithRange(index..<index+1)
-        text.replaceRange(index..<index+1, with: newChar)
-
-        // Save
-        chars[index].text = Character(newChar)
-        chars[index].status = isChar
-        
-        // Update Block Status        
-        var charsFilled: Int = 0
-        for char in chars {
-            if char.status {
-                
-                charsFilled++
-            }
-        }
-        
-        maskObject[block.index].status = block.range.toNSRange().length == charsFilled
-        maskObject[block.index].text = text
-        maskObject[block.index].chars = chars
     }
 }
-
 
 // MARK: - Observers
 //         _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
@@ -649,14 +429,12 @@ extension AKMaskField {
         
         if (keyPath == "text" && object === self && flagUpdateEvent == true) {
             
-            /*  Reset data on manual updating */
-            
+            // Reset data on manual updating
             maskText = maskTemplateText
+            maskObject = maskObjectClean
             
-            maskObject = maskObjectClear
-            
-            /* Process field */
-            self.maskField(self, shouldChangeCharactersInRange: NSMakeRange(0, 0), replacementString: text)
+            // Process field
+            textField(self, shouldChangeCharactersInRange: NSMakeRange(0, 0), replacementString: text)
         }
     }
 }
@@ -667,9 +445,132 @@ extension AKMaskField {
 extension AKMaskField: UITextFieldDelegate {
 
     func textFieldDidBeginEditing(textField: UITextField) {
-        maskFieldDidBeginEditing(textField)
+        if maskObject.count > 0 {
+            
+            var position = 0
+            
+            switch maskStatus {
+            case .Complete:
+                
+                position = count(maskTemplateText)
+                
+            case .Incomplete:
+                
+                for block in maskObject {
+                    for char in block.chars {
+                        
+                        
+                        if !char.status {
+                            
+                            position = char.range.startIndex
+                            
+                            break
+                        }
+                    }
+                    if position != 0 { break }
+                }
+            default: ()
+            }
+            
+            // Move caret to new position if field on focus
+            moveCaretToPosition(position)
+            
+            // Delegate
+            maskDelegate?.maskFieldDidBeginEditing?(self)
+        }
     }
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-        return maskField(textField, shouldChangeCharactersInRange: range, replacementString: string)
+        
+        // Set flags
+        flagUpdateEvent = false
+        
+        // Change chars
+        if maskObject.count > 0 {
+            
+            let range = range.toRange()!
+            
+            // Copy
+            var _maskText = maskText as String
+            let charactersToChange = _maskText.subStringWithRange(range)
+            
+            // Step 1
+            // Replace current string with template string
+            _maskText = _maskText.stringByReplacingOccurrencesOfString(".+", withString: maskTemplateText.subStringWithRange(range), options: .RegularExpressionSearch, aRange: range)
+            
+            // Step 2
+            // Clear exist chars in text, with replacing with mask template char
+            resetStringInRange(range)
+            
+            // Step 3
+            // Replace current string with new one
+            let chars = replaceStringInRange(&_maskText, range: range, bStr: string)
+            
+            // Step 4
+            // Save
+            maskText = _maskText
+            
+            // Step 5
+            // Set current event to property
+            
+            var event: AKMaskFieldEvet!
+            if chars.replaced == chars.toReplace && chars.position == range.startIndex {
+                if  chars.position == 0 && range.startIndex == 0 {
+                    
+                    maskEvent = .Delete
+                } else {
+                    maskEvent = .None
+                }
+            } else if  chars.replaced != 0 &&  chars.toReplace != 0 {
+                maskEvent = .Replace
+            } else if  chars.replaced == 0  {
+                if  chars.position != range.startIndex {
+                    maskEvent = .Insert
+                } else {
+                    maskEvent = .Delete
+                }
+            } else {
+                maskEvent = .Insert
+            }
+            
+            // Step 6
+            // Set current status to property
+            
+            var filled = 0
+            var total = 0
+            
+            for block in maskObject {
+                for char in block.chars  {
+                    if char.status {
+                        filled++
+                    }
+                }
+                total += block.range.toNSRange().length
+            }
+            if filled == 0 {
+                maskStatus = .Clear
+                
+            } else if filled == total {
+                maskStatus = .Complete
+                
+            } else {
+                maskStatus = .Incomplete
+            }
+            
+            // Step 7
+            // Refresh field
+            refresh()
+            
+            // Step 8
+            // Move caret to new position if field on focus
+            
+            moveCaretToPosition(chars.position)
+            
+            // Step 9
+            // Send delegate
+            maskDelegate?.maskField!(self, shouldChangeCharacters: charactersToChange, inRange: range.toNSRange(), replacementString: string)
+            
+            return false
+            
+        } else { return true }
     }
 }

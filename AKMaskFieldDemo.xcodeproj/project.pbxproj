@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		435D02FE1B9894160055A54B /* AKMaskField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435D02FD1B9894160055A54B /* AKMaskField.swift */; };
+		435D8AC71BA433FC0090BF98 /* AKMaskFieldBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435D8AC61BA433FC0090BF98 /* AKMaskFieldBlock.swift */; };
+		435D8AC91BA434130090BF98 /* AKMaskFieldBlockChars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435D8AC81BA434130090BF98 /* AKMaskFieldBlockChars.swift */; };
 		436D0DF51BA2A9590077EFA2 /* Range.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436D0DF31BA2A9590077EFA2 /* Range.swift */; };
 		436D0DF61BA2A9590077EFA2 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436D0DF41BA2A9590077EFA2 /* String.swift */; };
 		437113011A4B22EF00FF6252 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437113001A4B22EF00FF6252 /* AppDelegate.swift */; };
@@ -35,6 +37,8 @@
 
 /* Begin PBXFileReference section */
 		435D02FD1B9894160055A54B /* AKMaskField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AKMaskField.swift; sourceTree = "<group>"; };
+		435D8AC61BA433FC0090BF98 /* AKMaskFieldBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AKMaskFieldBlock.swift; sourceTree = "<group>"; };
+		435D8AC81BA434130090BF98 /* AKMaskFieldBlockChars.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AKMaskFieldBlockChars.swift; sourceTree = "<group>"; };
 		436D0DF31BA2A9590077EFA2 /* Range.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Range.swift; sourceTree = "<group>"; };
 		436D0DF41BA2A9590077EFA2 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		437112FB1A4B22EF00FF6252 /* AKMaskFieldDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AKMaskFieldDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -78,6 +82,8 @@
 			children = (
 				436D0DF21BA2A9590077EFA2 /* SwiftExtensions */,
 				435D02FD1B9894160055A54B /* AKMaskField.swift */,
+				435D8AC61BA433FC0090BF98 /* AKMaskFieldBlock.swift */,
+				435D8AC81BA434130090BF98 /* AKMaskFieldBlockChars.swift */,
 			);
 			path = AKMaskField;
 			sourceTree = "<group>";
@@ -271,7 +277,9 @@
 				437113031A4B22EF00FF6252 /* ViewController.swift in Sources */,
 				437113011A4B22EF00FF6252 /* AppDelegate.swift in Sources */,
 				435D02FE1B9894160055A54B /* AKMaskField.swift in Sources */,
+				435D8AC71BA433FC0090BF98 /* AKMaskFieldBlock.swift in Sources */,
 				436D0DF51BA2A9590077EFA2 /* Range.swift in Sources */,
+				435D8AC91BA434130090BF98 /* AKMaskFieldBlockChars.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
