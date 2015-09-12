@@ -8,108 +8,119 @@ AKMaskField allows the user to enter easily data in the fixed quantity and in ce
 
 **Features:**
 
-* easy in use
-* possibility to setup input field from a code or Settings Panel
-* smart template
-* the status and action callbacks
-* support of dynamic change of a mask
-* fast processing of a input field
-* smart user input actions: to copy / insert
-
+* Easy in use
+* Possibility to setup input field from a code or Settings Panel
+* Smart template
+* The status and action callbacks
+* Support of dynamic change of a mask
+* Fast processing of a input field
+* Smart user input actions: to copy / insert
 
 ## Usage
 
-Add the _AKMaskField.swift_ file to the project (To copy the file it has to be chosen). Create a field of the class _UITextField_ and specify to it the class _AKMaskField_ in the Inspector / Accessory Panel. Attributes or in a code specify necessary attributes in a tab:
+Add the _AKMaskField_ folder to your project (To copy the file it has to be chosen).
 
-### Attributes tab
+### Storyboard
+
+Create a text field _UITextField_ and specify set new class _AKMaskField_ in the Inspector / Accessory Panel. Specify necessary attributes in the Inspector / Accessory Attributes tab:
 
 **Mask**: {dddd}-{dddd}-{dddd}-{dddd}<br>
 **Mask Template**: xxxx-xxxx-xxxx-xxxx<br>
 **Mask Show Template**: On
 
-Input field<br>
-**xxxx-xxxx-xxxx-xxxx**
+Drag field, move to Controller class. Create outlet.
 
-Default text attributes settings.<br>
-**Text**: 0123
-
-Input field<br>
-**0123-xxxx-xxxx-xxxx**
-
-### The code
+### Storyboard
 
 ```swift
-field.mask = "{dddd}-{dddd}-{dddd}-{dddd}"
-field.maskTemplate = "xxxx-xxxx-xxxx-xxxx"
-field.maskShowTemplate = true
+@IBOutlet weak var field: AKMaskField!
 ```
 
-Input field<br>
-**xxxx-xxxx-xxxx-xxxx**
+### Programmatically
 
 ```swift
-// Default text attributes settings
-field.text = 0123
+var field: AKMaskField!
+
+override func viewDidLoad() {
+    super.viewDidLoad()
+
+    field = AKMaskField()
+    field.mask = "{dddd}-{dddd}-{dddd}-{dddd}"
+    field.maskTemplate = "xxxx-xxxx-xxxx-xxxx"
+    field.maskShowTemplate = true
+}
 ```
 
-Input field<br>
-**0123-xxxx-xxxx-xxxx**
+### Other properties
+
+You can also set other properties like `text`, `placeholder`, etc.
+Example if you set `text` property to 1234. Field will show `0123-xxxx-xxxx-xxxx` after loading view controller.
+
+
+## Initializing
+
+Same initialization as `UITextField` class.
 
 ## Properties
 
-### Mask
+### Configuring mask
 
-`.mask` property / _mask_ key path / **Mask** attribute
+```swift
+var mask: String
+```
 
-**Type**: String<br>
-**Access**: get set<br>
+The string value that contains blocks with symbols that determines certain type of input data. Each block must be wrapped by brackets. Default brackets `{ ... }`.
+The predetermined types of input data:
 
-Defines a type of a mask. A String contains blocks with symbols separated by any string out of blocks. Open and close each block a special symbol.
+| Type  | Description    |
+| ----- | :------------- |
+| **d** | Number, decimal number from 0 to 9. |
+| **D** | Any symbol, except decimal number. |
+| **W** | Not an alphabetic symbol. |
+| **a** | Alphabetic symbol, a-Z. |
+| **.** | Corresponds to any symbol (by default) |
 
-Symbols in the block define certain type of data. The predetermined types:
-
-* **d** - Number, decimal number from 0 to 9
-* **D** - Any symbol, except decimal number
-* **W** - Not an alphabetic symbol
-* **a** - Alphabetic symbol, a-Z
-* **.** - Corresponds to any symbol (by default)
-
-Example:<br>
-**{dddd}-{DDDD}-{WaWa}-{aaaa}**
+The initial value of this property is `nil`.
+Example: `{dddd}-{DDDD}-{WaWa}-{aaaa}`
 
 ### Template
 
-`.maskTemplate` property / _maskTemplate_ key path / **Mask Template** attribute
+```swift
+var maskTemplate: String
+```
 
-**Type**: String<br>
-**Access**: get set<br>
-**Default value**: *
+The string that is displayed over mask. Each input type symbol will replaced with template character. You can set:
 
-Text template with the hidden symbols of a mask which is seen by the user. Can be in a look:
+| Characters count                         | Description    |
+| :--------------------------------------- | :------------- |
+| **1**                                    | This character will be copied to each block and will replace mask input type symbol. <br>
 
-* **1 character** <br>
-  In this case the symbol will be copied in compliance of length of each block of a mask.
+                                             Example:
 
-  Example:
+                                             ```swift
+                                             field.mask = "{dddd}-{DDDD}-{WaWa}-{aaaa}"
+                                             field.maskTemplate = "o"
 
-  **Mask**: {dddd}-{DDDD}-{WaWa}-{aaaa}<br>
-  **Template**: Z
+                                              // Mask field
+                                              // oooo-oooo-oooo-oooo
+                                             ``` |
+| **Same length as mask without brackets** | Template character will replace mask input type symbol in same position.
 
-  Input field<br>
-  **ZZZZ-ZZZZ-ZZZZ-ZZZZ**
+                                              Example:
 
-* **Any characters** <br>
-  In this case the quantity of characters of a template has to be equal to quantity of characters of a mask without brackets.
+                                              ```swift
+                                              field.mask = "{dddd}-{DDDD}-{WaWa}-{aaaa}"
+                                              field.maskTemplate = "ABCD-EFGH-IJKL-MNOP"
 
-  Example:
+                                               // Mask field
+                                               // ABCD-EFGH-IJKL-MNOP
+                                              ``` |
 
-  **Mask**: {dddd}-{DDDD}-{WaWa}-{aaaa}<br>
-  **Template**: ABCD-EFGH-IJKL-MNOP
 
-  19 characters = 19 characters
 
-  Input field<br>
-  **ABCD-EFGH-IJKL-MNOP**
+
+The initial value of this property is `*`.
+
 
 ### Visible mask tempalte
 
