@@ -1,8 +1,12 @@
-AKMaskField is Swift plugin.
+# AKMaskField
+
+<p align="center">
+    <img src="https://raw.githubusercontent.com/artemkrachulov/AKMaskField/master/Assets/preview.png" alt="Preview">
+</p>
 
 AKMaskField allows the user to enter easily data in the fixed quantity and in certain format (credit cards, telephone numbers, dates, etc.). The developer needs to adjust a format of a mask and a template. The mask consists of symbols and blocks. Each block consists of symbols of a certain type (number, letter, symbol). The template in turn represents a mask with hidden symbols in each block.
 
-**Main features:**
+**Features:**
 
 * easy in use
 * possibility to setup input field from a code or Settings Panel
@@ -12,9 +16,6 @@ AKMaskField allows the user to enter easily data in the fixed quantity and in ce
 * fast processing of a input field
 * smart user input actions: to copy / insert
 
-**Preview**
-
-![Preview](https://raw.githubusercontent.com/artemkrachulov/AKMaskField/master/Assets/preview.png)
 
 ## Usage
 
