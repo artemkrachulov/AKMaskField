@@ -1,9 +1,11 @@
 //
 //  AppDelegate.swift
 //  AKTextFieldMask
+//  GitHub: https://github.com/artemkrachulov/AKMaskField
 //
-//  Created by Krachulov Artem  on 12/24/14.
-//  Copyright (c) 2014 The Krachulovs. All rights reserved.
+//  Created by Krachulov Artem
+//  Copyright (c) 2015 Krachulov Artem. All rights reserved.
+//  Website: http://www.artemkrachulov.com/
 //
 
 import UIKit

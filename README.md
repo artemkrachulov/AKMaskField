@@ -59,7 +59,7 @@ Same initialization as `UITextField` class.
 
 ## Properties
 
-### Displaying the mask
+### Displaying mask
 
 ```swift
 var mask: String
@@ -83,7 +83,7 @@ The initial value of this property is `nil`.
 var maskTemplate: String
 ```
 
-The string that represents the mask with replacing format symbol with template characters. Can be set:
+The text that represents the mask filed with replacing format symbol with template characters. Can be set:
 
 | Characters count                         | Description    |
 | :--------------------------------------- | :------------- |
@@ -100,7 +100,7 @@ var maskShowTemplate: Bool
 A Boolean value indicating will be mask template shows after initialization.<br>
 The initial value of this property is `false`.
 
-### Configuring the mask
+### Configuring mask
 
 ```swift
 var maskBlockBrackets: [Character]
@@ -109,7 +109,7 @@ var maskBlockBrackets: [Character]
 An array with two characters (opening and closing bracket for the bock mask).<br>
 The initial values in this array is `{` and `}`.
 
-### The mask object
+### Mask object
 
 ```swift
 var maskObject: [AKMaskFieldBlock]! {get}
@@ -118,7 +118,7 @@ var maskObject: [AKMaskFieldBlock]! {get}
 An array with all blocks mask. Each array value defined as `AKMaskFieldBlock` structure.<br>
 The initial value of this property is `nil`.
 
-#### The block `AKMaskFieldBlock` mask
+#### Block `AKMaskFieldBlock` mask
 
 ```swift
 var index: Int
@@ -168,7 +168,7 @@ var chars: [AKMaskFieldBlockChars]
 
 An array with all characters mask in certain block. Each character value defined as `AKMaskFieldBlockChars` structure.
 
-#### The characters `AKMaskFieldBlockChars` block
+#### Characters `AKMaskFieldBlockChars` block
 
 ```swift
 var index: Int
@@ -254,7 +254,7 @@ weak var maskDelegate: AKMaskFieldDelegate?
 
 A mask field delegate responds to editing-related messages from the text field. You can use the delegate to respond to the text entered by the user and to some special commands, such as when the return button is pressed.
 
-## The delegate methods
+## Delegate methods
 
 ```swift
 optional func maskFieldDidBeginEditing(maskField: AKMaskField)

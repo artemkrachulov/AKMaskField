@@ -32,15 +32,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Card" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UEH-NO-Y4g">
-                                <rect key="frame" x="11" y="0.0" width="568" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="heightClass=regular" ambiguous="YES" misplaced="YES">
-                                    <rect key="frame" x="16" y="20" width="568" height="21"/>
-                                </variation>
-                            </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="saT-Qn-8Yk" customClass="AKMaskField" customModule="AKMaskFieldDemo" customModuleProvider="target">
                                 <rect key="frame" x="11" y="29" width="540" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -830,7 +821,7 @@
                                     </mask>
                                 </variation>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Field input event:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b3P-b2-ONg">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User event:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b3P-b2-ONg">
                                 <rect key="frame" x="11" y="448" width="284" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="NDi-aD-ZpF"/>
@@ -1075,6 +1066,15 @@
                                     <rect key="frame" x="11" y="370" width="740" height="30"/>
                                 </variation>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Card" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UEH-NO-Y4g">
+                                <rect key="frame" x="11" y="0.0" width="568" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="16" y="20" width="568" height="21"/>
+                                </variation>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -1198,7 +1198,6 @@
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
-                                <exclude reference="UEH-NO-Y4g"/>
                                 <exclude reference="saT-Qn-8Yk"/>
                                 <exclude reference="oH5-oG-C8W"/>
                                 <exclude reference="Fc3-5L-nkA"/>
@@ -1247,6 +1246,7 @@
                                 <exclude reference="61z-hi-WLG"/>
                                 <exclude reference="pJp-yY-YDh"/>
                                 <exclude reference="NV7-0s-3E4"/>
+                                <exclude reference="UEH-NO-Y4g"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="8kI-58-CyZ"/>
@@ -1366,7 +1366,6 @@
                         </variation>
                         <variation key="heightClass=regular">
                             <mask key="subviews">
-                                <include reference="UEH-NO-Y4g"/>
                                 <include reference="saT-Qn-8Yk"/>
                                 <include reference="oH5-oG-C8W"/>
                                 <include reference="Fc3-5L-nkA"/>
@@ -1414,6 +1413,7 @@
                                 <include reference="QFb-Up-ejx"/>
                                 <include reference="61z-hi-WLG"/>
                                 <include reference="NV7-0s-3E4"/>
+                                <include reference="UEH-NO-Y4g"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="8kI-58-CyZ"/>
@@ -1568,7 +1568,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OYr-Bu-5Xb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="660" y="645"/>
+            <point key="canvasLocation" x="508.5" y="580.5"/>
         </scene>
     </scenes>
 </document>

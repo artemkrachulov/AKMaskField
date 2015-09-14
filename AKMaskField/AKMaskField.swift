@@ -10,6 +10,21 @@
 
 import UIKit
 
+// MARK: - Enums
+//         _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+enum AKMaskFieldStatus {
+    case Clear
+    case Incomplete
+    case Complete
+}
+enum AKMaskFieldEvet {
+    case None
+    case Insert
+    case Delete
+    case Replace
+}
+
 // MARK: - AKMaskFieldDelegate
 //         _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
@@ -22,7 +37,7 @@ import UIKit
 // --------------------------------------------------------------------------------------------------- //
 class AKMaskField: UITextField {
     
-    // MARK: - Displaying the mask
+    // MARK: - Displaying mask
     //         _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
     
     @IBInspectable var mask: String {
@@ -36,6 +51,8 @@ class AKMaskField: UITextField {
                 
                 // Reset mask object
                 reset()
+                
+                maskObject = [AKMaskFieldBlock]()
                 
                 // Brackets
                 let leftBracket = String(maskBlockBrackets[0])
@@ -158,12 +175,12 @@ class AKMaskField: UITextField {
         }
     }
     
-    // MARK: - Configuring the mask
+    // MARK: - Configuring mask
     //         _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
     
     var maskBlockBrackets: [Character] = ["{", "}"]
     
-    // MARK: - The mask object
+    // MARK: - Mask object
     //         _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
     
     private(set) var maskObject: [AKMaskFieldBlock]!
@@ -172,20 +189,7 @@ class AKMaskField: UITextField {
     //         _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
     
     private(set) var maskStatus: AKMaskFieldStatus = .Clear
-    enum AKMaskFieldStatus {
-        
-        case Clear
-        case Incomplete
-        case Complete
-    }
-    
     private(set) var maskEvent: AKMaskFieldEvet = .None
-    enum AKMaskFieldEvet {
-        case None
-        case Insert
-        case Delete
-        case Replace
-    }
 
     // MARK: - Accessing the Delegate
     //         _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
@@ -199,7 +203,6 @@ class AKMaskField: UITextField {
     private var _mask: String!
     private var _maskShowTemplate  = false
     private var _maskTemplate: String!
-    
     
     private(set) var maskWithoutBrackets: String!
     private var maskTemplateDefaultChar: Character = "*"
@@ -215,6 +218,7 @@ class AKMaskField: UITextField {
     override func drawRect(rect: CGRect) {
         super.drawRect(rect)
         
+        // Apply the delegate
         delegate = self
         
         // This observer used on manual updatind text property
@@ -224,11 +228,7 @@ class AKMaskField: UITextField {
     func refresh() {
 
         if maskObject.count > 0 && maskText != text {
-            if maskShowTemplate {
-                text = maskText
-            } else {
-                text = maskStatus == .Clear ? "" : maskText
-            }
+            text = maskShowTemplate ? maskText : maskStatus == .Clear ? "" : maskText
         }
         
         // Reset manual updating property flag
@@ -236,7 +236,7 @@ class AKMaskField: UITextField {
     }
     
     func reset() {
-        maskObject = [AKMaskFieldBlock]()
+        maskObject = nil
         text = ""
     }
     
