@@ -43,8 +43,8 @@ public func converRangeIntToRangeStringIndex(str: String, range: Range<Int>) -> 
     
     let range = range.toNSRange()
     
-    let start = advance(str.startIndex, range.location)
-    let end = advance(start, range.length)
+    let start = str.startIndex.advancedBy(range.location)
+    let end = start.advancedBy(range.length)
     
     return Range<String.Index>(start: start, end: end)
 }

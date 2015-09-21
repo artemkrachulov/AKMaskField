@@ -21,7 +21,7 @@ extension String {
     
     public func subStringWithRange(aRange: Range<Int>) -> String {
         
-        return substringWithRange(converRangeIntToRangeStringIndex(self, aRange))
+        return substringWithRange(converRangeIntToRangeStringIndex(self, range: aRange))
     }
     
     /// Replace the given 'subRange' of elements with 'newElements'
@@ -33,7 +33,7 @@ extension String {
     
     mutating func replaceRange(subRange: Range<Int>, with newElements: String) {
     
-        replaceRange(converRangeIntToRangeStringIndex(self, subRange), with: newElements)
+        replaceRange(converRangeIntToRangeStringIndex(self, range: subRange), with: newElements)
     }
     
     /// Returns a new string in which all occurrences of a target
@@ -47,7 +47,7 @@ extension String {
     
     public func stringByReplacingOccurrencesOfString(target: String, withString: String, options: NSStringCompareOptions, aRange: Range<Int>!) -> String {
         
-        let range = aRange == nil ? nil : converRangeIntToRangeStringIndex(self, aRange) as Range<String.Index>!
+        let range = aRange == nil ? nil : converRangeIntToRangeStringIndex(self, range: aRange) as Range<String.Index>!
         
         return stringByReplacingOccurrencesOfString(target, withString: withString, options: options, range: range)
     }    

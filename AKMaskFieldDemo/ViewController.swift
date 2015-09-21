@@ -10,7 +10,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, AKMaskFieldDelegate {
+class ViewController: UIViewController {
     
     @IBOutlet weak var card: AKMaskField!
     @IBOutlet weak var phone: AKMaskField!
@@ -60,7 +60,7 @@ class ViewController: UIViewController, AKMaskFieldDelegate {
                     case 8:
                         self.license.becomeFirstResponder()
                     default:
-                        println("Tag out of range")
+                        print("Tag out of range")
                 }
             
             }
@@ -70,7 +70,7 @@ class ViewController: UIViewController, AKMaskFieldDelegate {
     }
 
     // Hide on click out the field
-    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {        
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {        
         card.resignFirstResponder()
         phone.resignFirstResponder()
         key.resignFirstResponder()
@@ -103,7 +103,6 @@ extension ViewController: AKMaskFieldDelegate {
                 statusColor = UIColor(red: 52/255, green: 152/255, blue: 219/255, alpha: 1.0)
             case .Complete:
                 statusColor = UIColor(red: 0/255, green: 219/255, blue: 86/255, alpha: 1.0)
-            default: ()
         }
         UIView.animateWithDuration(0.2, delay: 0, options: UIViewAnimationOptions.CurveEaseIn,
             animations: { () -> Void in

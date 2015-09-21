@@ -64,7 +64,7 @@ class AKMaskField: UITextField {
                 let blocks = findMatches(inString: newValue, usingPattern: "(?<=\\" + leftBracket + ").*?(?=\\" + rightBracket + ")")
                 
                 if blocks.count > 0 {
-                    for (i, block: AnyObject) in enumerate(blocks) {
+                    for (i, block) in blocks.enumerate() {
                         
                         let range = (block.range as NSRange).toRange()!
                         
@@ -75,7 +75,7 @@ class AKMaskField: UITextField {
                         // Process block characters
                         var chars = [AKMaskFieldBlockChars]()
                         
-                        for (y, index) in enumerate(bRange) {
+                        for (y, index) in bRange.enumerate() {
                             
                             chars.append(AKMaskFieldBlockChars(index: y, status: false, text: maskTemplateDefaultChar, range: index..<index+1))
                         }
@@ -125,15 +125,15 @@ class AKMaskField: UITextField {
                 var copy = true
                 var copyChar = String(maskTemplateDefaultChar)
                 
-                if count(_maskTemplate) == count(maskWithoutBrackets) {
+                if _maskTemplate.characters.count == maskWithoutBrackets.characters.count {
                     copy = false
                 } else {
-                    if count(_maskTemplate) == 1 {
+                    if _maskTemplate.characters.count == 1 {
                         copyChar = _maskTemplate
                     }
                 }
                 
-                for (i, block) in enumerate(maskObject) {
+                for (i, block) in maskObject.enumerate() {
                     
                     let range = block.range
                     
@@ -152,7 +152,7 @@ class AKMaskField: UITextField {
                     
                     // Replace character to new template character
                     var chars = maskObject[i].chars
-                    for (y, char) in enumerate(template) {
+                    for (y, char) in template.characters.enumerate() {
                         
                         chars[y].text = char
                     }
@@ -170,7 +170,7 @@ class AKMaskField: UITextField {
                 maskObjectClean = maskObject
                 
                 // Set new text
-                textField(self, shouldChangeCharactersInRange: NSMakeRange(0, 0), replacementString: text)
+                textField(self, shouldChangeCharactersInRange: NSMakeRange(0, 0), replacementString: text!)
             }
         }
     }
@@ -222,7 +222,7 @@ class AKMaskField: UITextField {
         delegate = self
         
         // This observer used on manual updatind text property
-        addObserver(self, forKeyPath: "text", options: nil, context: nil)
+        addObserver(self, forKeyPath: "text", options: [], context: nil)
     }
     
     func refresh() {
@@ -310,14 +310,14 @@ class AKMaskField: UITextField {
         var position = range.startIndex
         
         // Process
-        for char: Character in bStr {
+        for char: Character in bStr.characters {
             
             // Break from loop if pasted lenght go out mask
-            if position >= count(aStr) || (charsToReplace > 0 && charsToReplace == charsReplaced) { break }
+            if position >= aStr.characters.count || (charsToReplace > 0 && charsToReplace == charsReplaced) { break }
             
             // Ignore this if we process new char
             if !flagNextChar {
-                oldChar = aStr[advance(aStr.startIndex, position)]
+                oldChar = aStr[aStr.startIndex.advancedBy(position)]
             }
             
             // Get block with caret
@@ -376,7 +376,7 @@ class AKMaskField: UITextField {
         var _block: AKMaskFieldBlock!
         var active: Bool!
         
-        for (i, block) in enumerate(maskObject) {
+        for (_, block) in maskObject.enumerate() {
             
             let blockRange = block.range
             
@@ -403,9 +403,9 @@ class AKMaskField: UITextField {
     
     private func findMatches(inString string: String, usingPattern pattern: String) -> [AnyObject] {
         
-        var error: NSError?
-        let expression = NSRegularExpression(pattern: pattern, options: .CaseInsensitive, error: &error)!
-        let matches = expression.matchesInString(string, options: nil, range: NSMakeRange(0, count(string)))
+//        var error: NSError?
+        let expression = try! NSRegularExpression(pattern: pattern, options: .CaseInsensitive)
+        let matches = expression.matchesInString(string, options: [], range: NSMakeRange(0, string.characters.count))
         
         return matches
     }
@@ -415,7 +415,7 @@ class AKMaskField: UITextField {
         if let beginningOfDocument: UITextPosition = beginningOfDocument {
             
             let caretPosition = positionFromPosition(beginningOfDocument, offset: position)
-            selectedTextRange  = textRangeFromPosition(caretPosition, toPosition: caretPosition)
+            selectedTextRange  = textRangeFromPosition(caretPosition!, toPosition: caretPosition!)
         }
     }
 }
@@ -425,7 +425,7 @@ class AKMaskField: UITextField {
 
 extension AKMaskField {
 
-    override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
+    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
         
         if (keyPath == "text" && object === self && flagUpdateEvent == true) {
             
@@ -434,7 +434,7 @@ extension AKMaskField {
             maskObject = maskObjectClean
             
             // Process field
-            textField(self, shouldChangeCharactersInRange: NSMakeRange(0, 0), replacementString: text)
+            textField(self, shouldChangeCharactersInRange: NSMakeRange(0, 0), replacementString: text!)
         }
     }
 }
@@ -452,7 +452,7 @@ extension AKMaskField: UITextFieldDelegate {
             switch maskStatus {
             case .Complete:
                 
-                position = count(maskTemplateText)
+                position = maskTemplateText.characters.count
                 
             case .Incomplete:
                 
@@ -512,7 +512,7 @@ extension AKMaskField: UITextFieldDelegate {
             // Step 5
             // Set current event to property
             
-            var event: AKMaskFieldEvet!
+//            var event: AKMaskFieldEvet!
             if chars.replaced == chars.toReplace && chars.position == range.startIndex {
                 if  chars.position == 0 && range.startIndex == 0 {
                     
