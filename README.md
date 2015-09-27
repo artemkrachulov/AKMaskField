@@ -299,6 +299,10 @@ for block in field.maskObject {
 println("Entered text: \(enteredText)")
 ```
 
+---
+
+Please do not forget to star this repository and follow me.
+
 ### Author
 
 Artem Krachulov: [www.artemkrachulov.com](http://www.artemkrachulov.com/), email [artem.krachulov@gmail.com](mailto:artem.krachulov@gmail.com)
