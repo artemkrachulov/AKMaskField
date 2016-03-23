@@ -37,6 +37,13 @@ enum AKMaskFieldEvet {
 // --------------------------------------------------------------------------------------------------- //
 class AKMaskField: UITextField {
     
+    // MARK: - Deinit
+    //         _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+    
+    deinit {
+        removeObserver(self, forKeyPath: "text")
+    }
+    
     // MARK: - Displaying mask
     //         _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
     
