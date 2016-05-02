@@ -23,9 +23,7 @@ extension Range {
     ///  println(convertedRange.length) // 5
 
     func toNSRange() -> NSRange {
-        
         let loc = startIndex as! Int
-        
         let len = (endIndex as! Int) - loc
         
         return NSMakeRange(loc, len)
@@ -40,11 +38,9 @@ extension Range {
 ///  let convertedRange = converRangeIntToRangeStringIndex(str, 6..<11) // 6..<11
 
 public func converRangeIntToRangeStringIndex(str: String, range: Range<Int>) -> Range<String.Index> {
-    
     let range = range.toNSRange()
-    
     let start = str.startIndex.advancedBy(range.location)
     let end = start.advancedBy(range.length)
     
-    return Range<String.Index>(start: start, end: end)
+    return start ..< end
 }

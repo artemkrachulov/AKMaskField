@@ -18,9 +18,7 @@ extension String {
     ///   
     ///  let str = "Hello World!"
     ///  let newString = str.subStringWithRange(6..<12) // "World!"
-    
     public func subStringWithRange(aRange: Range<Int>) -> String {
-        
         return substringWithRange(converRangeIntToRangeStringIndex(self, range: aRange))
     }
     
@@ -30,9 +28,7 @@ extension String {
     ///
     ///  var str = "Hello World!"
     ///  str.replaceRange(6..<11, with: "Kitty") // "Hello Kitty!"
-    
     mutating func replaceRange(subRange: Range<Int>, with newElements: String) {
-    
         replaceRange(converRangeIntToRangeStringIndex(self, range: subRange), with: newElements)
     }
     
@@ -44,7 +40,6 @@ extension String {
     ///
     ///  var str = "Hello World, World!"
     ///  str = str.stringByReplacingOccurrencesOfString("World", withString: "Kitty", options: NSStringCompareOptions(0), aRange: 6..<11)
-    
     public func stringByReplacingOccurrencesOfString(target: String, withString: String, options: NSStringCompareOptions, aRange: Range<Int>!) -> String {
         
         let range = aRange == nil ? nil : converRangeIntToRangeStringIndex(self, range: aRange) as Range<String.Index>!
