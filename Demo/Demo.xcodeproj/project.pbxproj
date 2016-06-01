@@ -7,11 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		435D02FE1B9894160055A54B /* AKMaskField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435D02FD1B9894160055A54B /* AKMaskField.swift */; };
-		435D8AC71BA433FC0090BF98 /* AKMaskFieldBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435D8AC61BA433FC0090BF98 /* AKMaskFieldBlock.swift */; };
-		435D8AC91BA434130090BF98 /* AKMaskFieldBlockChars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435D8AC81BA434130090BF98 /* AKMaskFieldBlockChars.swift */; };
-		436D0DF51BA2A9590077EFA2 /* Range.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436D0DF31BA2A9590077EFA2 /* Range.swift */; };
-		436D0DF61BA2A9590077EFA2 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436D0DF41BA2A9590077EFA2 /* String.swift */; };
+		43509CEB1C9FDA4100238ADA /* InfoVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43509CEA1C9FDA4100238ADA /* InfoVIew.swift */; };
+		43509CEE1C9FDA6700238ADA /* UIView+loadFromXibNib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43509CED1C9FDA6700238ADA /* UIView+loadFromXibNib.swift */; };
 		437113011A4B22EF00FF6252 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437113001A4B22EF00FF6252 /* AppDelegate.swift */; };
 		437113031A4B22EF00FF6252 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437113021A4B22EF00FF6252 /* ViewController.swift */; };
 		437113061A4B22EF00FF6252 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 437113041A4B22EF00FF6252 /* Main.storyboard */; };
@@ -23,6 +20,14 @@
 		437129351A7786C500C4D494 /* fontawesome-webfont.woff in Resources */ = {isa = PBXBuildFile; fileRef = 4371292F1A7786C500C4D494 /* fontawesome-webfont.woff */; };
 		437129361A7786C500C4D494 /* fontawesome-webfont.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 437129301A7786C500C4D494 /* fontawesome-webfont.woff2 */; };
 		437129371A7786C500C4D494 /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = 437129311A7786C500C4D494 /* FontAwesome.otf */; };
+		439602021C9AE57A0060EC39 /* AKMaskField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439601FC1C9AE57A0060EC39 /* AKMaskField.swift */; };
+		439602031C9AE57A0060EC39 /* AKMaskFieldBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439601FD1C9AE57A0060EC39 /* AKMaskFieldBlock.swift */; };
+		439602041C9AE57A0060EC39 /* AKMaskFieldBlockChars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439601FE1C9AE57A0060EC39 /* AKMaskFieldBlockChars.swift */; };
+		439602051C9AE57A0060EC39 /* Range.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439602001C9AE57A0060EC39 /* Range.swift */; };
+		439602061C9AE57A0060EC39 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439602011C9AE57A0060EC39 /* String.swift */; };
+		43DA02771C9D6299007932D5 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43DA02761C9D6299007932D5 /* FirstViewController.swift */; };
+		43DA02791C9D62C7007932D5 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43DA02781C9D62C7007932D5 /* SecondViewController.swift */; };
+		43DA027B1C9D6FA5007932D5 /* InfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43DA027A1C9D6FA5007932D5 /* InfoView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,27 +41,30 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		435D02FD1B9894160055A54B /* AKMaskField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AKMaskField.swift; sourceTree = "<group>"; };
-		435D8AC61BA433FC0090BF98 /* AKMaskFieldBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AKMaskFieldBlock.swift; sourceTree = "<group>"; };
-		435D8AC81BA434130090BF98 /* AKMaskFieldBlockChars.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AKMaskFieldBlockChars.swift; sourceTree = "<group>"; };
-		436D0DF31BA2A9590077EFA2 /* Range.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Range.swift; sourceTree = "<group>"; };
-		436D0DF41BA2A9590077EFA2 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
-		437112FB1A4B22EF00FF6252 /* AKMaskFieldDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AKMaskFieldDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		43509CEA1C9FDA4100238ADA /* InfoVIew.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoVIew.swift; sourceTree = "<group>"; };
+		43509CED1C9FDA6700238ADA /* UIView+loadFromXibNib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIView+loadFromXibNib.swift"; path = "../Vendor/UIView-loadFromXibNib/Source/UIView+loadFromXibNib.swift"; sourceTree = "<group>"; };
+		437112FB1A4B22EF00FF6252 /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		437112FF1A4B22EF00FF6252 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		437113001A4B22EF00FF6252 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		437113021A4B22EF00FF6252 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		437113051A4B22EF00FF6252 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		437113071A4B22EF00FF6252 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		4371130A1A4B22EF00FF6252 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		437113101A4B22EF00FF6252 /* AKMaskFieldDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AKMaskFieldDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		437113101A4B22EF00FF6252 /* Demo.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Demo.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4371292C1A7786C500C4D494 /* fontawesome-webfont.eot */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fontawesome-webfont.eot"; sourceTree = "<group>"; };
 		4371292D1A7786C500C4D494 /* fontawesome-webfont.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "fontawesome-webfont.svg"; sourceTree = "<group>"; };
 		4371292E1A7786C500C4D494 /* fontawesome-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fontawesome-webfont.ttf"; sourceTree = "<group>"; };
 		4371292F1A7786C500C4D494 /* fontawesome-webfont.woff */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fontawesome-webfont.woff"; sourceTree = "<group>"; };
 		437129301A7786C500C4D494 /* fontawesome-webfont.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fontawesome-webfont.woff2"; sourceTree = "<group>"; };
 		437129311A7786C500C4D494 /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.otf; sourceTree = "<group>"; };
-		43ED58C11A72434300E3EBB6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		43ED58C21A72434300E3EBB6 /* AKMaskFIeldTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AKMaskFIeldTests.swift; sourceTree = "<group>"; };
+		439601FC1C9AE57A0060EC39 /* AKMaskField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AKMaskField.swift; sourceTree = "<group>"; };
+		439601FD1C9AE57A0060EC39 /* AKMaskFieldBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AKMaskFieldBlock.swift; sourceTree = "<group>"; };
+		439601FE1C9AE57A0060EC39 /* AKMaskFieldBlockChars.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AKMaskFieldBlockChars.swift; sourceTree = "<group>"; };
+		439602001C9AE57A0060EC39 /* Range.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Range.swift; sourceTree = "<group>"; };
+		439602011C9AE57A0060EC39 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		43DA02761C9D6299007932D5 /* FirstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		43DA02781C9D62C7007932D5 /* SecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		43DA027A1C9D6FA5007932D5 /* InfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfoView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,57 +85,49 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		435D02FC1B9894160055A54B /* AKMaskField */ = {
+		43509CEC1C9FDA5700238ADA /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
-				436D0DF21BA2A9590077EFA2 /* SwiftExtensions */,
-				435D02FD1B9894160055A54B /* AKMaskField.swift */,
-				435D8AC61BA433FC0090BF98 /* AKMaskFieldBlock.swift */,
-				435D8AC81BA434130090BF98 /* AKMaskFieldBlockChars.swift */,
+				43509CED1C9FDA6700238ADA /* UIView+loadFromXibNib.swift */,
 			);
-			path = AKMaskField;
-			sourceTree = "<group>";
-		};
-		436D0DF21BA2A9590077EFA2 /* SwiftExtensions */ = {
-			isa = PBXGroup;
-			children = (
-				436D0DF31BA2A9590077EFA2 /* Range.swift */,
-				436D0DF41BA2A9590077EFA2 /* String.swift */,
-			);
-			path = SwiftExtensions;
+			name = Vendor;
 			sourceTree = "<group>";
 		};
 		437112F21A4B22EF00FF6252 = {
 			isa = PBXGroup;
 			children = (
-				435D02FC1B9894160055A54B /* AKMaskField */,
-				437112FD1A4B22EF00FF6252 /* AKMaskFieldDemo */,
-				43ED58BF1A72434300E3EBB6 /* AKMaskFIeldDemoTests */,
+				43509CEC1C9FDA5700238ADA /* Vendor */,
+				437112FD1A4B22EF00FF6252 /* Demo */,
 				437112FC1A4B22EF00FF6252 /* Products */,
+				439601FB1C9AE57A0060EC39 /* AKMaskField */,
 			);
 			sourceTree = "<group>";
 		};
 		437112FC1A4B22EF00FF6252 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				437112FB1A4B22EF00FF6252 /* AKMaskFieldDemo.app */,
-				437113101A4B22EF00FF6252 /* AKMaskFieldDemoTests.xctest */,
+				437112FB1A4B22EF00FF6252 /* Demo.app */,
+				437113101A4B22EF00FF6252 /* Demo.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		437112FD1A4B22EF00FF6252 /* AKMaskFieldDemo */ = {
+		437112FD1A4B22EF00FF6252 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
 				437113001A4B22EF00FF6252 /* AppDelegate.swift */,
-				437113021A4B22EF00FF6252 /* ViewController.swift */,
 				437113041A4B22EF00FF6252 /* Main.storyboard */,
+				43DA027A1C9D6FA5007932D5 /* InfoView.xib */,
+				43509CEA1C9FDA4100238ADA /* InfoVIew.swift */,
+				437113021A4B22EF00FF6252 /* ViewController.swift */,
+				43DA02761C9D6299007932D5 /* FirstViewController.swift */,
+				43DA02781C9D62C7007932D5 /* SecondViewController.swift */,
 				437113091A4B22EF00FF6252 /* LaunchScreen.xib */,
 				437113071A4B22EF00FF6252 /* Images.xcassets */,
 				4371292B1A7786C500C4D494 /* fonts */,
 				437112FE1A4B22EF00FF6252 /* Supporting Files */,
 			);
-			path = AKMaskFieldDemo;
+			path = Demo;
 			sourceTree = "<group>";
 		};
 		437112FE1A4B22EF00FF6252 /* Supporting Files */ = {
@@ -151,29 +151,33 @@
 			path = fonts;
 			sourceTree = "<group>";
 		};
-		43ED58BF1A72434300E3EBB6 /* AKMaskFIeldDemoTests */ = {
+		439601FB1C9AE57A0060EC39 /* AKMaskField */ = {
 			isa = PBXGroup;
 			children = (
-				43ED58C21A72434300E3EBB6 /* AKMaskFIeldTests.swift */,
-				43ED58C01A72434300E3EBB6 /* Supporting Files */,
+				439601FC1C9AE57A0060EC39 /* AKMaskField.swift */,
+				439601FD1C9AE57A0060EC39 /* AKMaskFieldBlock.swift */,
+				439601FE1C9AE57A0060EC39 /* AKMaskFieldBlockChars.swift */,
+				439601FF1C9AE57A0060EC39 /* SwiftExtensions */,
 			);
-			path = AKMaskFIeldDemoTests;
+			name = AKMaskField;
+			path = ../AKMaskField;
 			sourceTree = "<group>";
 		};
-		43ED58C01A72434300E3EBB6 /* Supporting Files */ = {
+		439601FF1C9AE57A0060EC39 /* SwiftExtensions */ = {
 			isa = PBXGroup;
 			children = (
-				43ED58C11A72434300E3EBB6 /* Info.plist */,
+				439602001C9AE57A0060EC39 /* Range.swift */,
+				439602011C9AE57A0060EC39 /* String.swift */,
 			);
-			name = "Supporting Files";
+			path = SwiftExtensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		437112FA1A4B22EF00FF6252 /* AKMaskFieldDemo */ = {
+		437112FA1A4B22EF00FF6252 /* Demo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4371131A1A4B22EF00FF6252 /* Build configuration list for PBXNativeTarget "AKMaskFieldDemo" */;
+			buildConfigurationList = 4371131A1A4B22EF00FF6252 /* Build configuration list for PBXNativeTarget "Demo" */;
 			buildPhases = (
 				437112F71A4B22EF00FF6252 /* Sources */,
 				437112F81A4B22EF00FF6252 /* Frameworks */,
@@ -183,14 +187,14 @@
 			);
 			dependencies = (
 			);
-			name = AKMaskFieldDemo;
+			name = Demo;
 			productName = AKTextFieldMask;
-			productReference = 437112FB1A4B22EF00FF6252 /* AKMaskFieldDemo.app */;
+			productReference = 437112FB1A4B22EF00FF6252 /* Demo.app */;
 			productType = "com.apple.product-type.application";
 		};
-		4371130F1A4B22EF00FF6252 /* AKMaskFieldDemoTests */ = {
+		4371130F1A4B22EF00FF6252 /* DemoTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4371131D1A4B22EF00FF6252 /* Build configuration list for PBXNativeTarget "AKMaskFieldDemoTests" */;
+			buildConfigurationList = 4371131D1A4B22EF00FF6252 /* Build configuration list for PBXNativeTarget "DemoTests" */;
 			buildPhases = (
 				4371130C1A4B22EF00FF6252 /* Sources */,
 				4371130D1A4B22EF00FF6252 /* Frameworks */,
@@ -201,9 +205,9 @@
 			dependencies = (
 				437113121A4B22EF00FF6252 /* PBXTargetDependency */,
 			);
-			name = AKMaskFieldDemoTests;
+			name = DemoTests;
 			productName = AKTextFieldMaskTests;
-			productReference = 437113101A4B22EF00FF6252 /* AKMaskFieldDemoTests.xctest */;
+			productReference = 437113101A4B22EF00FF6252 /* Demo.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -225,7 +229,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 437112F61A4B22EF00FF6252 /* Build configuration list for PBXProject "AKMaskFieldDemo" */;
+			buildConfigurationList = 437112F61A4B22EF00FF6252 /* Build configuration list for PBXProject "Demo" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -238,8 +242,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				437112FA1A4B22EF00FF6252 /* AKMaskFieldDemo */,
-				4371130F1A4B22EF00FF6252 /* AKMaskFieldDemoTests */,
+				437112FA1A4B22EF00FF6252 /* Demo */,
+				4371130F1A4B22EF00FF6252 /* DemoTests */,
 			);
 		};
 /* End PBXProject section */
@@ -255,6 +259,7 @@
 				437129341A7786C500C4D494 /* fontawesome-webfont.ttf in Resources */,
 				437113081A4B22EF00FF6252 /* Images.xcassets in Resources */,
 				437129371A7786C500C4D494 /* FontAwesome.otf in Resources */,
+				43DA027B1C9D6FA5007932D5 /* InfoView.xib in Resources */,
 				437129361A7786C500C4D494 /* fontawesome-webfont.woff2 in Resources */,
 				437129321A7786C500C4D494 /* fontawesome-webfont.eot in Resources */,
 				437129351A7786C500C4D494 /* fontawesome-webfont.woff in Resources */,
@@ -275,13 +280,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				436D0DF61BA2A9590077EFA2 /* String.swift in Sources */,
+				439602041C9AE57A0060EC39 /* AKMaskFieldBlockChars.swift in Sources */,
+				439602031C9AE57A0060EC39 /* AKMaskFieldBlock.swift in Sources */,
 				437113031A4B22EF00FF6252 /* ViewController.swift in Sources */,
+				43DA02791C9D62C7007932D5 /* SecondViewController.swift in Sources */,
+				43DA02771C9D6299007932D5 /* FirstViewController.swift in Sources */,
+				439602051C9AE57A0060EC39 /* Range.swift in Sources */,
+				43509CEE1C9FDA6700238ADA /* UIView+loadFromXibNib.swift in Sources */,
+				439602061C9AE57A0060EC39 /* String.swift in Sources */,
 				437113011A4B22EF00FF6252 /* AppDelegate.swift in Sources */,
-				435D02FE1B9894160055A54B /* AKMaskField.swift in Sources */,
-				435D8AC71BA433FC0090BF98 /* AKMaskFieldBlock.swift in Sources */,
-				436D0DF51BA2A9590077EFA2 /* Range.swift in Sources */,
-				435D8AC91BA434130090BF98 /* AKMaskFieldBlockChars.swift in Sources */,
+				43509CEB1C9FDA4100238ADA /* InfoVIew.swift in Sources */,
+				439602021C9AE57A0060EC39 /* AKMaskField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,7 +306,7 @@
 /* Begin PBXTargetDependency section */
 		437113121A4B22EF00FF6252 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 437112FA1A4B22EF00FF6252 /* AKMaskFieldDemo */;
+			target = 437112FA1A4B22EF00FF6252 /* Demo */;
 			targetProxy = 437113111A4B22EF00FF6252 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -408,10 +417,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				INFOPLIST_FILE = "$(SRCROOT)/AKMaskFieldDemo/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Demo/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = artem.krachulov.AKMaskField;
-				PRODUCT_NAME = AKMaskFieldDemo;
+				PRODUCT_NAME = Demo;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -423,10 +433,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				INFOPLIST_FILE = "$(SRCROOT)/AKMaskFieldDemo/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Demo/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = artem.krachulov.AKMaskField;
-				PRODUCT_NAME = AKMaskFieldDemo;
+				PRODUCT_NAME = Demo;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -443,10 +454,10 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = AKMaskFieldDemoTests/Info.plist;
+				INFOPLIST_FILE = DemoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "thekrachulovs.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = AKMaskFieldDemoTests;
+				PRODUCT_NAME = Demo;
 			};
 			name = Debug;
 		};
@@ -457,17 +468,17 @@
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = AKMaskFieldDemoTests/Info.plist;
+				INFOPLIST_FILE = DemoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "thekrachulovs.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = AKMaskFieldDemoTests;
+				PRODUCT_NAME = Demo;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		437112F61A4B22EF00FF6252 /* Build configuration list for PBXProject "AKMaskFieldDemo" */ = {
+		437112F61A4B22EF00FF6252 /* Build configuration list for PBXProject "Demo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				437113181A4B22EF00FF6252 /* Debug */,
@@ -476,7 +487,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4371131A1A4B22EF00FF6252 /* Build configuration list for PBXNativeTarget "AKMaskFieldDemo" */ = {
+		4371131A1A4B22EF00FF6252 /* Build configuration list for PBXNativeTarget "Demo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4371131B1A4B22EF00FF6252 /* Debug */,
@@ -485,7 +496,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4371131D1A4B22EF00FF6252 /* Build configuration list for PBXNativeTarget "AKMaskFieldDemoTests" */ = {
+		4371131D1A4B22EF00FF6252 /* Build configuration list for PBXNativeTarget "DemoTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4371131E1A4B22EF00FF6252 /* Debug */,

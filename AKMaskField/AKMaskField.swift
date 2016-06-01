@@ -36,6 +36,11 @@ enum AKMaskFieldEvet {
 // MARK: - AKMaskField
 // --------------------------------------------------------------------------------------------------- //
 class AKMaskField: UITextField {
+	
+	deinit {
+		removeObserver(self, forKeyPath: "text")
+	}
+	
     
     // MARK: - Displaying mask
     //         _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
@@ -222,7 +227,9 @@ class AKMaskField: UITextField {
         delegate = self
         
         // This observer used on manual updatind text property
+			
         addObserver(self, forKeyPath: "text", options: [], context: nil)
+			
     }
     
     func refresh() {
@@ -573,4 +580,7 @@ extension AKMaskField: UITextFieldDelegate {
             
         } else { return true }
     }
+	
+
+	
 }

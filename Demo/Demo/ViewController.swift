@@ -11,79 +11,26 @@
 import UIKit
 
 class ViewController: UIViewController {
-    
-    @IBOutlet weak var card: AKMaskField!
-    @IBOutlet weak var phone: AKMaskField!
-    @IBOutlet weak var key: AKMaskField!
-    @IBOutlet weak var license: AKMaskField!
-    
-    @IBOutlet var indicators: [UIView]!
-    @IBOutlet var clipboard: [UILabel]!
+	
+	
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // delegates
-        card.maskDelegate = self
-        phone.maskDelegate = self
-        key.maskDelegate = self
-        license.maskDelegate = self
-        
-        // Draw indicators
-        for indicator in indicators {
-            indicator.layer.cornerRadius = 10
-        }
-    }
-    
-    @IBAction func clipboard(sender: UIButton) {
-        
-        let tag = sender.tag
-        let copyText = clipboard[tag].text!
-        let message = "Text \"" + copyText + "\" copied to clibboard. Past text to field."
-        
-        // Copy text to clipboard
-        UIPasteboard.generalPasteboard().string = copyText
-        
-        // Show a;ert
-        let copyAlert = UIAlertController(title: "Clipboard", message: message, preferredStyle: .Alert)
-        
-        copyAlert.addAction(UIAlertAction(title: "Ok", style: .Default,
-            handler: { _ -> Void in
-            
-                switch tag {
-                    case 0,1,2:
-                        self.card.becomeFirstResponder()
-                    case 3,4,5:
-                        self.phone.becomeFirstResponder()
-                    case 6,7:
-                        self.key.becomeFirstResponder()
-                    case 8:
-                        self.license.becomeFirstResponder()
-                    default:
-                        print("Tag out of range")
-                }
-            
-            }
-        ))
-        
-        presentViewController(copyAlert, animated: true, completion: nil)
-    }
+			
 
-    // Hide on click out the field
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {        
-        card.resignFirstResponder()
-        phone.resignFirstResponder()
-        key.resignFirstResponder()
-        license.resignFirstResponder()
-        view.endEditing(true)
     }
     
-    @IBAction func clearFields(sender: AnyObject) {
-        card.text = ""
-        phone.text = ""
-        key.text = ""
-        license.text = ""
-    }
+
+	
+	
+	@IBAction func changeAction(sender: UIBarButtonItem) {
+		
+
+		
+	}
+	
+
 }
 
 // MARK: - AKMaskFieldDelegate
@@ -107,8 +54,8 @@ extension ViewController: AKMaskFieldDelegate {
         UIView.animateWithDuration(0.2, delay: 0, options: UIViewAnimationOptions.CurveEaseIn,
             animations: { () -> Void in
             
-                self.indicators[maskField.tag].backgroundColor = statusColor
-            
+//                self.indicators[maskField.tag].backgroundColor = statusColor
+							
             },
             completion: nil
         )
