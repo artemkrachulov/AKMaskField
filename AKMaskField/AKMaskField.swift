@@ -480,13 +480,7 @@ extension AKMaskField: UITextFieldDelegate {
   }
 
   func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-    
-
-    
     guard let maskObject = maskObject where !maskObject.isEmpty else {
-      
-       print("range \(range)")
-      
       return true
     }
     
@@ -515,9 +509,11 @@ extension AKMaskField: UITextFieldDelegate {
             moveCaretToPosition(caret)
             
             maskStatus = .Clear
-            maskDelegate?.maskField(self, didChangeCharactersInRange: range, replacementString: string, withEvent: .Delete)
             
-            
+            if !blockDelegate {
+              maskDelegate?.maskField(self, didChangeCharactersInRange: range, replacementString: string, withEvent: .Delete)
+            }
+
             return false
           }
 
@@ -635,14 +631,9 @@ extension AKMaskField: UITextFieldDelegate {
       maskStatus = .Complete
     }
     
-    print(maskStatus)
-    print(event)
-    
-    
     textFieldObserverBlockedUpdateString(maskText)
     
     if !blockDelegate {
-      
       moveCaretToPosition(caret)
       maskDelegate?.maskField(self, didChangeCharactersInRange: range, replacementString: string, withEvent: event)
     }
