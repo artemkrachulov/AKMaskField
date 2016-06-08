@@ -106,13 +106,13 @@ class DemoViewController: UIViewController {
         case 0,1,2:
           self.card?.becomeFirstResponder()
           self.cardProgrammatically?.becomeFirstResponder()
-        case 3,4,5:
+        case 3,4:
           self.phone?.becomeFirstResponder()
           self.phoneProgrammatically?.becomeFirstResponder()
-        case 6,7:
+        case 5,6:
           self.key?.becomeFirstResponder()
           self.keyProgrammatically?.becomeFirstResponder()
-        case 8:
+        case 7:
           self.license?.becomeFirstResponder()
           self.licenseProgrammatically?.becomeFirstResponder()
         default: ()
@@ -170,14 +170,14 @@ extension DemoViewController: AKMaskFieldDelegate {
     )
     
     // Event
-    var eventColor =  UIColor.redColor()
+    var eventColor =  UIColor.redColor().colorWithAlphaComponent(0.2)
     switch event {
     case .Insert:
-      eventColor = UIColor.lightGrayColor()
+      eventColor = UIColor.lightGrayColor().colorWithAlphaComponent(0.2)
     case .Replace:
-      eventColor = UIColor.brownColor()
+      eventColor = UIColor.brownColor().colorWithAlphaComponent(0.2)
     case .Delete:
-      eventColor = UIColor.orangeColor()
+      eventColor = UIColor.orangeColor().colorWithAlphaComponent(0.2)
     default: ()
     }
     
