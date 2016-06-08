@@ -1,6 +1,6 @@
 # AKMaskField
 
-![Preview](https://raw.githubusercontent.com/artemkrachulov/AKMaskField/master/Assets/preview.png)
+![Preview](https://raw.githubusercontent.com/artemkrachulov/AKMaskField/master/Assets/AKMaskField.gif)
 
 AKMaskField is UITextField subclass which allows enter data in the fixed quantity and in the certain format (credit cards, telephone numbers, dates, etc.). You only need setup mask string and mask template string visible for user.
 
