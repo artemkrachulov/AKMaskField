@@ -20,14 +20,8 @@ AKMaskField is UITextField subclass which allows enter data in the fixed quantit
 
 ## Installation
 
-1. Run follow Terminal command to clone demo project with all submodules
-
-    ```bash
-    git clone --recursive https://github.com/artemkrachulov/AKMaskField.git
-    ```
-
+1. Clone or download demo project.
 2. Add the AKMaskField folder to your project (To copy the file it has to be chosen).
-3. Add supported extension files `Range+Extension.swift` and `String+Extension.swift`
 
 ## Usage
 
