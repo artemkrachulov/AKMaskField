@@ -3,19 +3,27 @@
 //  AKMaskField
 //  GitHub: https://github.com/artemkrachulov/AKMaskField
 //
-//  Created by Krachulov Artem
-//  Copyright (c) 2015 Krachulov Artem. All rights reserved.
+//  Created by Artem Krachulov
+//  Copyright (c) 2016 Artem Krachulov. All rights reserved.
 //  Website: http://www.artemkrachulov.com/
 //
 
-import Foundation
-
-struct AKMaskFieldBlock {    
-    var index: Int
-    var status: Bool
-    var range: Range<Int>
-    var mask: String
-    var text: String
-    var template: String
-    var chars: [AKMaskFieldBlockChars]
+struct AKMaskFieldBlock {
+  /// Block position number in the mask
+  var index: Int
+  
+  /// Current block complete status
+  var status: Bool
+  
+  /// Block range in the mask (without brackets)
+  var range: Range<Int>
+  
+  /// Mask characters inside this block between brackets
+  var mask: String
+  
+  /// Mask template placeholder corresponding mask characters inside this block
+  var template: String
+  
+  /// Characters list with parameters
+  var chars: [AKMaskFieldBlockChars]
 }

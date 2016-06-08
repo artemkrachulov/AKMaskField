@@ -7,12 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		43509CEB1C9FDA4100238ADA /* InfoVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43509CEA1C9FDA4100238ADA /* InfoVIew.swift */; };
-		43509CEE1C9FDA6700238ADA /* UIView+loadFromXibNib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43509CED1C9FDA6700238ADA /* UIView+loadFromXibNib.swift */; };
+		43058B151D0555E600D4526E /* AKMaskFieldBrackets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43058B141D0555E600D4526E /* AKMaskFieldBrackets.swift */; };
 		437113011A4B22EF00FF6252 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437113001A4B22EF00FF6252 /* AppDelegate.swift */; };
 		437113031A4B22EF00FF6252 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437113021A4B22EF00FF6252 /* ViewController.swift */; };
 		437113061A4B22EF00FF6252 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 437113041A4B22EF00FF6252 /* Main.storyboard */; };
-		437113081A4B22EF00FF6252 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 437113071A4B22EF00FF6252 /* Images.xcassets */; };
+		437113081A4B22EF00FF6252 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 437113071A4B22EF00FF6252 /* Assets.xcassets */; };
 		4371130B1A4B22EF00FF6252 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 437113091A4B22EF00FF6252 /* LaunchScreen.xib */; };
 		437129321A7786C500C4D494 /* fontawesome-webfont.eot in Resources */ = {isa = PBXBuildFile; fileRef = 4371292C1A7786C500C4D494 /* fontawesome-webfont.eot */; };
 		437129331A7786C500C4D494 /* fontawesome-webfont.svg in Resources */ = {isa = PBXBuildFile; fileRef = 4371292D1A7786C500C4D494 /* fontawesome-webfont.svg */; };
@@ -23,34 +22,20 @@
 		439602021C9AE57A0060EC39 /* AKMaskField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439601FC1C9AE57A0060EC39 /* AKMaskField.swift */; };
 		439602031C9AE57A0060EC39 /* AKMaskFieldBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439601FD1C9AE57A0060EC39 /* AKMaskFieldBlock.swift */; };
 		439602041C9AE57A0060EC39 /* AKMaskFieldBlockChars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439601FE1C9AE57A0060EC39 /* AKMaskFieldBlockChars.swift */; };
-		439602051C9AE57A0060EC39 /* Range.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439602001C9AE57A0060EC39 /* Range.swift */; };
-		439602061C9AE57A0060EC39 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439602011C9AE57A0060EC39 /* String.swift */; };
-		43DA02771C9D6299007932D5 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43DA02761C9D6299007932D5 /* FirstViewController.swift */; };
-		43DA02791C9D62C7007932D5 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43DA02781C9D62C7007932D5 /* SecondViewController.swift */; };
-		43DA027B1C9D6FA5007932D5 /* InfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43DA027A1C9D6FA5007932D5 /* InfoView.xib */; };
+		43BAECC91D080031004C52F2 /* AKMaskFieldStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BAECC81D080031004C52F2 /* AKMaskFieldStatus.swift */; };
+		43BAECCB1D0801AE004C52F2 /* AKMaskFieldEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BAECCA1D0801AE004C52F2 /* AKMaskFieldEvent.swift */; };
+		43DA02771C9D6299007932D5 /* DemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43DA02761C9D6299007932D5 /* DemoViewController.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		437113111A4B22EF00FF6252 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 437112F31A4B22EF00FF6252 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 437112FA1A4B22EF00FF6252;
-			remoteInfo = AKTextFieldMask;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
-		43509CEA1C9FDA4100238ADA /* InfoVIew.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoVIew.swift; sourceTree = "<group>"; };
-		43509CED1C9FDA6700238ADA /* UIView+loadFromXibNib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIView+loadFromXibNib.swift"; path = "../Vendor/UIView-loadFromXibNib/Source/UIView+loadFromXibNib.swift"; sourceTree = "<group>"; };
+		43058B141D0555E600D4526E /* AKMaskFieldBrackets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AKMaskFieldBrackets.swift; sourceTree = "<group>"; };
 		437112FB1A4B22EF00FF6252 /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		437112FF1A4B22EF00FF6252 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		437113001A4B22EF00FF6252 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		437113021A4B22EF00FF6252 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		437113051A4B22EF00FF6252 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		437113071A4B22EF00FF6252 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		437113071A4B22EF00FF6252 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4371130A1A4B22EF00FF6252 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		437113101A4B22EF00FF6252 /* Demo.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Demo.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4371292C1A7786C500C4D494 /* fontawesome-webfont.eot */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fontawesome-webfont.eot"; sourceTree = "<group>"; };
 		4371292D1A7786C500C4D494 /* fontawesome-webfont.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "fontawesome-webfont.svg"; sourceTree = "<group>"; };
 		4371292E1A7786C500C4D494 /* fontawesome-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fontawesome-webfont.ttf"; sourceTree = "<group>"; };
@@ -60,11 +45,9 @@
 		439601FC1C9AE57A0060EC39 /* AKMaskField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AKMaskField.swift; sourceTree = "<group>"; };
 		439601FD1C9AE57A0060EC39 /* AKMaskFieldBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AKMaskFieldBlock.swift; sourceTree = "<group>"; };
 		439601FE1C9AE57A0060EC39 /* AKMaskFieldBlockChars.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AKMaskFieldBlockChars.swift; sourceTree = "<group>"; };
-		439602001C9AE57A0060EC39 /* Range.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Range.swift; sourceTree = "<group>"; };
-		439602011C9AE57A0060EC39 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
-		43DA02761C9D6299007932D5 /* FirstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		43DA02781C9D62C7007932D5 /* SecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
-		43DA027A1C9D6FA5007932D5 /* InfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfoView.xib; sourceTree = "<group>"; };
+		43BAECC81D080031004C52F2 /* AKMaskFieldStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AKMaskFieldStatus.swift; sourceTree = "<group>"; };
+		43BAECCA1D0801AE004C52F2 /* AKMaskFieldEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AKMaskFieldEvent.swift; sourceTree = "<group>"; };
+		43DA02761C9D6299007932D5 /* DemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,31 +58,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4371130D1A4B22EF00FF6252 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		43509CEC1C9FDA5700238ADA /* Vendor */ = {
-			isa = PBXGroup;
-			children = (
-				43509CED1C9FDA6700238ADA /* UIView+loadFromXibNib.swift */,
-			);
-			name = Vendor;
-			sourceTree = "<group>";
-		};
 		437112F21A4B22EF00FF6252 = {
 			isa = PBXGroup;
 			children = (
-				43509CEC1C9FDA5700238ADA /* Vendor */,
+				439601FB1C9AE57A0060EC39 /* AKMaskField */,
 				437112FD1A4B22EF00FF6252 /* Demo */,
 				437112FC1A4B22EF00FF6252 /* Products */,
-				439601FB1C9AE57A0060EC39 /* AKMaskField */,
 			);
 			sourceTree = "<group>";
 		};
@@ -107,7 +74,6 @@
 			isa = PBXGroup;
 			children = (
 				437112FB1A4B22EF00FF6252 /* Demo.app */,
-				437113101A4B22EF00FF6252 /* Demo.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -117,13 +83,11 @@
 			children = (
 				437113001A4B22EF00FF6252 /* AppDelegate.swift */,
 				437113041A4B22EF00FF6252 /* Main.storyboard */,
-				43DA027A1C9D6FA5007932D5 /* InfoView.xib */,
-				43509CEA1C9FDA4100238ADA /* InfoVIew.swift */,
 				437113021A4B22EF00FF6252 /* ViewController.swift */,
-				43DA02761C9D6299007932D5 /* FirstViewController.swift */,
-				43DA02781C9D62C7007932D5 /* SecondViewController.swift */,
+				43DA02761C9D6299007932D5 /* DemoViewController.swift */,
+				437113071A4B22EF00FF6252 /* Assets.xcassets */,
+				437112FF1A4B22EF00FF6252 /* Info.plist */,
 				437113091A4B22EF00FF6252 /* LaunchScreen.xib */,
-				437113071A4B22EF00FF6252 /* Images.xcassets */,
 				4371292B1A7786C500C4D494 /* fonts */,
 				437112FE1A4B22EF00FF6252 /* Supporting Files */,
 			);
@@ -133,7 +97,6 @@
 		437112FE1A4B22EF00FF6252 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				437112FF1A4B22EF00FF6252 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -155,29 +118,22 @@
 			isa = PBXGroup;
 			children = (
 				439601FC1C9AE57A0060EC39 /* AKMaskField.swift */,
+				43BAECCA1D0801AE004C52F2 /* AKMaskFieldEvent.swift */,
 				439601FD1C9AE57A0060EC39 /* AKMaskFieldBlock.swift */,
+				43BAECC81D080031004C52F2 /* AKMaskFieldStatus.swift */,
 				439601FE1C9AE57A0060EC39 /* AKMaskFieldBlockChars.swift */,
-				439601FF1C9AE57A0060EC39 /* SwiftExtensions */,
+				43058B141D0555E600D4526E /* AKMaskFieldBrackets.swift */,
 			);
 			name = AKMaskField;
 			path = ../AKMaskField;
 			sourceTree = "<group>";
 		};
-		439601FF1C9AE57A0060EC39 /* SwiftExtensions */ = {
-			isa = PBXGroup;
-			children = (
-				439602001C9AE57A0060EC39 /* Range.swift */,
-				439602011C9AE57A0060EC39 /* String.swift */,
-			);
-			path = SwiftExtensions;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		437112FA1A4B22EF00FF6252 /* Demo */ = {
+		437112FA1A4B22EF00FF6252 /* AKMaskField */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4371131A1A4B22EF00FF6252 /* Build configuration list for PBXNativeTarget "Demo" */;
+			buildConfigurationList = 4371131A1A4B22EF00FF6252 /* Build configuration list for PBXNativeTarget "AKMaskField" */;
 			buildPhases = (
 				437112F71A4B22EF00FF6252 /* Sources */,
 				437112F81A4B22EF00FF6252 /* Frameworks */,
@@ -187,28 +143,10 @@
 			);
 			dependencies = (
 			);
-			name = Demo;
+			name = AKMaskField;
 			productName = AKTextFieldMask;
 			productReference = 437112FB1A4B22EF00FF6252 /* Demo.app */;
 			productType = "com.apple.product-type.application";
-		};
-		4371130F1A4B22EF00FF6252 /* DemoTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 4371131D1A4B22EF00FF6252 /* Build configuration list for PBXNativeTarget "DemoTests" */;
-			buildPhases = (
-				4371130C1A4B22EF00FF6252 /* Sources */,
-				4371130D1A4B22EF00FF6252 /* Frameworks */,
-				4371130E1A4B22EF00FF6252 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				437113121A4B22EF00FF6252 /* PBXTargetDependency */,
-			);
-			name = DemoTests;
-			productName = AKTextFieldMaskTests;
-			productReference = 437113101A4B22EF00FF6252 /* Demo.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -222,9 +160,6 @@
 				ORGANIZATIONNAME = "Artem Krachulov";
 				TargetAttributes = {
 					437112FA1A4B22EF00FF6252 = {
-						CreatedOnToolsVersion = 6.1.1;
-					};
-					4371130F1A4B22EF00FF6252 = {
 						CreatedOnToolsVersion = 6.1.1;
 					};
 				};
@@ -242,8 +177,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				437112FA1A4B22EF00FF6252 /* Demo */,
-				4371130F1A4B22EF00FF6252 /* DemoTests */,
+				437112FA1A4B22EF00FF6252 /* AKMaskField */,
 			);
 		};
 /* End PBXProject section */
@@ -257,19 +191,11 @@
 				437129331A7786C500C4D494 /* fontawesome-webfont.svg in Resources */,
 				4371130B1A4B22EF00FF6252 /* LaunchScreen.xib in Resources */,
 				437129341A7786C500C4D494 /* fontawesome-webfont.ttf in Resources */,
-				437113081A4B22EF00FF6252 /* Images.xcassets in Resources */,
+				437113081A4B22EF00FF6252 /* Assets.xcassets in Resources */,
 				437129371A7786C500C4D494 /* FontAwesome.otf in Resources */,
-				43DA027B1C9D6FA5007932D5 /* InfoView.xib in Resources */,
 				437129361A7786C500C4D494 /* fontawesome-webfont.woff2 in Resources */,
 				437129321A7786C500C4D494 /* fontawesome-webfont.eot in Resources */,
 				437129351A7786C500C4D494 /* fontawesome-webfont.woff in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		4371130E1A4B22EF00FF6252 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,36 +206,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43058B151D0555E600D4526E /* AKMaskFieldBrackets.swift in Sources */,
 				439602041C9AE57A0060EC39 /* AKMaskFieldBlockChars.swift in Sources */,
 				439602031C9AE57A0060EC39 /* AKMaskFieldBlock.swift in Sources */,
 				437113031A4B22EF00FF6252 /* ViewController.swift in Sources */,
-				43DA02791C9D62C7007932D5 /* SecondViewController.swift in Sources */,
-				43DA02771C9D6299007932D5 /* FirstViewController.swift in Sources */,
-				439602051C9AE57A0060EC39 /* Range.swift in Sources */,
-				43509CEE1C9FDA6700238ADA /* UIView+loadFromXibNib.swift in Sources */,
-				439602061C9AE57A0060EC39 /* String.swift in Sources */,
+				43BAECCB1D0801AE004C52F2 /* AKMaskFieldEvent.swift in Sources */,
+				43BAECC91D080031004C52F2 /* AKMaskFieldStatus.swift in Sources */,
+				43DA02771C9D6299007932D5 /* DemoViewController.swift in Sources */,
 				437113011A4B22EF00FF6252 /* AppDelegate.swift in Sources */,
-				43509CEB1C9FDA4100238ADA /* InfoVIew.swift in Sources */,
 				439602021C9AE57A0060EC39 /* AKMaskField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4371130C1A4B22EF00FF6252 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		437113121A4B22EF00FF6252 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 437112FA1A4B22EF00FF6252 /* Demo */;
-			targetProxy = 437113111A4B22EF00FF6252 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		437113041A4B22EF00FF6252 /* Main.storyboard */ = {
@@ -420,6 +329,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Demo/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "-D AKMaskFieldDEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = artem.krachulov.AKMaskField;
 				PRODUCT_NAME = Demo;
 				PROVISIONING_PROFILE = "";
@@ -439,39 +349,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = artem.krachulov.AKMaskField;
 				PRODUCT_NAME = Demo;
 				PROVISIONING_PROFILE = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
-			};
-			name = Release;
-		};
-		4371131E1A4B22EF00FF6252 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = DemoTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "thekrachulovs.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = Demo;
-			};
-			name = Debug;
-		};
-		4371131F1A4B22EF00FF6252 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = DemoTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "thekrachulovs.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = Demo;
 			};
 			name = Release;
 		};
@@ -487,20 +366,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4371131A1A4B22EF00FF6252 /* Build configuration list for PBXNativeTarget "Demo" */ = {
+		4371131A1A4B22EF00FF6252 /* Build configuration list for PBXNativeTarget "AKMaskField" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4371131B1A4B22EF00FF6252 /* Debug */,
 				4371131C1A4B22EF00FF6252 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		4371131D1A4B22EF00FF6252 /* Build configuration list for PBXNativeTarget "DemoTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				4371131E1A4B22EF00FF6252 /* Debug */,
-				4371131F1A4B22EF00FF6252 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

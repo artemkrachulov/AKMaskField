@@ -3,584 +3,666 @@
 //  AKMaskField
 //  GitHub: https://github.com/artemkrachulov/AKMaskField
 //
-//  Created by Krachulov Artem
-//  Copyright (c) 2015 Krachulov Artem. All rights reserved.
+//  Created by Artem Krachulov
+//  Copyright (c) 2016 Artem Krachulov. All rights reserved.
 //  Website: http://www.artemkrachulov.com/
 //
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+// and associated documentation files (the "Software"), to deal in the Software without restriction,
+// including without limitation the rights to use, copy, modify, merge, publish, distribute,
+// sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+// INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
+// PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE
+// FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+// DEALINGS IN THE SOFTWARE.
 
 import UIKit
 
-// MARK: - Enums
-//         _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
-
-enum AKMaskFieldStatus {
-    case Clear
-    case Incomplete
-    case Complete
-}
-enum AKMaskFieldEvet {
-    case None
-    case Insert
-    case Delete
-    case Replace
-}
-
-// MARK: - AKMaskFieldDelegate
-//         _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
-
-@objc protocol AKMaskFieldDelegate {
-    optional func maskFieldDidBeginEditing(maskField: AKMaskField)
-    optional func maskField(maskField: AKMaskField, shouldChangeCharacters oldString: String, inRange range: NSRange, replacementString withString: String)
-}
-
-// MARK: - AKMaskField
-// --------------------------------------------------------------------------------------------------- //
 class AKMaskField: UITextField {
-	
-	deinit {
-		removeObserver(self, forKeyPath: "text")
-	}
-	
-    
-    // MARK: - Displaying mask
-    //         _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
-    
-    @IBInspectable var mask: String {
-        get { return _mask }
-        set {
+
+  //  MARK: - Set up mask
+  
+  /// The string value that contains blocks with symbols that determines certain format of input data. 
+  /// Each block must be wrapped in brackets. Default brackets is { ... }.
+  ///
+  /// The predetermined formats (Mask symbol : Input format):
+  ///
+  ///     d	: Number, decimal number from 0 to 9
+  ///     D	: Any symbol, except decimal number
+  ///     W	: Not an alphabetic symbol
+  ///     a	: Alphabetic symbol, a-Z
+  ///     .	: Corresponds to any symbol (default)
+  ///
+  /// This string is empty by default.
+  @IBInspectable var mask: String? = "" {
+    didSet {
+      if let mask = mask where !mask.isEmpty {
+        
+        initialize()
+        reset()
+        
+        // Find brackets blocks
+        let bracketBlocks = matchesInString(mask,
+                                            regularExpressionPattern: "(?<=\\" + blockBrackets.sLeft + ").*?(?=\\" + blockBrackets.sRight + ")")
+        
+        if bracketBlocks.isEmpty {
+          // In brackets not found, example if mask property
+          // was set not one time, class will destroy
+          destroy()
+        } else {
+          // Strip brackets
+          maskWithoutBrackets = mask.stringByReplacingOccurrencesOfString("[" + blockBrackets.sLeft + blockBrackets.sRight + "]",
+                                                                          withString: "",
+                                                                          options: .RegularExpressionSearch,
+                                                                          range: nil)
+          
+          // and save as default placeholder
+          // to process this string with template
+          templatePlaceholder = maskWithoutBrackets
+          
+          // Prepare mask template
+          let template = _template()
+          
+          // Prepare empty block container
+          maskObject = [AKMaskFieldBlock]()
+          
+          for (blockId, block) in bracketBlocks.enumerate() {
             
-            // Save value
-            _mask = newValue
+            let range = block.range.toRange()!
+            let multiplier = (blockId * 2) + 1
+            let blockCharsRange = range.startIndex - multiplier..<range.endIndex - multiplier
             
-            if !_mask.isEmpty {
-                
-                // Reset mask object
-                reset()
-                
-                maskObject = [AKMaskFieldBlock]()
-                
-                // Brackets
-                let leftBracket = String(maskBlockBrackets[0])
-                let rightBracket = String(maskBlockBrackets[1])
-                
-                // Copy mask and strip left and right bracket
-                maskWithoutBrackets = _mask.stringByReplacingOccurrencesOfString("[" + leftBracket + rightBracket + "}]", withString: "", options: .RegularExpressionSearch, range: nil)
-                
-                let blocks = findMatches(inString: newValue, usingPattern: "(?<=\\" + leftBracket + ").*?(?=\\" + rightBracket + ")")
-                
-                if blocks.count > 0 {
-                    for (i, block) in blocks.enumerate() {
-                        
-                        let range = (block.range as NSRange).toRange()!
-                        
-                        let multiplier = (i * 2) + 1
-                        
-                        let bRange = range.startIndex - multiplier..<range.endIndex - multiplier
-                        
-                        // Process block characters
-                        var chars = [AKMaskFieldBlockChars]()
-                        
-                        for (y, index) in bRange.enumerate() {
-                            
-                            chars.append(AKMaskFieldBlockChars(index: y, status: false, text: maskTemplateDefaultChar, range: index..<index+1))
-                        }
-                        
-                        // Process blocks
-                        maskObject.append(AKMaskFieldBlock(index: i, status: false, range: bRange, mask: _mask.subStringWithRange(range), text: "", template: "", chars: chars))
-                    }
-                    
-                    // Set Placeholder
-                    maskTemplate = _maskTemplate ?? String(maskTemplateDefaultChar)
-                }
-            }
-        }
-    }
-    
-    @IBInspectable var maskShowTemplate: Bool {
-        get { return _maskShowTemplate }
-        set {
+            // Characters
+            var blockCharacters = [AKMaskFieldBlockChars]()
             
-            // Save value
-            _maskShowTemplate = newValue
-            
-            // Reset text value if mask template property has been changed
-            if !_maskShowTemplate {
-                
-                text = ""
+            for (characterId, characterRangeIndex) in blockCharsRange.enumerate() {
+              blockCharacters.append(
+                AKMaskFieldBlockChars(index: characterId+1,
+                  status: false,
+                  range: characterRangeIndex..<characterRangeIndex+1,
+                  text: nil)
+              )
             }
             
-            // Refresh
-            refresh()
+            // Block
+            maskObject!.append(
+              AKMaskFieldBlock(index: blockId+1,
+                status: false,
+                range: blockCharsRange,
+                mask: mask.substringWithRange(rangeIntToRangeStringIndex(mask, range: range)!),
+                template: blockTemplate(template, inRange: blockCharsRange),
+                chars: blockCharacters)
+            )
+          }
+          
+          // Save object if in future user will clear mask field
+          maskObjectSaved = maskObject
+          
+          // Save new mask text
+          maskText = templatePlaceholder
         }
+        
+        // Update mask text if storyboard field has text proterty
+        textFieldDelegateBlocked(shouldChangeCharactersInRange: NSMakeRange(0, 0), replacementString: text ?? "")
+        
+      } else {
+        destroy()
+      }
     }
-    
-    @IBInspectable var maskTemplate: String {
-        get { return _maskTemplate }
-        set {
-            
-            _maskTemplate = newValue
-            
-            // Check mask object
-            if maskObject.count > 0 {
-                
-                // Save mask
-                maskTemplateText = maskWithoutBrackets
-                
-                // Replace default charachter
-                var copy = true
-                var copyChar = String(maskTemplateDefaultChar)
-                
-                if _maskTemplate.characters.count == maskWithoutBrackets.characters.count {
-                    copy = false
-                } else {
-                    if _maskTemplate.characters.count == 1 {
-                        copyChar = _maskTemplate
-                    }
-                }
-                
-                for (i, block) in maskObject.enumerate() {
-                    
-                    let range = block.range
-                    
-                    // Prepare template
-                    var template = ""
-                    if copy {
-                        for _ in range {
-                            template += copyChar
-                        }
-                    } else  {
-                        template = _maskTemplate.subStringWithRange(range)
-                    }
-                    
-                    // Save changes to value
-                    maskTemplateText = maskTemplateText.stringByReplacingOccurrencesOfString("(.+)", withString: template, options: .RegularExpressionSearch, aRange: range)
-                    
-                    // Replace character to new template character
-                    var chars = maskObject[i].chars
-                    for (y, char) in template.characters.enumerate() {
-                        
-                        chars[y].text = char
-                    }
-                    
-                    // Update mask object
-                    maskObject[i].template = template
-                    maskObject[i].text = template
-                    maskObject[i].chars = chars
-                }
-                
-                // Save pocessed mask text
-                maskText = maskTemplateText
-                
-                // Save object if in future user will clear mask field
-                maskObjectClean = maskObject
-                
-                // Set new text
-                textField(self, shouldChangeCharactersInRange: NSMakeRange(0, 0), replacementString: text!)
-            }
-        }
-    }
-    
-    // MARK: - Configuring mask
-    //         _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
-    
-    var maskBlockBrackets: [Character] = ["{", "}"]
-    
-    // MARK: - Mask object
-    //         _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
-    
-    private(set) var maskObject: [AKMaskFieldBlock]!
-    
-    // MARK: - Status of the mask and an user events
-    //         _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
-    
-    private(set) var maskStatus: AKMaskFieldStatus = .Clear
-    private(set) var maskEvent: AKMaskFieldEvet = .None
+  }
+  
+  /// The string that represents the mask field with replacing format symbol with template characters.
+  /// 
+  /// Can be set (characters count):
+  ///   
+  ///     1	This character will be copied in each block and will replace mask format symbol.
+  ///     Same length as mask without brackets	Template character will replace mask format symbol in same position.
+  ///
+  /// The initial value of this property is *
+  @IBInspectable var maskTemplate: String! = "*" {
+    didSet {
+      
+      guard maskObject != nil else { return }
 
-    // MARK: - Accessing the Delegate
-    //         _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
-    
-    weak var maskDelegate: AKMaskFieldDelegate?
+      // Prepare mask template
+      let template = _template()
+      
+      // Process object
+      for (blockId, block) in maskObject!.enumerate() {
+        maskObject![blockId].template = blockTemplate(template, inRange: block.range)
+      }
+      
+      // Save / reset old mask text with new
+      // templatePlaceholder property was opdated when
+      // we processed object before
+      maskText = templatePlaceholder
+      
+      // Resfesh mask text with completed charachters
+      updateWithObject()
+    }
+  }
+  
+  //  MARK: - Configuring mask
+  
+  /// Two characters (opening and closing bracket for the block mask).
+  ///
+  /// The initial values is { and }.
+  var blockBrackets = AKMaskFieldBrackets(left: "{", right: "}")
+  
+  //  MARK: -  Accessing the Delegate
+  
+  /// A mask field delegate responds to editing-related messages from the mask field.
+  weak var maskDelegate: AKMaskFieldDelegate?
+  
+  //  MARK: - Properties
+  
+  /// An array with all mask blocks
+  private(set) var maskObject: [AKMaskFieldBlock]?
+  
+  /// Current status of the mask field.
+  private(set) var maskStatus: AKMaskFieldStatus = .Clear
+  
+  //  MARK:   Private props
+  
+  /// Mask with stripped brackets.
+  /// Used as source for finding mask character and comparing with new character
+  private var maskWithoutBrackets: String!
+  
+  /// Duplication mask object after creation. Will replace current object after clearing field.
+  private var maskObjectSaved: [AKMaskFieldBlock]?
+  
+  /// Default mask tempate character
+  private var templateDefaultChar: Character = "*"
 
-    // Flags
-    private var flagUpdateEvent: Bool!
+  /// String for processing mask text
+  private var maskText: String = ""
+  
+  /// Mask template placeholder which will placed in mask after initialization .
+  private var templatePlaceholder: String = ""
+  
+  //  MARK:   Flags
+  
+  /// Detects if observers was added. Prevent adding multiple observers.
+  private var observerAdded: Bool = false
+  
+  /// Block observer when needs change text property
+  private var blockobserver: Bool = false
+  
+/// Block delegate when not user change text property
+  private var blockDelegate: Bool = false
+  
+  //  MARK: - Methods
+  
+  func setMask(mask: String, withMaskTemplate maskTemplate: String!) {
+    self.mask = mask
+    self.maskTemplate = maskTemplate ?? String(templateDefaultChar)
+  }
+  
+  //  MARK: - Life cycle
+  
+  deinit { destroy() }
+  
+  //  MARK: - Private
+  
+  /// Initialize with  delegate and oservers:
+  ///   - text
+  ///   - placeholder
+  private func initialize() {
+    guard !observerAdded else { return }
+    
+    delegate = self
+    
+    addObserver(self, forKeyPath: "text", options: [], context: nil)
+    addObserver(self, forKeyPath: "placeholder", options: [], context: nil)
+    observerAdded = !observerAdded
+  }
+  
+  private func destroy() {
+    guard observerAdded else { return }
+    
+    delegate = nil
+    
+    removeObserver(self, forKeyPath: "text")
+    removeObserver(self, forKeyPath: "placeholder")
+    observerAdded = !observerAdded
+    
+    mask = ""
+    text = nil
+    maskObject = nil
+    maskObjectSaved = nil
+  }
+  
+  //  MARK: - Obsever
+  
+  override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+    guard !blockobserver else { return }
+    
+    switch keyPath! {
+    case "text":
+      maskObject = maskObjectSaved
+      maskStatus = .Clear
+      maskText = templatePlaceholder
+      
+      textField(self, shouldChangeCharactersInRange: NSMakeRange(0, 0), replacementString: text ?? "")
+    case "placeholder" :
+      updateWithObject()
+    default: ()
+    }
+  }
 
-    // Saved properties
-    private var _mask: String!
-    private var _maskShowTemplate  = false
-    private var _maskTemplate: String!
-    
-    private(set) var maskWithoutBrackets: String!
-    private var maskTemplateDefaultChar: Character = "*"
-    private(set) var maskTemplateText: String!
-    
-    private(set) var maskText: String!
-    
-    private var maskObjectClean: [AKMaskFieldBlock]!
-    
-    // MARK: - Draw
-    //         _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+  //  MARK: - Private methods
 
-    override func drawRect(rect: CGRect) {
-        super.drawRect(rect)
-        
-        // Apply the delegate
-        delegate = self
-        
-        // This observer used on manual updatind text property
-			
-        addObserver(self, forKeyPath: "text", options: [], context: nil)
-			
-    }
+  /// Checking if current mask template valid for replacing in same range as mask block. 
+  /// And what character we can use for copying in other case.
+  ///
+  private func _template() -> (copy: Bool, character: String) {
     
-    func refresh() {
+    let copy = maskTemplate.characters.count != maskWithoutBrackets.characters.count
+    
+    var templateCharacter = String(templateDefaultChar)
+    
+    if copy {
+      if maskTemplate.characters.count == 1 {
+        templateCharacter = maskTemplate
+      }
+    } else {
+      templateCharacter = maskTemplate
+    }
+   
+    return (copy, templateCharacter)
+  }
 
-        if maskObject.count > 0 && maskText != text {
-            text = maskShowTemplate ? maskText : maskStatus == .Clear ? "" : maskText
+  private func blockTemplate(_template: (copy: Bool, character: String), inRange range: Range<Int>) -> String {
+    
+    var blockTemplate = ""
+    if _template.copy {
+      for _ in range {
+        blockTemplate += _template.character
+      }
+    } else  {
+      blockTemplate = maskTemplate.substringWithRange(rangeIntToRangeStringIndex(maskTemplate, range: range)!)
+    }
+    
+    // Update placeholder with new template block
+    templatePlaceholder = templatePlaceholder.stringByReplacingOccurrencesOfString("(.+)",
+                                                                                  withString: blockTemplate,
+                                                                                  options: .RegularExpressionSearch,
+                                                                                  range: rangeIntToRangeStringIndex(templatePlaceholder, range: range))
+    
+    return blockTemplate
+  }
+  
+  private func updateWithObject() {
+    if maskStatus == .Clear {
+      textFieldObserverBlockedUpdateString(maskText)
+    } else {
+      for b in maskObject! {
+        for c in b.chars {
+          if c.status {
+            textFieldDelegateBlocked(shouldChangeCharactersInRange: toNSRange(c.range), replacementString: String(c.text!))
+          }
         }
-        
-        // Reset manual updating property flag
-        flagUpdateEvent = true
+      }
     }
-    
-    func reset() {
-        maskObject = nil
-        text = ""
-    }
-    
-    // MARK: - Helper Methods
-    //         _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
-    
-    private func updateBlock(block: AKMaskFieldBlock, character: Character!, atIndex index: Int) {
-        
-        // Copy
-        var chars = block.chars
-        var text = block.text
-        
-        // Check char
-        let isChar = character != nil
-        
-        // Switch to mask char if nil
-        let newChar = isChar ? String(character) : block.template.subStringWithRange(index..<index+1)
-        text.replaceRange(index..<index+1, with: newChar)
-        
-        // Save
-        chars[index].text = Character(newChar)
-        chars[index].status = isChar
-        
-        // Update Block Status
-        var charsFilled: Int = 0
-        for char in chars {
-            if char.status {
-                
-                charsFilled++
-            }
-        }
-        
-        maskObject[block.index].status = block.range.toNSRange().length == charsFilled
-        maskObject[block.index].text = text
-        maskObject[block.index].chars = chars
-    }
-    
-    private func resetStringInRange(range: Range<Int>) {
-        
-        if range.toNSRange().length > 0 {
-            for index in range {
-                
-                for block in maskObject {
-                    
-                    let blockRange = block.range
-                    
-                    if  index >= blockRange.startIndex && index < blockRange.endIndex {
-                        
-                        // Set empty char to false
-                        updateBlock(block, character: nil, atIndex: index - blockRange.startIndex)
-                        
-                        break
-                    }
-                }
-            }
-        }
-    }
-    
-    private func replaceStringInRange(inout aStr:String, range: Range<Int>, bStr: String) -> (position: Int, toReplace: Int, replaced:Int) {
-        
-        var oldChar: Character!
-        
-        var pattern = "."
-        let charsToReplace = range.toNSRange().length
-        
-        // Flags
-        var flagNextChar = false
-        
-        // Counters
-        var charsReplaced = 0
-        var position = range.startIndex
-        
-        // Process
-        for char: Character in bStr.characters {
-            
-            // Break from loop if pasted lenght go out mask
-            if position >= aStr.characters.count || (charsToReplace > 0 && charsToReplace == charsReplaced) { break }
-            
-            // Ignore this if we process new char
-            if !flagNextChar {
-                oldChar = aStr[aStr.startIndex.advancedBy(position)]
-            }
-            
-            // Get block with caret
-            let (active, block) = activeBlock(position)
-            
-            let startPosition = block.range.startIndex
-            
-            if oldChar == char && !active {
-                
-                position++
-            } else {
-                
-                // Ignore this if we process new char
-                if !flagNextChar {
-                    
-                    // Set position to block start index
-                    position = max(position, startPosition)
-                    
-                    // Check char with pattern
-                    switch maskWithoutBrackets.subStringWithRange(position...position) {
-                        case "d":
-                            pattern = "\\d"         // Number, Decimal Digit
-                        case "D":
-                            pattern = "\\D"         // Match any character that is not a decimal digit
-                        case "W":
-                            pattern = "\\W"         // Match a non-word character
-                        case "a":
-                            pattern = "[a-zA-Z]"    // Match alphabet
-                        default: ()
-                    }
-                }
-                
-                if findMatches(inString: String(char), usingPattern: pattern).count == 0 {
-                    flagNextChar = true
-                    
-                } else {
-                    
-                    flagNextChar = false
-                    
-                    aStr = aStr.stringByReplacingOccurrencesOfString(".", withString: String(char), options: .RegularExpressionSearch, aRange: Range(start:  position, end: position + 1))
-                    
-                    // Update charachter state
-                    updateBlock(block, character: char, atIndex: position - startPosition)
-                    
-                    // Update ounters
-                    charsReplaced++
-                    position++
-                }
-            }
-        }
-        return (position, charsToReplace, charsReplaced)
-    }
-    
-    private func activeBlock(caret: Int) -> (active: Bool, block: AKMaskFieldBlock) {
-        
-        var _block: AKMaskFieldBlock!
-        var active: Bool!
-        
-        for (_, block) in maskObject.enumerate() {
-            
-            let blockRange = block.range
-            
-            if caret >= blockRange.startIndex && caret < blockRange.endIndex {
-                
-                _block = block
-                active = true
-                
-                break
-            } else {
-                active = false
-                
-                if caret <= blockRange.startIndex {
-                    
-                    _block = block
-                    
-                    break
-                }
-            }
-        }
-        
-        return (active, _block)
-    }
-    
-    private func findMatches(inString string: String, usingPattern pattern: String) -> [AnyObject] {
-        
-//        var error: NSError?
-        let expression = try! NSRegularExpression(pattern: pattern, options: .CaseInsensitive)
-        let matches = expression.matchesInString(string, options: [], range: NSMakeRange(0, string.characters.count))
-        
-        return matches
-    }
-    
-    private func moveCaretToPosition(position: Int) {
-    
-        if let beginningOfDocument: UITextPosition = beginningOfDocument {
-            
-            let caretPosition = positionFromPosition(beginningOfDocument, offset: position)
-            selectedTextRange  = textRangeFromPosition(caretPosition!, toPosition: caretPosition!)
-        }
-    }
-}
+  }
+  
+  /// Clear mask field with reseting object, staus and mask text
+  private func reset() {
+    guard maskObject != nil else {return }
 
-// MARK: - Observers
-//         _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
-
-extension AKMaskField {
-
-    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
-        
-        if (keyPath == "text" && object === self && flagUpdateEvent == true) {
-            
-            // Reset data on manual updating
-            maskText = maskTemplateText
-            maskObject = maskObjectClean
-            
-            // Process field
-            textField(self, shouldChangeCharactersInRange: NSMakeRange(0, 0), replacementString: text!)
-        }
+    maskObject = maskObjectSaved
+    maskStatus = .Clear
+    maskText = templatePlaceholder
+    
+    textFieldObserverBlockedUpdateString(nil, hard: true)
+  }
+  
+  private func textFieldObserverBlockedUpdateString(string: String?, hard: Bool = false) {
+    blockobserver = true
+    if maskStatus == .Clear || hard {
+      if placeholder != nil {
+        text = nil
+      } else {
+        text = templatePlaceholder
+      }
+    } else {
+      text = string
     }
+    blockobserver = false
+  }
+  
+  private func textFieldDelegateBlocked(shouldChangeCharactersInRange range: NSRange, replacementString string: String) {    
+    blockDelegate = true
+    textField(self, shouldChangeCharactersInRange: range, replacementString: string)
+    blockDelegate = false
+  }
+  
+  private func updateCharacter(character: Character!, characterIndex: Int, inBlock blockIndex: Int, withStatus status: Bool) {
+    maskObject![blockIndex].chars[characterIndex].status = status
+    maskObject![blockIndex].chars[characterIndex].text = character
+  }
+  
+  private func replaceCharacter(character: Character, inRange range: Range<Int>, beforeReplace:(() -> Void), afterReplace: (() -> Void)) {
+    
+    let maskCharacter = maskWithoutBrackets.substringWithRange(rangeIntToRangeStringIndex(maskWithoutBrackets, range: range.startIndex...range.startIndex)!)
+    
+    var pattern = "."
+    switch maskCharacter {
+    case "d": pattern = "\\d"         // Number, Decimal Digit
+    case "D": pattern = "\\D"         // Match any character that is not a decimal digit
+    case "W": pattern = "\\W"         // Match a non-word character
+    case "a": pattern = "[a-zA-Z]"    // Match alphabet
+    default: ()
+    }
+    
+    if !matchesInString(String(character), regularExpressionPattern: pattern).isEmpty {
+      beforeReplace()
+      maskText = maskText.stringByReplacingOccurrencesOfString(".",
+                                                               withString: String(character),
+                                                               options: .RegularExpressionSearch,
+                                                               range: rangeIntToRangeStringIndex(maskText, range: range.startIndex...range.startIndex))
+      
+      afterReplace()
+    }
+  }
+  
+  private func resetString(withString string: String, inRange range: Range<Int>) {
+    
+    maskText.replaceRange(rangeIntToRangeStringIndex(maskText, range: range)!, with: string)
+    
+    for ind in range {
+      for (blockIndex, block) in self.maskObject!.enumerate() {
+        if block.range ~= ind {
+          let charId = ind - block.range.startIndex
+          updateCharacter(nil, characterIndex: charId, inBlock: blockIndex, withStatus: false)
+          break
+        }
+      }
+    }
+  }
+  
+  private func debugMaskObject() {
+    guard maskObject != nil else {
+      return
+    }
+    
+    for b in maskObject! {
+      print("index \(b.index)")
+      print("status \(b.status)")
+      print("mask \(b.mask)")
+      
+      print("template \(b.template)")
+      print("range \(b.range)")
+      print("   ----  ")
+      for c in b.chars {
+        print("   index \(c.index)")
+        print("   status \(c.status)")
+        print("   range \(c.range)")
+        print("   ----  ")
+      }
+      print(" ")
+    }
+  }
+  
+  private func matchesInString(string: String, regularExpressionPattern pattern: String) -> [NSTextCheckingResult] {
+    let expression = try! NSRegularExpression(pattern: pattern, options: .CaseInsensitive)
+    return expression.matchesInString(string, options: NSMatchingOptions(rawValue: 0), range: NSMakeRange(0, string.characters.count))
+  }
+  
+  private func moveCaretToPosition(position: Int) {
+    if let beginningOfDocument: UITextPosition = beginningOfDocument {
+      let caretPosition = positionFromPosition(beginningOfDocument, offset: position)
+      selectedTextRange  = textRangeFromPosition(caretPosition!, toPosition: caretPosition!)
+    }
+  }
+  
+  private func toNSRange(range: Range<Int>) -> NSRange {
+    let loc = range.startIndex
+    let len = range.endIndex - loc
+    return NSMakeRange(loc, len)
+  }
+  
+  private func rangeIntToRangeStringIndex(str: String, range: Range<Int>) -> Range<String.Index>? {
+    guard range.startIndex <= str.characters.count && range.endIndex <= str.characters.count else {
+      return nil
+    }
+    return Range<String.Index>(str.startIndex.advancedBy(range.startIndex)..<str.startIndex.advancedBy(range.endIndex))
+  }  
 }
 
 // MARK: - UITextFieldDelegate
 //         _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
 extension AKMaskField: UITextFieldDelegate {
-
-    func textFieldDidBeginEditing(textField: UITextField) {
-        if maskObject.count > 0 {
-            
-            var position = 0
-            
-            switch maskStatus {
-            case .Complete:
-                
-                position = maskTemplateText.characters.count
-                
-            case .Incomplete:
-                
-                for block in maskObject {
-                    for char in block.chars {
-                        
-                        
-                        if !char.status {
-                            
-                            position = char.range.startIndex
-                            
-                            break
-                        }
-                    }
-                    if position != 0 { break }
-                }
-            default: ()
-            }
-            
-            // Move caret to new position if field on focus
-            moveCaretToPosition(position)
-            
-            // Delegate
-            maskDelegate?.maskFieldDidBeginEditing?(self)
-        }
+  
+  func textFieldDidBeginEditing(textField: UITextField) {
+    
+    guard let maskObject = maskObject where !maskObject.isEmpty else {
+      return
     }
-    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+    
+    var position = 0
+    
+    switch maskStatus {
+      case .Clear:
+      
+      textFieldObserverBlockedUpdateString(templatePlaceholder)
+      position = (maskObject.first as AKMaskFieldBlock!).range.startIndex
+      
+      case .Incomplete:
+      
+        for block in maskObject {
+          for char in block.chars {
+            if !char.status {
+              
+              position = char.range.startIndex
+              break
+            }
+          }
+          if position != 0 { break }
+      }
+      case .Complete:
+      position = maskText.characters.count
+    }
+    
+    moveCaretToPosition(position)
+    
+    //  Delegate
+    //
+    maskDelegate?.maskFieldDidBeginEditing(self)
+  }
+
+  func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+    
+
+    
+    guard let maskObject = maskObject where !maskObject.isEmpty else {
+      
+       print("range \(range)")
+      
+      return true
+    }
+    
+  
+    
+    let rangeInt = range.toRange()!
+    
+    var resetBeforeInsert = false
+    var cuttedtemplatePlaceholder: String!
+    
+    // Initial carret position
+    var caret = range.location
+    
+    if range.length != 0 {
+
+        cuttedtemplatePlaceholder = templatePlaceholder.substringWithRange(rangeIntToRangeStringIndex(templatePlaceholder, range: rangeInt)!)
+      
+        if string.isEmpty {
         
-        // Set flags
-        flagUpdateEvent = false
-        
-        // Change chars
-        if maskObject.count > 0 {
+          resetString(withString: cuttedtemplatePlaceholder, inRange: rangeInt)
+ 
+          if caret < self.maskObject?.first?.range.startIndex {
+            caret = (self.maskObject?.first?.range.startIndex)!
             
-            let range = range.toRange()!
+            textFieldObserverBlockedUpdateString(maskText)
+            moveCaretToPosition(caret)
             
-            // Copy
-            var _maskText = maskText as String
-            let charactersToChange = _maskText.subStringWithRange(range)
+            maskStatus = .Clear
+            maskDelegate?.maskField(self, didChangeCharactersInRange: range, replacementString: string, withEvent: .Delete)
             
-            // Step 1
-            // Replace current string with template string
-            _maskText = _maskText.stringByReplacingOccurrencesOfString(".+", withString: maskTemplateText.subStringWithRange(range), options: .RegularExpressionSearch, aRange: range)
-            
-            // Step 2
-            // Clear exist chars in text, with replacing with mask template char
-            resetStringInRange(range)
-            
-            // Step 3
-            // Replace current string with new one
-            let chars = replaceStringInRange(&_maskText, range: range, bStr: string)
-            
-            // Step 4
-            // Save
-            maskText = _maskText
-            
-            // Step 5
-            // Set current event to property
-            
-//            var event: AKMaskFieldEvet!
-            if chars.replaced == chars.toReplace && chars.position == range.startIndex {
-                if  chars.position == 0 && range.startIndex == 0 {
-                    
-                    maskEvent = .Delete
-                } else {
-                    maskEvent = .None
-                }
-            } else if  chars.replaced != 0 &&  chars.toReplace != 0 {
-                maskEvent = .Replace
-            } else if  chars.replaced == 0  {
-                if  chars.position != range.startIndex {
-                    maskEvent = .Insert
-                } else {
-                    maskEvent = .Delete
-                }
-            } else {
-                maskEvent = .Insert
-            }
-            
-            // Step 6
-            // Set current status to property
-            
-            var filled = 0
-            var total = 0
-            
-            for block in maskObject {
-                for char in block.chars  {
-                    if char.status {
-                        filled++
-                    }
-                }
-                total += block.range.toNSRange().length
-            }
-            if filled == 0 {
-                maskStatus = .Clear
-                
-            } else if filled == total {
-                maskStatus = .Complete
-                
-            } else {
-                maskStatus = .Incomplete
-            }
-            
-            // Step 7
-            // Refresh field
-            refresh()
-            
-            // Step 8
-            // Move caret to new position if field on focus
-            
-            moveCaretToPosition(chars.position)
-            
-            // Step 9
-            // Send delegate
-            maskDelegate?.maskField!(self, shouldChangeCharacters: charactersToChange, inRange: range.toNSRange(), replacementString: string)
             
             return false
-            
-        } else { return true }
-    }
-	
+          }
 
-	
+          for (blockIndex, block) in maskObject.enumerate() {
+            if blockIndex != 0 {
+              if self.maskObject![blockIndex-1].range.endIndex ... block.range.startIndex ~= caret {
+                caret = self.maskObject![blockIndex-1].range.endIndex
+                break
+              }
+            }
+          }
+        } else {
+          resetBeforeInsert = true
+      }
+    }
+    
+    
+
+    if !string.isEmpty {
+      for character in string.characters {
+        if (range.length != 0 && caret >= rangeInt.endIndex) || caret >= maskText.characters.count { break }
+        
+        for (blockIndex, block) in maskObject.enumerate() {
+          
+          let blockRange = block.range
+          
+          if caret >= blockRange.startIndex && caret < blockRange.endIndex {
+            replaceCharacter(character,
+                             inRange: caret...caret,
+                             beforeReplace: {
+                              if resetBeforeInsert {
+                                self.resetString(withString: cuttedtemplatePlaceholder, inRange: rangeInt)
+                                resetBeforeInsert = false
+                              }
+              },
+                             afterReplace: {
+                              self.updateCharacter(character, characterIndex: caret - blockRange.startIndex, inBlock: blockIndex, withStatus: true)
+                              caret += 1
+            })
+            break
+          } else {
+
+            let maskCharacter = Character(maskText.substringWithRange(rangeIntToRangeStringIndex(maskText, range: caret...caret)!))
+            
+            if maskCharacter == character {
+              caret += 1
+              break
+            } else {
+              if caret <= blockRange.startIndex {
+                
+                replaceCharacter(character,
+                                 inRange: blockRange,
+                                 beforeReplace: {
+                                  if resetBeforeInsert {
+                                    self.resetString(withString: cuttedtemplatePlaceholder, inRange: rangeInt)
+                                    resetBeforeInsert = false
+                                  }
+                  },
+                                 afterReplace: {
+                                  caret = blockRange.startIndex
+                                  self.updateCharacter(character, characterIndex: 0, inBlock: blockIndex, withStatus: true)
+                                  caret += 1
+                                  
+                })
+               
+                break
+              }
+            }
+          }
+        }
+      }
+    }
+  
+    //  Events
+
+    var event: AKMaskFieldEvent = .Error
+    if rangeInt.startIndex < caret {
+      if range.length != 0 {
+        event = .Replace
+      } else {
+        event = .Insert
+      }
+    } else if rangeInt.endIndex > caret {
+      event = .Delete
+    } else if range.length == 0 && string.isEmpty {
+      event = .Delete
+    }
+    
+    //  Save mask status
+   
+    var total = 0
+    
+    maskStatus = .Clear
+    
+    for (blockIndex, block) in self.maskObject!.enumerate() {
+      var filled = 0
+      
+      for char in block.chars  {
+        if char.status {
+          filled += 1
+
+          maskStatus = .Incomplete
+        }
+      }
+      
+      if block.chars.count == filled {
+        self.maskObject![blockIndex].status = true
+        total += 1
+      } else {
+        self.maskObject![blockIndex].status = false
+      }
+    }
+    
+    if maskObject.count == total {
+      maskStatus = .Complete
+    }
+    
+    print(maskStatus)
+    print(event)
+    
+    
+    textFieldObserverBlockedUpdateString(maskText)
+    
+    if !blockDelegate {
+      
+      moveCaretToPosition(caret)
+      maskDelegate?.maskField(self, didChangeCharactersInRange: range, replacementString: string, withEvent: event)
+    }
+    
+    return false
+  }
+}
+
+//  MARK: - AKMaskFieldDelegate
+
+protocol AKMaskFieldDelegate : class  {
+  
+  /// Tells the delegate that editing began for the specified mask field.
+  func maskFieldDidBeginEditing(maskField: AKMaskField)
+  
+  /// Tells the delegate that specified mask field change text with event.
+  func maskField(maskField: AKMaskField, didChangeCharactersInRange range: NSRange, replacementString string: String, withEvent event: AKMaskFieldEvent)
+}
+
+extension AKMaskFieldDelegate {
+  func maskFieldDidBeginEditing(maskField: AKMaskField) {}
+  func maskField(maskField: AKMaskField, didChangeCharactersInRange range: NSRange, replacementString string: String, withEvent event: AKMaskFieldEvent) {}
 }
