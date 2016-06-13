@@ -7,6 +7,8 @@
 //  Copyright (c) 2016 Artem Krachulov. All rights reserved.
 //  Website: http://www.artemkrachulov.com/
 //
+// v. 0.1
+//
 
 struct AKMaskFieldBlockChars {
   /// Character position number in the mask block

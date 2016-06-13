@@ -125,17 +125,17 @@ class DemoViewController: UIViewController {
   
   @IBAction func clearFields(sender: AnyObject) {
     
-    card?.text = ""
-    cardProgrammatically?.text = ""
+    card?.updateText("")
+    cardProgrammatically?.updateText("")
     
-    phone?.text = ""
-    phoneProgrammatically?.text = ""
+    phone?.updateText("")
+    phoneProgrammatically?.updateText("")
     
-    key?.text = ""
-    keyProgrammatically?.text = ""
+    key?.updateText("")
+    keyProgrammatically?.updateText("")
     
-    license?.text = ""
-    licenseProgrammatically?.text = ""
+    license?.updateText("")
+    licenseProgrammatically?.updateText("")
   }
 }
 

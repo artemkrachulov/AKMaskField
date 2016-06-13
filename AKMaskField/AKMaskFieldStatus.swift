@@ -7,9 +7,10 @@
 //  Copyright (c) 2016 Artem Krachulov. All rights reserved.
 //  Website: http://www.artemkrachulov.com/
 //
+// v. 0.1
+//
 
 import Foundation
-
 
 enum AKMaskFieldStatus {
   

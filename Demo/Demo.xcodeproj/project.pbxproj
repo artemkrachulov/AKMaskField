@@ -24,6 +24,7 @@
 		439602041C9AE57A0060EC39 /* AKMaskFieldBlockChars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439601FE1C9AE57A0060EC39 /* AKMaskFieldBlockChars.swift */; };
 		43BAECC91D080031004C52F2 /* AKMaskFieldStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BAECC81D080031004C52F2 /* AKMaskFieldStatus.swift */; };
 		43BAECCB1D0801AE004C52F2 /* AKMaskFieldEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BAECCA1D0801AE004C52F2 /* AKMaskFieldEvent.swift */; };
+		43C751951D095F2B00DD49BE /* AKMaskFieldUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C751941D095F2B00DD49BE /* AKMaskFieldUtility.swift */; };
 		43DA02771C9D6299007932D5 /* DemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43DA02761C9D6299007932D5 /* DemoViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +48,7 @@
 		439601FE1C9AE57A0060EC39 /* AKMaskFieldBlockChars.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AKMaskFieldBlockChars.swift; sourceTree = "<group>"; };
 		43BAECC81D080031004C52F2 /* AKMaskFieldStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AKMaskFieldStatus.swift; sourceTree = "<group>"; };
 		43BAECCA1D0801AE004C52F2 /* AKMaskFieldEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AKMaskFieldEvent.swift; sourceTree = "<group>"; };
+		43C751941D095F2B00DD49BE /* AKMaskFieldUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AKMaskFieldUtility.swift; sourceTree = "<group>"; };
 		43DA02761C9D6299007932D5 /* DemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -123,9 +125,18 @@
 				43BAECC81D080031004C52F2 /* AKMaskFieldStatus.swift */,
 				439601FE1C9AE57A0060EC39 /* AKMaskFieldBlockChars.swift */,
 				43058B141D0555E600D4526E /* AKMaskFieldBrackets.swift */,
+				43C751931D095F0800DD49BE /* Tools */,
 			);
 			name = AKMaskField;
 			path = ../AKMaskField;
+			sourceTree = "<group>";
+		};
+		43C751931D095F0800DD49BE /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				43C751941D095F2B00DD49BE /* AKMaskFieldUtility.swift */,
+			);
+			name = Tools;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -208,6 +219,7 @@
 			files = (
 				43058B151D0555E600D4526E /* AKMaskFieldBrackets.swift in Sources */,
 				439602041C9AE57A0060EC39 /* AKMaskFieldBlockChars.swift in Sources */,
+				43C751951D095F2B00DD49BE /* AKMaskFieldUtility.swift in Sources */,
 				439602031C9AE57A0060EC39 /* AKMaskFieldBlock.swift in Sources */,
 				437113031A4B22EF00FF6252 /* ViewController.swift in Sources */,
 				43BAECCB1D0801AE004C52F2 /* AKMaskFieldEvent.swift in Sources */,

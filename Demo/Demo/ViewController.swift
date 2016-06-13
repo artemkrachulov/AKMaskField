@@ -9,7 +9,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, AKMaskFieldDelegate, UITextFieldDelegate {
   
   //  MARK: - Navigation
   

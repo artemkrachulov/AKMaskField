@@ -66,6 +66,20 @@ override func viewDidLoad() {
 > Example if you will set `text` property to value `1234`. A mask field will show `0123-EFGH-IJKL-MNOP` after loading view controller.
 > Or if `placeholder` property will be not empty you will see placeholder text (oly when mask field is clear).
 
+### Set new text
+
+```swift
+func updateText(text: String?)
+```
+Will update text in the mask field.
+Parameters:
+
+* `text` :  The text, that you want to display by the mask field.
+
+> This property updated manually when user type anything in the mask field.
+
+
+
 ## Set up mask
 ### Properties
 
@@ -191,6 +205,12 @@ The initial value of this property is `Clear`.
 optional func maskFieldDidBeginEditing(maskField: AKMaskField)
 ```
 Tells the delegate that editing began for the specified mask field `maskField`.
+
+```swift
+optional func maskFieldDidEndEditing(maskField: AKMaskField)
+```
+
+Tells the delegate that editing finished for the specified mask field.
 
 ```swift
 optional func maskField(maskField: AKMaskField, didChangeCharactersInRange range: NSRange, replacementString string: String, withEvent event: AKMaskFieldEvent)
