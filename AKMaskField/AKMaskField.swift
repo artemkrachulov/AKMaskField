@@ -28,7 +28,7 @@
 
 import UIKit
 
-class AKMaskField: UITextField {
+public class AKMaskField: UITextField {
 
   //  MARK: - Set up mask
   
@@ -262,7 +262,7 @@ class AKMaskField: UITextField {
   
   //  MARK: - Obsever
   
-  override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+  override public func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
     guard !blockobserver else { return }
     
     switch keyPath! {
@@ -444,7 +444,7 @@ class AKMaskField: UITextField {
 
 extension AKMaskField: UITextFieldDelegate {
   
-  func textFieldDidBeginEditing(textField: UITextField) {
+  public func textFieldDidBeginEditing(textField: UITextField) {
     guard let maskObject = maskObject where !maskObject.isEmpty else { return }
     
     // Initial carret position
@@ -478,14 +478,14 @@ extension AKMaskField: UITextFieldDelegate {
     maskDelegate?.maskFieldDidBeginEditing(self)
   }
   
-  func textFieldDidEndEditing(textField: UITextField) {
+  public func textFieldDidEndEditing(textField: UITextField) {
     isBecomeFirstResponder = false
     updateMaskTexWithString(maskText)
     
     maskDelegate?.maskFieldDidEndEditing(self)
   }
 
-  func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+  public func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
     guard let maskObject = maskObject where !maskObject.isEmpty else { return true }
     
     let rangeInt = range.toRange()!
