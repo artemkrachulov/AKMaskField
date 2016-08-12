@@ -10,8 +10,6 @@
 // v. 0.1
 //
 
-import Foundation
-
 enum AKMaskFieldStatus {
   
   /// No one character was entered

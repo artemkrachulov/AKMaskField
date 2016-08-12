@@ -10,9 +10,8 @@
 // v. 0.1
 //
 
-import Foundation
-
 enum AKMaskFieldEvent {
+  
   /// Error with placing new character
   case Error
   
