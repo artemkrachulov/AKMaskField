@@ -120,6 +120,8 @@ public class AKMaskField: UITextField {
       }
     }
   }
+
+  public var defaultMaskAttributes: [String: AnyObject] = [:]
   
   /// The string that represents the mask field with replacing format symbol with template characters.
   /// 
@@ -169,7 +171,7 @@ public class AKMaskField: UITextField {
   private(set) public var maskObject: [AKMaskFieldBlock]?
   
   /// Current status of the mask field.
-  private(set) var maskStatus: AKMaskFieldStatus = .Clear
+  private(set) public var maskStatus: AKMaskFieldStatus = .Clear
   
   //  MARK: Private props
 
@@ -310,7 +312,7 @@ public class AKMaskField: UITextField {
   }
   
   /// Updating text in field
-  public func updateMaskTexWithString(string: String?) {
+  private func updateMaskTexWithString(string: String?) {
     if maskStatus == .Clear {
       if placeholder != nil && !isBecomeFirstResponder {
         text = nil
