@@ -44,7 +44,7 @@ public class AKMaskField: UITextField {
   ///     .	: Corresponds to any symbol (default)
   ///
   /// This string is empty by default.
-  @IBInspectable var mask: String? = "" {
+  @IBInspectable public var mask: String? = "" {
     didSet {
       if let mask = mask where !mask.isEmpty {
         
@@ -129,7 +129,7 @@ public class AKMaskField: UITextField {
   ///     Same length as mask without brackets	Template character will replace mask format symbol in same position.
   ///
   /// The initial value of this property is *
-  @IBInspectable var maskTemplate: String! = "*" {
+  @IBInspectable public var maskTemplate: String! = "*" {
     didSet {
       guard maskObject != nil else { return }
 
@@ -156,17 +156,17 @@ public class AKMaskField: UITextField {
   /// Two characters (opening and closing bracket for the block mask).
   ///
   /// The initial values is { and }.
-  var blockBrackets = AKMaskFieldBrackets(left: "{", right: "}")
+  public var blockBrackets = AKMaskFieldBrackets(left: "{", right: "}")
   
   //  MARK: -  Accessing the Delegate
   
   /// A mask field delegate responds to editing-related messages from the mask field.
-  weak var maskDelegate: AKMaskFieldDelegate?
+  public weak var maskDelegate: AKMaskFieldDelegate?
   
   //  MARK: - Properties
   
   /// An array with all mask blocks
-  private(set) var maskObject: [AKMaskFieldBlock]?
+  private(set) public var maskObject: [AKMaskFieldBlock]?
   
   /// Current status of the mask field.
   private(set) var maskStatus: AKMaskFieldStatus = .Clear
@@ -181,7 +181,7 @@ public class AKMaskField: UITextField {
   private var maskObjectSaved: [AKMaskFieldBlock]?
   
   /// Default mask tempate character
-  private var templateDefaultChar: Character = "*"
+  private let templateDefaultChar: Character = "*"
 
   /// String for processing mask text
   private var maskText: String = ""
@@ -205,7 +205,7 @@ public class AKMaskField: UITextField {
   
   //  MARK: - Methods
   
-  func setMask(mask: String, withMaskTemplate maskTemplate: String!) {
+  public func setMask(mask: String, withMaskTemplate maskTemplate: String!) {
     self.mask = mask
     self.maskTemplate = maskTemplate ?? String(templateDefaultChar)
   }
@@ -251,7 +251,7 @@ public class AKMaskField: UITextField {
   deinit { destroy() }
   
   /// text property
-  func updateText(text: String?) {
+  public func updateText(text: String?) {
     guard maskObject != nil else { return }
     
     maskObject = maskObjectSaved
@@ -310,7 +310,7 @@ public class AKMaskField: UITextField {
   }
   
   /// Updating text in field
-  func updateMaskTexWithString(string: String?) {    
+  public func updateMaskTexWithString(string: String?) {
     if maskStatus == .Clear {
       if placeholder != nil && !isBecomeFirstResponder {
         text = nil
@@ -622,7 +622,7 @@ extension AKMaskField: UITextFieldDelegate {
 
 //  MARK: - AKMaskFieldDelegate
 
-protocol AKMaskFieldDelegate : class  {
+public protocol AKMaskFieldDelegate : class  {
   
   /// Tells the delegate that editing began for the specified mask field.
   func maskFieldDidBeginEditing(maskField: AKMaskField)

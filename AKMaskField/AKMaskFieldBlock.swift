@@ -10,7 +10,7 @@
 // v. 0.1
 //
 
-struct AKMaskFieldBlock {
+public struct AKMaskFieldBlock {
   /// Block position number in the mask
   var index: Int
   
