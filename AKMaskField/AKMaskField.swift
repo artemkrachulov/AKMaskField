@@ -636,7 +636,7 @@ public protocol AKMaskFieldDelegate : class  {
   func maskField(maskField: AKMaskField, didChangeCharactersInRange range: NSRange, replacementString string: String, withEvent event: AKMaskFieldEvent)
 }
 
-extension AKMaskFieldDelegate {
+public extension AKMaskFieldDelegate {
   func maskFieldDidBeginEditing(maskField: AKMaskField) {}
   func maskFieldDidEndEditing(maskField: AKMaskField) {}
   func maskField(maskField: AKMaskField, didChangeCharactersInRange range: NSRange, replacementString string: String, withEvent event: AKMaskFieldEvent) {}
