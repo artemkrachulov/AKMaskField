@@ -10,7 +10,7 @@
 // v. 0.1
 //
 
-enum AKMaskFieldStatus {
+public enum AKMaskFieldStatus {
   
   /// No one character was entered
   case Clear

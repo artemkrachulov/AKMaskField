@@ -10,7 +10,7 @@
 // v. 0.1
 //
 
-enum AKMaskFieldEvent {
+public enum AKMaskFieldEvent {
   
   /// Error with placing new character
   case Error

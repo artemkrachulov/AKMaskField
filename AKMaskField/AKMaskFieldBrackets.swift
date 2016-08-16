@@ -10,7 +10,7 @@
 // v. 0.1
 //
 
-struct AKMaskFieldBrackets {
+public struct AKMaskFieldBrackets {
   let left: Character
   let right: Character
   
