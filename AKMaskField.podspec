@@ -12,7 +12,7 @@ s.name         = "AKMaskField"
 
   s.ios.deployment_target = "8.0"
 
-  s.source       = { :git => "https://github.com/artemkrachulov/AKMaskField.git", :tag => "v" + s.version.to_s }
+  s.source       = { :git => "https://github.com/artemkrachulov/AKMaskField.git", :tag => s.version.to_s }
   s.source_files  = "AKMaskField/*.{swift}"
 
   s.framework  = "UIKit"
