@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
 s.name         = "AKMaskField"
-  s.version      = "1.0"
+  s.version      = "1.0.0."
   s.summary      = "Enter data in the fixed quantity and in the certain format."
   s.description  = <<-DESC
                    AKMaskField is UITextField subclass which allows enter data in the fixed quantity and in the certain format (credit cards, telephone numbers, dates, etc.). You only need setup mask string and mask template string visible for the user.
