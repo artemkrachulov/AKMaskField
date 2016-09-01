@@ -9,15 +9,14 @@
 
 import UIKit
 
-class ViewController: UIViewController, AKMaskFieldDelegate, UITextFieldDelegate {
+class ViewController: UIViewController {
   
   //  MARK: - Navigation
   
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     if let vc = segue.destinationViewController as? DemoViewController {
-      vc.programmatically = segue.identifier == "programmatically"
-      vc.navigationItem.title = "Programmatically"
+      vc.programmatically = segue.identifier == "Programmatically"
+      vc.navigationItem.title = segue.identifier
     }
   }
 }
-

@@ -7,17 +7,8 @@
 //  Copyright (c) 2016 Artem Krachulov. All rights reserved.
 //  Website: http://www.artemkrachulov.com/
 //
-// v. 0.1
-//
 
+/// The Mask Field, Block and Block Character status property constant.
 enum AKMaskFieldStatus {
-  
-  /// No one character was entered
-  case Clear
-  
-  /// At least one character is not entered
-  case Incomplete
-  
-  /// All characters was entered
-  case Complete
+  case Clear, Incomplete, Complete
 }

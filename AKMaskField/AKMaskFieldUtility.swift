@@ -11,57 +11,75 @@
 import UIKit
 
 class AKMaskFieldUtility {
-  
-  //  MARK: - Range+Extension.swift
-  
-  /// Convert to NSRange object.
-  ///
-  /// Usage:
-  ///
-  ///     let range = 10..<15 // 10..<15
-  ///     let convertedRange = range.toNSRange() // (10,5)
-  class func toNSRange(range: Range<Int>) -> NSRange {
-    let loc = range.startIndex
-    let len = range.endIndex - loc
-    return NSMakeRange(loc, len)
-  }
-  
-  /// Convert Range<Int> to Range<String.Index> object
-  ///
-  /// Usage:
-  ///
-  ///     let str = "Hello World!"
-  ///     let toRangeStringIndex = converRangeIntToRangeStringIndex(str, range: 6..<11) // 6..<11
-  class func rangeIntToRangeStringIndex(str: String, range: Range<Int>) -> Range<String.Index>? {
-    guard range.startIndex <= str.characters.count && range.endIndex <= str.characters.count else {
-      return nil
-    }
-    return Range<String.Index>(str.startIndex.advancedBy(range.startIndex)..<str.startIndex.advancedBy(range.endIndex))
-  }
-  
-  //  MARK: -
-  
-  class func matchesInString(string: String, usingPattern pattern: String) -> [NSTextCheckingResult] {
-    let expression = try! NSRegularExpression(pattern: pattern, options: .CaseInsensitive)
-    return expression.matchesInString(string, options: NSMatchingOptions(rawValue: 0), range: NSMakeRange(0, string.characters.count))
-  }
- 
-  class func moveCaretToPosition(position: Int, inField field: AKMaskField) -> UITextRange?  {
-    if let beginningOfDocument: UITextPosition = field.beginningOfDocument {
-      let caretPosition = field.positionFromPosition(beginningOfDocument, offset: position)
-      return field.textRangeFromPosition(caretPosition!, toPosition: caretPosition!)
+
+  /// [Source](http://stackoverflow.com/questions/25138339/nsrange-to-rangestring-index)
+  class func rangeFromString(string: String, nsRange: NSRange) -> Range<String.Index>! {
+    let from16 = string.utf16.startIndex.advancedBy(nsRange.location, limit: string.utf16.endIndex)
+    let to16 = from16.advancedBy(nsRange.length, limit: string.utf16.endIndex)
+    
+    if let from = String.Index(from16, within: string),
+      let to = String.Index(to16, within: string) {
+      return from ..< to
     }
     return nil
   }
   
-  class func replaceOccurrencesInString(string: String, usingPattern pattern: String, withString replacement: String, range searchRange: Range<Int>!) -> String {
-    return string.stringByReplacingOccurrencesOfString(pattern,
-                                                withString: replacement,
-                                                options: .RegularExpressionSearch,
-                                                range: searchRange == nil ? nil : rangeIntToRangeStringIndex(string, range: searchRange))
+  class func substring(sourceString: String?, withNSRange range: NSRange) -> String {
+    guard let sourceString = sourceString else {
+      return ""
+    }
+    return sourceString.substringWithRange(rangeFromString(sourceString, nsRange: range))
   }
   
-  class func substringString(string: String, withRange range: Range<Int>) -> String {
-    return string.substringWithRange(rangeIntToRangeStringIndex(string, range: range)!)
+  class func replace(inout sourceString: String!, withString string: String, inRange range: NSRange) {
+    sourceString = sourceString.stringByReplacingCharactersInRange(rangeFromString(sourceString, nsRange: range), withString: string)
   }
+  
+  class func replacingOccurrencesOfString(inout string: String!, target: String, withString replacement: String) {    
+    string = string.stringByReplacingOccurrencesOfString(target, withString: replacement, options: .RegularExpressionSearch, range: nil)
+  }
+  
+  class func maskField(maskField: UITextField, moveCaretToPosition position: Int) {
+    guard let caretPosition = maskField.positionFromPosition(maskField.beginningOfDocument, offset: position) else {
+      return
+    }
+    
+    maskField.selectedTextRange = maskField.textRangeFromPosition(caretPosition, toPosition: caretPosition)
+  }
+  
+  class func matchesInString(string: String, pattern: String) -> [NSTextCheckingResult] {
+    return  try!
+      NSRegularExpression(pattern: pattern, options: .CaseInsensitive)
+        .matchesInString(string, options: NSMatchingOptions(rawValue: 0), range: NSMakeRange(0, string.characters.count))
+  }
+  
+  class func findIntersection(ranges: [NSRange], withRange range: NSRange) -> [NSRange?] {
+    
+    var intersectRanges = [NSRange?]()
+    
+    for r in ranges {
+      
+      var intersectRange: NSRange!
+      
+      let delta = r.location - range.location
+      var location, length, tail: Int
+      
+      if delta <= 0 {
+        location = range.location
+        length   = range.length
+        tail     = r.length - abs(delta)
+      } else {
+        location = r.location
+        length   = r.length
+        tail     = range.length - abs(delta)
+      }
+      
+      if tail > 0 && length > 0 {
+        intersectRange = NSMakeRange(location, min(tail, length))
+      }
+      
+      intersectRanges.append(intersectRange)
+    }
+    return intersectRanges
+  } 
 }

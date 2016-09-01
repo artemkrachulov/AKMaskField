@@ -7,20 +7,8 @@
 //  Copyright (c) 2016 Artem Krachulov. All rights reserved.
 //  Website: http://www.artemkrachulov.com/
 //
-// v. 0.1
-//
 
+/// Event constant value received after manipulations with the Mask Field.
 enum AKMaskFieldEvent {
-  
-  /// Error with placing new character
-  case Error
-  
-  /// Entering new text
-  case Insert
-  
-  /// Deleting text from field
-  case Delete
-  
-  /// Selecting and replacing or deleting text
-  case Replace
+  case Error, Insert, Delete ,Replace
 }

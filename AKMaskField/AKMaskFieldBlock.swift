@@ -7,25 +7,64 @@
 //  Copyright (c) 2016 Artem Krachulov. All rights reserved.
 //  Website: http://www.artemkrachulov.com/
 //
-// v. 0.1
-//
 
-struct AKMaskFieldBlock {
-  /// Block position number in the mask
+import Foundation
+
+/// A structure that contains the mask block main properties.
+public struct AKMaskFieldBlock {
+  
+  //  MARK: - General
+  
+  /// Block index in the mask
   var index: Int
   
-  /// Current block complete status
-  var status: Bool
+  /// Returns the current block status.
+  var status: AKMaskFieldStatus {
+    
+    let completedChars: [AKMaskFieldBlockCharacter] = chars.filter { return $0.status != .Clear }
+    
+    switch completedChars.count {
+    case 0           : return .Clear
+    case chars.count : return .Complete
+    default          : return .Incomplete
+    }
+  }
   
-  /// Block range in the mask (without brackets)
-  var range: Range<Int>
+  /// An array containing all characters inside block.
+  var chars: [AKMaskFieldBlockCharacter]
   
-  /// Mask characters inside this block between brackets
-  var mask: String
+  //  MARK: - Pattern
   
-  /// Mask template placeholder corresponding mask characters inside this block
-  var template: String
+  /// The mask pattern that represent current block.
+  var pattern: String {
+
+    var pattern: String = ""
+    for char in chars {
+       pattern += char.pattern.rawValue
+    }
+    return pattern
+  }
   
-  /// Characters list with parameters
-  var chars: [AKMaskFieldBlockChars]
+  /// Location of the mask pattern in the mask.
+  var patternRange: NSRange {
+    return NSMakeRange(chars.first!.patternRange.location, chars.count)
+  }
+  
+  //  MARK: - Mask template 
+  
+  /// The mask template string that represent current block.
+  var template: String {
+    var template: String = ""
+    for char in chars {
+      template.append(char.template)
+    }
+    return template
+  }
+  
+  /// Location of the mask template string in the mask template.
+  var templateRange: NSRange {
+    return NSMakeRange(chars.first!.templateRange.location, chars.count)
+  }
+  
+
 }

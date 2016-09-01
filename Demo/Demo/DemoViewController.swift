@@ -60,19 +60,19 @@ class DemoViewController: UIViewController {
       
       cardProgrammatically = AKMaskField(frame: CGRectMake(16, 96.5, 315, 30))
       cardProgrammatically?.tag = 0
-      cardProgrammatically?.setMask("{dddd}-{dddd}-{dddd}-{dddd}", withMaskTemplate: "ABCD-EFGH-IJKL-MNOP")
+      cardProgrammatically?.setMask("{dddd}-{dddd}-{dddd}-{dddd}", withMaskTemplate: "{ABCD}-{EFGH}-{IJKL}-{MNOP}")
       cardProgrammatically!.borderStyle = .RoundedRect
       view.addSubview(cardProgrammatically!)
       
       phoneProgrammatically = AKMaskField(frame: CGRectMake(16, 207.5, 315, 30))
       phoneProgrammatically?.tag = 1
-      phoneProgrammatically?.setMask("+38 ({ddd}) {ddd}-{dd}-{dd}", withMaskTemplate: "+38 (___) ___-__-__")
+      phoneProgrammatically?.setMask("+38 ({ddd}) {ddd}-{dd}-{dd}", withMaskTemplate: "+38 ({___}) {___}-{__}-{__}")
       phoneProgrammatically!.borderStyle = .RoundedRect
       view.addSubview(phoneProgrammatically!)
       
       keyProgrammatically = AKMaskField(frame: CGRectMake(16, 302.5, 315, 30))
       keyProgrammatically?.tag = 2
-      keyProgrammatically?.setMask("{aa}/{d} {d} {d}-{ddd}-{dd}", withMaskTemplate: "AA/N N N-NNN-NN")
+      keyProgrammatically?.setMask("{aa}/{d} {d} {d}-{ddd}-{dd}", withMaskTemplate: "{AA}/{N} {N} {N}-{NNN}-{NN}")
       keyProgrammatically!.borderStyle = .RoundedRect
       view.addSubview(keyProgrammatically!)
       
@@ -125,17 +125,17 @@ class DemoViewController: UIViewController {
   
   @IBAction func clearFields(sender: AnyObject) {
     
-    card?.updateText("")
-    cardProgrammatically?.updateText("")
+    card?.setMaskText(nil)
+    cardProgrammatically?.setMaskText(nil)
     
-    phone?.updateText("")
-    phoneProgrammatically?.updateText("")
+    phone?.setMaskText(nil)
+    phoneProgrammatically?.setMaskText(nil)
     
-    key?.updateText("")
-    keyProgrammatically?.updateText("")
+    key?.setMaskText(nil)
+    keyProgrammatically?.setMaskText(nil)
     
-    license?.updateText("")
-    licenseProgrammatically?.updateText("")
+    license?.setMaskText(nil)
+    licenseProgrammatically?.setMaskText(nil)
   }
 }
 
@@ -143,59 +143,49 @@ class DemoViewController: UIViewController {
 
 extension DemoViewController: AKMaskFieldDelegate {
   
-  func maskFieldDidBeginEditing(maskField: AKMaskField) {
-    print("Mask field did begin editing")
-  }
-
-  func maskField(maskField: AKMaskField, didChangeCharactersInRange range: NSRange, replacementString string: String, withEvent event: AKMaskFieldEvent) {
+  func maskField(maskField: AKMaskField, didChangedWithEvent event: AKMaskFieldEvent) {
+    
+    var statusColor, eventColor: UIColor!
     
     // Status
-    var statusColor =  UIColor.clearColor()
     
     switch maskField.maskStatus {
-    case .Clear:
-      statusColor = UIColor.lightGrayColor()
-    case .Incomplete:
-      statusColor = UIColor.blueColor()
-    case .Complete:
-      statusColor = UIColor.greenColor()
+    case .Clear      : statusColor = UIColor.lightGrayColor()
+    case .Incomplete : statusColor = UIColor.blueColor()
+    case .Complete   : statusColor = UIColor.greenColor()
     }
     
-    UIView.animateWithDuration(0.2,
-                               delay: 0,
-                               options: UIViewAnimationOptions.CurveEaseIn,
+    UIView.animateWithDuration(0.2, delay: 0, options: UIViewAnimationOptions.CurveEaseIn,
                                animations: { () -> Void in
                                 self.indicators[maskField.tag].backgroundColor = statusColor
-      }, completion: nil
-    )
+      }, completion: nil)
     
     // Event
-    var eventColor =  UIColor.redColor().colorWithAlphaComponent(0.2)
+    
     switch event {
-    case .Insert:
-      eventColor = UIColor.lightGrayColor().colorWithAlphaComponent(0.2)
-    case .Replace:
-      eventColor = UIColor.brownColor().colorWithAlphaComponent(0.2)
-    case .Delete:
-      eventColor = UIColor.orangeColor().colorWithAlphaComponent(0.2)
-    default: ()
+    case .Insert  : eventColor = UIColor.lightGrayColor().colorWithAlphaComponent(0.2)
+    case .Replace : eventColor = UIColor.brownColor().colorWithAlphaComponent(0.2)
+    case .Delete  : eventColor = UIColor.orangeColor().colorWithAlphaComponent(0.2)
+    case .Error   : eventColor = UIColor.redColor().colorWithAlphaComponent(0.2)
     }
     
-    UIView.animateWithDuration(0.05,
-                               delay: 0,
-                               options: .CurveEaseIn,
+    UIView.animateWithDuration(0.05, delay: 0, options: UIViewAnimationOptions.CurveEaseIn,
                                animations: { () -> Void in
                                 maskField.backgroundColor = eventColor
-                                
       }
     ) { (Bool) -> Void in
       UIView.animateWithDuration(0.3, delay: 0, options: .CurveEaseOut,
                                  animations: { () -> Void in
-                                  
                                   maskField.backgroundColor = UIColor.clearColor()
-                                  
-        },completion: nil
-      )
+        },completion: nil)
     }
   }
+  /*
+  func maskFieldDidBeginEditing(maskField: AKMaskField) {}
+  
+  func maskFieldDidEndEditing(maskField: AKMaskField) {}
+  
+  func maskField(maskField: AKMaskField, shouldChangeBlock block: AKMaskFieldBlock, inout inRange range: NSRange, inout replacementString string: String) -> Bool {
+    return true
+  }*/
 }
