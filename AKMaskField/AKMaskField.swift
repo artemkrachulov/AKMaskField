@@ -228,7 +228,7 @@ public class AKMaskField: UITextField {
   //  MARK: - Getting the Mask Field status
   
   /// Returns the current status of the mask field. The value of the property is a constant. 
-  final var maskStatus: AKMaskFieldStatus {
+  public final var maskStatus: AKMaskFieldStatus {
     
     let maskBlocksChars = maskBlocks.flatMap { $0.chars }
     let completedChars  = maskBlocksChars.filter { $0.status == .Complete }
