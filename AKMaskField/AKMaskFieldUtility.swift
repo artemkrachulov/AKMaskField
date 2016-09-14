@@ -10,7 +10,7 @@
 
 import UIKit
 
-class AKMaskFieldUtility {
+public class AKMaskFieldUtility {
 
   /// [Source](http://stackoverflow.com/questions/25138339/nsrange-to-rangestring-index)
   class func rangeFromString(string: String, nsRange: NSRange) -> Range<String.Index>! {

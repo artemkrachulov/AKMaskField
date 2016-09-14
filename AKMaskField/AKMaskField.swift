@@ -223,7 +223,7 @@ public class AKMaskField: UITextField {
   //  MARK: - Accessing the Delegate
   
   /// The receiver’s delegate.
-  weak var maskDelegate: AKMaskFieldDelegate?
+  public weak var maskDelegate: AKMaskFieldDelegate?
   
   //  MARK: - Getting the Mask Field status
   
@@ -632,7 +632,7 @@ extension AKMaskField: UITextFieldDelegate {
 
 //  MARK: - AKMaskFieldDelegate
 
-protocol AKMaskFieldDelegate: class {
+public protocol AKMaskFieldDelegate: class {
 
   /// Asks the delegate if editing should begin in the specified mask field.
   ///

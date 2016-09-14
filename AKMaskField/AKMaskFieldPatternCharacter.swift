@@ -9,7 +9,7 @@
 //
 
 /// Single block character pattern constant.
-enum AKMaskFieldPatternCharacter: String {
+public enum AKMaskFieldPatternCharacter: String {
   
   //  MARK: - Constants
   
