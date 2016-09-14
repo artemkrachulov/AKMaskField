@@ -656,14 +656,14 @@ public protocol AKMaskFieldDelegate: class {
   /// - parameter block : Target block
   /// - parameter range : The range of characters to be replaced (inout parameter).
   /// - parameter string : The replacement string for the specified range (inout parameter).
-  func maskField(maskField: AKMaskField, shouldChangeBlock block: AKMaskFieldBlock, inRange range:  inout NSRange,  replacementString string: inout String) -> Bool
+  func maskField(maskField: AKMaskField, shouldChangeBlock block: AKMaskFieldBlock, inout inRange range:  NSRange,  inout replacementString string: String) -> Bool
 }
 
 extension AKMaskFieldDelegate {
   func maskFieldDidBeginEditing(maskField: AKMaskField) {}
   func maskFieldDidEndEditing(maskField: AKMaskField) {}
   func maskField(maskField: AKMaskField, didChangedWithEvent event: AKMaskFieldEvent) {}
-  func maskField(maskField: AKMaskField, shouldChangeBlock block: AKMaskFieldBlock, inRange range: inout NSRange, replacementString string: inout String) -> Bool {
+  func maskField(maskField: AKMaskField, shouldChangeBlock block: AKMaskFieldBlock, inout inRange range: NSRange, inout replacementString string: String) -> Bool {
         return true
   }
 }
