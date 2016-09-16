@@ -223,12 +223,12 @@ public class AKMaskField: UITextField {
   //  MARK: - Accessing the Delegate
   
   /// The receiver’s delegate.
-  weak var maskDelegate: AKMaskFieldDelegate?
+  public weak var maskDelegate: AKMaskFieldDelegate?
   
   //  MARK: - Getting the Mask Field status
   
   /// Returns the current status of the mask field. The value of the property is a constant. 
-  final var maskStatus: AKMaskFieldStatus {
+  public final var maskStatus: AKMaskFieldStatus {
     
     let maskBlocksChars = maskBlocks.flatMap { $0.chars }
     let completedChars  = maskBlocksChars.filter { $0.status == .Complete }
@@ -258,7 +258,7 @@ public class AKMaskField: UITextField {
   
   deinit {
     #if AKMaskFieldDEBUG
-      print("\(self.dynamicType) \(#function)")
+      print("\(type(of: self)) \(#function)")
     #endif
   }
   
@@ -632,7 +632,7 @@ extension AKMaskField: UITextFieldDelegate {
 
 //  MARK: - AKMaskFieldDelegate
 
-protocol AKMaskFieldDelegate: class {
+public protocol AKMaskFieldDelegate: class {
 
   /// Asks the delegate if editing should begin in the specified mask field.
   ///
@@ -656,7 +656,7 @@ protocol AKMaskFieldDelegate: class {
   /// - parameter block : Target block
   /// - parameter range : The range of characters to be replaced (inout parameter).
   /// - parameter string : The replacement string for the specified range (inout parameter).
-  func maskField(maskField: AKMaskField, shouldChangeBlock block: AKMaskFieldBlock, inout inRange range: NSRange, inout replacementString string: String) -> Bool
+  func maskField(maskField: AKMaskField, shouldChangeBlock block: AKMaskFieldBlock, inout inRange range:  NSRange,  inout replacementString string: String) -> Bool
 }
 
 extension AKMaskFieldDelegate {
@@ -664,6 +664,6 @@ extension AKMaskFieldDelegate {
   func maskFieldDidEndEditing(maskField: AKMaskField) {}
   func maskField(maskField: AKMaskField, didChangedWithEvent event: AKMaskFieldEvent) {}
   func maskField(maskField: AKMaskField, shouldChangeBlock block: AKMaskFieldBlock, inout inRange range: NSRange, inout replacementString string: String) -> Bool {
-    return true
+        return true
   }
 }
