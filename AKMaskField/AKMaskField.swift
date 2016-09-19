@@ -126,7 +126,7 @@ public class AKMaskField: UITextField {
       updateMaskTemplateText()
       
       #if AKMaskFieldDEBUG
-      debugmaskBlocks()
+//      debugmaskBlocks()
       #endif
     }
   }
@@ -199,25 +199,31 @@ public class AKMaskField: UITextField {
   
   /// Set new text for the mask field. Equal to select all and paste actions.
   ///
-  /// - `text` : The text inserted in the mask field.
-  public func setMaskText(text: String?) {
-    guard let maskText = maskText else {
-      return
+  public override var text: String?  {
+    didSet {
+
+      guard let maskText = maskText else {
+        super.text = text
+        return
+      }
+      
+      textField(self, shouldChangeCharactersInRange: NSMakeRange(0, maskText.characters.count), replacementString: text ?? "")
     }
-    textField(self, shouldChangeCharactersInRange: NSMakeRange(0, maskText.characters.count), replacementString: text ?? "")
   }
   
   /// Manually refresh the mask field
   public func refreshMask() {
     if maskStatus == .Clear {
       if placeholder != nil {
-        text = nil
+        super.text = nil
       } else {
-        text = maskTemplateText
+         super.text = maskTemplateText
       }
     } else {
-      text = maskText
+       super.text = maskText
     }
+    
+    moveCarret()
   }
   
   //  MARK: - Accessing the Delegate
@@ -314,10 +320,7 @@ public class AKMaskField: UITextField {
   }
   
   private func updateMaskTemplateTextFromBlock(index: Int) {
-    
-    
-    print(maskTemplateText)
-    
+  
     AKMaskFieldUtility
       .replace(&maskTemplateText,
                withString : maskBlocks[index].template,
@@ -329,14 +332,7 @@ public class AKMaskField: UITextField {
     var string : String = ""
   }
   
-}
-//  MARK: - UITextFieldDelegate
-
-extension AKMaskField: UITextFieldDelegate {
-  
-  public func textFieldDidBeginEditing(textField: UITextField) {
-    if guardMask { return }
-    
+  private func moveCarret() {
     var position: Int
     
     switch maskStatus {
@@ -344,8 +340,33 @@ extension AKMaskField: UITextFieldDelegate {
     case .Incomplete  : position = maskBlocks.flatMap { $0.chars.filter { $0.status == .Clear } }.first!.templateRange.location
     case .Complete    : position = maskBlocks.last!.templateRange.toRange()!.endIndex
     }
-
+    
     AKMaskFieldUtility.maskField(self, moveCaretToPosition: position)
+  }
+}
+//  MARK: - UITextFieldDelegate
+
+extension AKMaskField: UITextFieldDelegate {
+  
+  public func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+    return maskDelegate?.maskFieldShouldBeginEditing(self) ?? true
+  }
+  
+  public func textFieldDidBeginEditing(textField: UITextField) {
+    
+    maskDelegate?.maskFieldDidBeginEditing(self)
+    
+    if guardMask { return }
+    
+    moveCarret()
+  }
+  
+  public func textFieldShouldEndEditing(textField: UITextField) -> Bool {
+    return maskDelegate?.maskFieldShouldEndEditing(self) ?? true
+  }
+  
+  public func textFieldDidEndEditing(textField: UITextField) {
+    maskDelegate?.maskFieldDidEndEditing(self)
   }
   
   public func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
@@ -403,11 +424,9 @@ extension AKMaskField: UITextFieldDelegate {
 
       // Find next character
       // If character outside the block, jump to first character of the next block
-      print("location \(location)")
       let nextCharacter = getNetCharacter(maskBlocksChars, fromLocation: location)
-      print(nextCharacter)
-      
-      var findMatches: Bool = false
+
+        var findMatches: Bool = false
 
       if nextCharacter.outsideBlock {
 
@@ -515,13 +534,8 @@ extension AKMaskField: UITextFieldDelegate {
             var maskTextRange = NSMakeRange(_range.location, _string.characters.count)
             
             // Object
-            
-            print(maskTextRange)
-            print(_string)
-            
+
             for index in maskTextRange.toRange()! {
-              
-              print(index)
               
               maskBlocks[i].chars[index].status = .Complete
               completed += 1
@@ -580,6 +594,14 @@ extension AKMaskField: UITextFieldDelegate {
     }
     
     // - - - - - - - - - - - -
+    // DISPLAYED TEXT
+    // - - - - - - - - - - - -
+    
+    refreshMask()
+  
+    AKMaskFieldUtility.maskField(self, moveCaretToPosition: location)
+    
+    // - - - - - - - - - - - -
     // EVENT
     // - - - - - - - - - - - -
     
@@ -595,17 +617,19 @@ extension AKMaskField: UITextFieldDelegate {
       maskDelegate?.maskField(self, didChangedWithEvent: event)
     }
     
-    // - - - - - - - - - - - -
-    // DISPLAYED TEXT
-    // - - - - - - - - - - - -
-    
-    refreshMask()
+    return false
+  }
   
-    AKMaskFieldUtility.maskField(self, moveCaretToPosition: location)
+  public func textFieldShouldClear(textField: UITextField) -> Bool {
+    text = nil
     
     return false
   }
 
+  public func textFieldShouldReturn(textField: UITextField) -> Bool {
+    return maskDelegate?.maskFieldShouldReturn(self) ?? true
+  }
+  
   private func debugmaskBlocks() {
     for block in maskBlocks {
       print("BLOCK :")
@@ -633,11 +657,21 @@ extension AKMaskField: UITextFieldDelegate {
 //  MARK: - AKMaskFieldDelegate
 
 protocol AKMaskFieldDelegate: class {
-
+  
+  /// Asks the delegate if editing should begin in the specified mask field.
+  ///
+  /// - parameter maskField : The mask field in which editing is about to begin.
+  func maskFieldShouldBeginEditing(maskField: AKMaskField) -> Bool
+  
   /// Asks the delegate if editing should begin in the specified mask field.
   ///
   /// - parameter maskField : The mask field in which editing is about to begin.
   func maskFieldDidBeginEditing(maskField: AKMaskField)
+  
+  /// Asks the delegate if editing should stop in the specified mask field.
+  ///
+  /// - parameter maskField : The mask field in which editing is about to end.
+  func maskFieldShouldEndEditing(maskField: AKMaskField) -> Bool
   
   /// Tells the delegate that editing stopped for the specified mask field.
   ///
@@ -657,13 +691,27 @@ protocol AKMaskFieldDelegate: class {
   /// - parameter range : The range of characters to be replaced (inout parameter).
   /// - parameter string : The replacement string for the specified range (inout parameter).
   func maskField(maskField: AKMaskField, shouldChangeBlock block: AKMaskFieldBlock, inout inRange range: NSRange, inout replacementString string: String) -> Bool
+  
+  /// Asks the delegate if the mask field should process the pressing of the return button.
+  ///
+  /// - parameter maskField : The mask field whose return button was pressed.
+  func maskFieldShouldReturn(maskField: AKMaskField) -> Bool
 }
 
 extension AKMaskFieldDelegate {
+  func maskFieldShouldBeginEditing(maskField: AKMaskField) -> Bool {
+    return true
+  }
   func maskFieldDidBeginEditing(maskField: AKMaskField) {}
+  func maskFieldShouldEndEditing(maskField: AKMaskField) -> Bool {
+    return true
+  }
   func maskFieldDidEndEditing(maskField: AKMaskField) {}
   func maskField(maskField: AKMaskField, didChangedWithEvent event: AKMaskFieldEvent) {}
   func maskField(maskField: AKMaskField, shouldChangeBlock block: AKMaskFieldBlock, inout inRange range: NSRange, inout replacementString string: String) -> Bool {
+    return true
+  }
+  func maskFieldShouldReturn(maskField: AKMaskField) -> Bool {
     return true
   }
 }

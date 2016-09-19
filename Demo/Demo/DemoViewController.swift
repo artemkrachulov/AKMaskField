@@ -60,19 +60,19 @@ class DemoViewController: UIViewController {
       
       cardProgrammatically = AKMaskField(frame: CGRectMake(16, 96.5, 315, 30))
       cardProgrammatically?.tag = 0
-      cardProgrammatically?.setMask("{dddd}-{dddd}-{dddd}-{dddd}", withMaskTemplate: "{ABCD}-{EFGH}-{IJKL}-{MNOP}")
+      cardProgrammatically?.setMask("{dddd}-{dddd}-{dddd}-{dddd}", withMaskTemplate: "ABCD-EFGH-IJKL-MNOP")
       cardProgrammatically!.borderStyle = .RoundedRect
       view.addSubview(cardProgrammatically!)
       
       phoneProgrammatically = AKMaskField(frame: CGRectMake(16, 207.5, 315, 30))
       phoneProgrammatically?.tag = 1
-      phoneProgrammatically?.setMask("+38 ({ddd}) {ddd}-{dd}-{dd}", withMaskTemplate: "+38 ({___}) {___}-{__}-{__}")
+      phoneProgrammatically?.setMask("+38 ({ddd}) {ddd}-{dd}-{dd}", withMaskTemplate: "+38 (___) ___-__-__")
       phoneProgrammatically!.borderStyle = .RoundedRect
       view.addSubview(phoneProgrammatically!)
       
       keyProgrammatically = AKMaskField(frame: CGRectMake(16, 302.5, 315, 30))
       keyProgrammatically?.tag = 2
-      keyProgrammatically?.setMask("{aa}/{d} {d} {d}-{ddd}-{dd}", withMaskTemplate: "{AA}/{N} {N} {N}-{NNN}-{NN}")
+      keyProgrammatically?.setMask("{aa}/{d} {d} {d}-{ddd}-{dd}", withMaskTemplate: "CC/N N N-NNN-NNs")
       keyProgrammatically!.borderStyle = .RoundedRect
       view.addSubview(keyProgrammatically!)
       
@@ -125,17 +125,17 @@ class DemoViewController: UIViewController {
   
   @IBAction func clearFields(sender: AnyObject) {
     
-    card?.setMaskText(nil)
-    cardProgrammatically?.setMaskText(nil)
+    card?.text = nil
+    cardProgrammatically?.text = nil
     
-    phone?.setMaskText(nil)
-    phoneProgrammatically?.setMaskText(nil)
+    phone?.text = nil
+    phoneProgrammatically?.text = nil
     
-    key?.setMaskText(nil)
-    keyProgrammatically?.setMaskText(nil)
+    key?.text = nil
+    keyProgrammatically?.text = nil
     
-    license?.setMaskText(nil)
-    licenseProgrammatically?.setMaskText(nil)
+    license?.text = nil
+    licenseProgrammatically?.text = nil
   }
 }
 
@@ -144,6 +144,8 @@ class DemoViewController: UIViewController {
 extension DemoViewController: AKMaskFieldDelegate {
   
   func maskField(maskField: AKMaskField, didChangedWithEvent event: AKMaskFieldEvent) {
+    
+    print("didChangedWithEvent \(maskField.text)")
     
     var statusColor, eventColor: UIColor!
     
@@ -180,12 +182,21 @@ extension DemoViewController: AKMaskFieldDelegate {
         },completion: nil)
     }
   }
-  /*
-  func maskFieldDidBeginEditing(maskField: AKMaskField) {}
   
-  func maskFieldDidEndEditing(maskField: AKMaskField) {}
+  func maskFieldDidBeginEditing(maskField: AKMaskField) {
+    print("maskFieldDidBeginEditing")
+  }
+  
+
+  func maskFieldDidEndEditing(maskField: AKMaskField) {
+      print("maskFieldDidEndEditing")
+  }
+
+  func maskFieldShouldReturn(maskField: AKMaskField) -> Bool {
+    return true
+  }
   
   func maskField(maskField: AKMaskField, shouldChangeBlock block: AKMaskFieldBlock, inout inRange range: NSRange, inout replacementString string: String) -> Bool {
     return true
-  }*/
+  }
 }

@@ -105,18 +105,15 @@ var maskBlockBrackets: AKMaskFieldBrackets
 Open and close bracket character for the mask block.
 Default value of this property is `{` and `}`.
 
-
-## Mask Field actions
+## Accessing the Text Attributes
 
 ```swift
-func setMaskText(text: String?)
+public var text: String?
 ```
 
-Set new text for the mask field. Equal to select all and paste actions.
+The text displayed by the mask field. 
 
-**Parameters**
-
-- `text` : The text inserted in the mask field. 
+## Mask Field actions
 
 ```swift
 func refreshMask()
@@ -154,6 +151,16 @@ Returns an array containing all the Mask Field blocks
 ### Managing Editing
 
 ```swift
+optional func maskFieldShouldBeginEditing(maskField: AKMaskField) -> Bool
+```
+
+Asks the delegate if editing should begin in the specified mask field.
+
+**Parameters**
+
+- `maskField` : The mask field in which editing is about to begin. 
+
+```swift
 optional func maskFieldDidBeginEditing(maskField: AKMaskField)
 ```
 
@@ -162,6 +169,16 @@ Asks the delegate if editing should begin in the specified mask field.
 **Parameters**
 
 - `maskField` : The mask field in which editing is about to begin. 
+
+```swift
+optional func maskFieldShouldEndEditing(maskField: AKMaskField) -> Bool
+```
+
+Asks the delegate if editing should stop in the specified mask field.
+
+**Parameters**
+
+- `maskField` : The mask field in which editing is about to end.
 
 ```swift
 optional func maskFieldDidEndEditing(maskField: AKMaskField)
