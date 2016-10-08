@@ -20,8 +20,18 @@ AKMaskField is UITextField subclass which allows enter data in the fixed quantit
 
 ## Installation
 
+### Git
+
 1. Clone or download demo project.
 2. Add the AKMaskField folder to your project (To copy the file it has to be chosen).
+
+### Cocoapods
+
+To install **AKMaskField** for Swift 3.x using CocoaPods, include the following in your Podfile
+
+```swift
+pod 'AKMaskField', :git => 'https://github.com/artemkrachulov/AKMaskField.git', :tag => 'v2.0.1'
+```
 
 ## Usage
 
