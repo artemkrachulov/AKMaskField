@@ -31,8 +31,8 @@ Create a text field `UITextField` and set a class `AKMaskField` in the Inspector
 
 Example:
 
-* **Mask**: {dddd}-{DDDD}-{WaWa}-{aaaa}
-* **Mask Template**: ABCD-EFGH-IJKL-MNOP
+* **MaskExpression**: {dddd}-{DDDD}-{WaWa}-{aaaa}
+* **MaskTemplate**: ABCD-EFGH-IJKL-MNOP
 
 
 ### Programmatically
@@ -46,7 +46,7 @@ override func viewDidLoad() {
     super.viewDidLoad()
 
     field = AKMaskField()
-    field.mask = "{dddd}-{DDDD}-{WaWa}-{aaaa}"
+    field.maskExpression = "{dddd}-{DDDD}-{WaWa}-{aaaa}"
     field.maskTemplate = "ABCD-EFGH-IJKL-MNOP"
 }
 ```
@@ -54,7 +54,7 @@ override func viewDidLoad() {
 ## Configuring the Mask Field
 
 ```swift
-var mask: String?
+var maskExpression: String?
 ```
 
 The string value that has blocks with pattern symbols that determine the certain format of input data. Wrap each mask block with proper bracket character.
@@ -92,7 +92,7 @@ Use this method to set the mask and template parameters.
 
 **Parameters**
 
-- `mask` : Mask (read above).
+- `maskExpression` : Mask (read above).
 - `maskTemplate` : Mask template (read above).
 
 > You can also set default `placeholder` property. The placeholder will shows only when mask field is clear.
