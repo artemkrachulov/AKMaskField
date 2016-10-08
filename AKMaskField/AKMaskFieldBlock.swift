@@ -21,12 +21,12 @@ public struct AKMaskFieldBlock {
   /// Returns the current block status.
   var status: AKMaskFieldStatus {
     
-    let completedChars: [AKMaskFieldBlockCharacter] = chars.filter { return $0.status != .Clear }
+    let completedChars: [AKMaskFieldBlockCharacter] = chars.filter { return $0.status != .clear }
     
     switch completedChars.count {
-    case 0           : return .Clear
-    case chars.count : return .Complete
-    default          : return .Incomplete
+    case 0           : return .clear
+    case chars.count : return .complete
+    default          : return .incomplete
     }
   }
   

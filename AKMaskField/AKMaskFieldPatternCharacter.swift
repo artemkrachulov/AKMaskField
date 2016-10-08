@@ -17,7 +17,7 @@ enum AKMaskFieldPatternCharacter: String {
   case NonDecimal    = "D"
   case NonWord       = "W"
   case Alphabet      = "a"
-  case Any           = "."
+  case AnyChar       = "."
   
   /// Returns regular expression pattern.
   func pattern() -> String {
@@ -26,7 +26,7 @@ enum AKMaskFieldPatternCharacter: String {
     case .NonDecimal      : return "\\D"
     case .NonWord         : return "\\W"
     case .Alphabet        : return "[a-zA-Z]"
-    default               : return Any.rawValue
+    default               : return "."
     }
   }
 }

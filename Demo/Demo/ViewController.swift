@@ -13,8 +13,8 @@ class ViewController: UIViewController {
   
   //  MARK: - Navigation
   
-  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    if let vc = segue.destinationViewController as? DemoViewController {
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if let vc = segue.destination as? DemoViewController {
       vc.programmatically = segue.identifier == "Programmatically"
       vc.navigationItem.title = segue.identifier
     }

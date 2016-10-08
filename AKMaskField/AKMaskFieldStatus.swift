@@ -10,5 +10,5 @@
 
 /// The Mask Field, Block and Block Character status property constant.
 enum AKMaskFieldStatus {
-  case Clear, Incomplete, Complete
+  case clear, incomplete, complete
 }
