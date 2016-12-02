@@ -10,13 +10,13 @@
 import UIKit
 
 class ViewController: UIViewController {
-  
-  //  MARK: - Navigation
-  
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if let vc = segue.destination as? DemoViewController {
-      vc.programmatically = segue.identifier == "Programmatically"
-      vc.navigationItem.title = segue.identifier
+    
+    //  MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? DemoViewController {
+            vc.programmatically = segue.identifier == "Programmatically"
+            vc.navigationItem.title = segue.identifier
+        }
     }
-  }
 }
