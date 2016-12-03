@@ -10,15 +10,15 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="FontAwesome.otf">
+        <array key="fontawesome-webfont.ttf">
             <string>FontAwesome</string>
         </array>
     </customFonts>
     <scenes>
-        <!--Storyborad-->
+        <!--Example-->
         <scene sceneID="AzA-K8-f4h">
             <objects>
-                <viewController id="sNv-MH-Sdi" customClass="DemoViewController" customModule="Demo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="sNv-MH-Sdi" customClass="ViewController" customModule="AKMaskFieldExample" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="RGC-Yv-9Sr"/>
                         <viewControllerLayoutGuide type="bottom" id="ALr-3d-qz9"/>
@@ -95,7 +95,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8Zk-qU-Qaw" customClass="AKMaskField" customModule="Demo" customModuleProvider="target">
+                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8Zk-qU-Qaw" customClass="AKMaskField" customModule="AKMaskField">
                                 <rect key="frame" x="16" y="207.5" width="315" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="315" id="4Hr-2E-aGM"/>
@@ -222,7 +222,7 @@
                                     <action selector="clearFields:" destination="sNv-MH-Sdi" eventType="touchUpInside" id="yZs-sa-n4h"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="past code here" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NV7-0s-3E4" customClass="AKMaskField" customModule="Demo" customModuleProvider="target">
+                            <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="past code here" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NV7-0s-3E4" customClass="AKMaskField" customModule="AKMaskField">
                                 <rect key="frame" x="16" y="357" width="315" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="315" id="akE-cR-RwH"/>
@@ -447,7 +447,7 @@
                                     <constraint firstItem="3YV-JG-HtL" firstAttribute="top" secondItem="jc9-xC-FXB" secondAttribute="bottom" constant="8" id="zfT-hy-SqE"/>
                                 </constraints>
                             </view>
-                            <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fO6-xD-hVB" customClass="AKMaskField" customModule="Demo" customModuleProvider="target">
+                            <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fO6-xD-hVB" customClass="AKMaskField" customModule="AKMaskField">
                                 <rect key="frame" x="16" y="302.5" width="315" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="315" id="hwI-vW-YLh"/>
@@ -465,7 +465,7 @@
                                 <color key="textColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="saT-Qn-8Yk" customClass="AKMaskField" customModule="Demo" customModuleProvider="target">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="saT-Qn-8Yk" customClass="AKMaskField" customModule="AKMaskField">
                                 <rect key="frame" x="16" y="96.5" width="315" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="315" id="92r-gA-w6G"/>
@@ -545,12 +545,12 @@
                             <constraint firstItem="yC0-gn-W2g" firstAttribute="trailing" secondItem="9ny-qL-OiS" secondAttribute="trailingMargin" id="zIr-7l-tAN"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Storyborad" id="MOI-d1-A3d"/>
+                    <navigationItem key="navigationItem" title="Example" id="MOI-d1-A3d"/>
                     <connections>
-                        <outlet property="card" destination="saT-Qn-8Yk" id="Afh-6i-TrR"/>
-                        <outlet property="key" destination="fO6-xD-hVB" id="R5O-qB-Dov"/>
-                        <outlet property="license" destination="NV7-0s-3E4" id="sRU-jf-RDt"/>
-                        <outlet property="phone" destination="8Zk-qU-Qaw" id="qQt-kR-nvS"/>
+                        <outlet property="cardStoryboard" destination="saT-Qn-8Yk" id="FeI-gC-hMW"/>
+                        <outlet property="keyStoryboard" destination="fO6-xD-hVB" id="dX2-1a-EWD"/>
+                        <outlet property="licenseStoryboard" destination="NV7-0s-3E4" id="ATn-BR-f8x"/>
+                        <outlet property="phoneStoryboard" destination="8Zk-qU-Qaw" id="rC7-Ta-Cyl"/>
                         <outletCollection property="indicators" destination="oH5-oG-C8W" collectionClass="NSMutableArray" id="FJG-mm-kXA"/>
                         <outletCollection property="indicators" destination="6in-vL-jvf" collectionClass="NSMutableArray" id="IX0-Ps-SQP"/>
                         <outletCollection property="indicators" destination="yC0-gn-W2g" collectionClass="NSMutableArray" id="Cm3-to-hBP"/>
@@ -567,11 +567,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OYr-Bu-5Xb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1753" y="575"/>
+            <point key="canvasLocation" x="926" y="574"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ze2-XS-gfj">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sTu-s6-v1Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="PU7-5c-crr" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="43m-5r-nWd">
@@ -580,84 +581,11 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="571-Gd-M3W" kind="relationship" relationship="rootViewController" id="18O-Dw-rBZ"/>
+                        <segue destination="sNv-MH-Sdi" kind="relationship" relationship="rootViewController" id="3oN-7F-le8"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="sTu-s6-v1Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="216" y="576.75"/>
-        </scene>
-        <!--AKMaskField-->
-        <scene sceneID="H6N-SV-fVt">
-            <objects>
-                <viewController id="571-Gd-M3W" customClass="ViewController" customModule="Demo" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="U5F-7D-PbQ"/>
-                        <viewControllerLayoutGuide type="bottom" id="Py3-gx-0SP"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="uwR-TE-wjh">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UITextField subclass which allows enter data in the fixed quantity and in the certain format" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7sO-8B-LEi">
-                                <rect key="frame" x="16" y="96" width="343" height="41"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Demos" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TOj-yr-0if">
-                                <rect key="frame" x="16" y="214" width="343" height="26.5"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Voy-1q-1nW">
-                                <rect key="frame" x="176" y="248.5" width="23" height="1"/>
-                                <color key="backgroundColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="1" id="9EJ-2i-78J"/>
-                                </constraints>
-                            </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TeH-Nd-2tp">
-                                <rect key="frame" x="149" y="281.5" width="77" height="30"/>
-                                <state key="normal" title="Storyborad"/>
-                                <connections>
-                                    <segue destination="sNv-MH-Sdi" kind="show" identifier="Storyborad" id="gc0-a9-ooY"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IAf-up-nHN">
-                                <rect key="frame" x="127.5" y="343.5" width="120" height="30"/>
-                                <state key="normal" title="Programmatically"/>
-                                <connections>
-                                    <segue destination="sNv-MH-Sdi" kind="show" identifier="Programmatically" id="96Y-Ja-YW6"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="TOj-yr-0if" firstAttribute="top" secondItem="U5F-7D-PbQ" secondAttribute="bottom" constant="150" id="0nq-Hu-AW7"/>
-                            <constraint firstItem="TeH-Nd-2tp" firstAttribute="centerX" secondItem="uwR-TE-wjh" secondAttribute="centerX" id="1Dg-lW-U4d"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="TOj-yr-0if" secondAttribute="trailing" id="25C-tz-wYd"/>
-                            <constraint firstItem="IAf-up-nHN" firstAttribute="top" secondItem="TeH-Nd-2tp" secondAttribute="bottom" constant="32" id="NtL-Vk-5ug"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Voy-1q-1nW" secondAttribute="trailing" constant="160" id="Rb9-9g-6Zc"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="7sO-8B-LEi" secondAttribute="trailing" id="Rdl-sK-OqF"/>
-                            <constraint firstItem="TOj-yr-0if" firstAttribute="leading" secondItem="uwR-TE-wjh" secondAttribute="leadingMargin" id="ejT-Dp-qc5"/>
-                            <constraint firstItem="IAf-up-nHN" firstAttribute="centerX" secondItem="uwR-TE-wjh" secondAttribute="centerX" id="eyE-AZ-Vhg"/>
-                            <constraint firstItem="Voy-1q-1nW" firstAttribute="leading" secondItem="uwR-TE-wjh" secondAttribute="leadingMargin" constant="160" id="mqg-zf-s7G"/>
-                            <constraint firstItem="TeH-Nd-2tp" firstAttribute="top" secondItem="Voy-1q-1nW" secondAttribute="bottom" constant="32" id="own-WO-1XD"/>
-                            <constraint firstItem="7sO-8B-LEi" firstAttribute="leading" secondItem="uwR-TE-wjh" secondAttribute="leadingMargin" id="sMK-9p-gMn"/>
-                            <constraint firstItem="Voy-1q-1nW" firstAttribute="top" secondItem="TOj-yr-0if" secondAttribute="bottom" constant="8" id="sZL-8B-Kfu"/>
-                            <constraint firstItem="7sO-8B-LEi" firstAttribute="top" secondItem="U5F-7D-PbQ" secondAttribute="bottom" constant="32" id="ukP-sN-7ZW"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="AKMaskField" id="MPi-Hl-UXv"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="DhS-ma-O3P" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="980" y="576"/>
+            <point key="canvasLocation" x="118" y="575"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="gc0-a9-ooY"/>
-    </inferredMetricsTieBreakers>
 </document>

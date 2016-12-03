@@ -1,17 +1,24 @@
 # AKMaskField
 
-![Preview](https://raw.githubusercontent.com/artemkrachulov/AKMaskField/master/Assets/preview.gif)
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-brightgreen.svg)](https://github.com/Carthage/Carthage) 
+[![Swift Version][swift-image]][swift-url]
+[![Build Status][travis-image]][travis-url]
+[![License][license-image]][license-url]
+[![CocoaPods Compatible](https://img.shields.io/cocoapods/v/EZSwiftExtensions.svg)](https://img.shields.io/cocoapods/v/LFAlertController.svg)  
+[![Platform](https://img.shields.io/cocoapods/p/LFAlertController.svg?style=flat)](http://cocoapods.org/pods/LFAlertController)
 
 AKMaskField is UITextField subclass which allows enter data in the fixed quantity and in the certain format (credit cards, telephone numbers, dates, etc.). You only need setup mask and mask template visible for user.
 
+![Preview](https://raw.githubusercontent.com/artemkrachulov/AKMaskField/master/Assets/preview.gif)
+
 ## Features
 
-* Easy in use
-* Possibility to setup input field from a code or Settings Panel
-* Smart template
-* Support of dynamic change of a mask
-* Fast processing of a input field
-* Smart copy / insert action
+- [x] Easy in use
+- [x] Possibility to setup input field from a code or Settings Panel
+- [x] Smart template
+- [x] Support of dynamic change of a mask
+- [x] Fast processing of a input field
+- [x] Smart copy / insert action
 
 ## Requirements
 
@@ -20,20 +27,55 @@ AKMaskField is UITextField subclass which allows enter data in the fixed quantit
 
 ## Installation
 
-### Git
+### CocoaPods
 
-1. Clone or download demo project.
-2. Add the AKMaskField folder to your project (To copy the file it has to be chosen).
+[CocoaPods][] is a dependency manager for Cocoa projects. To install **AKMaskField** with CocoaPods:
 
-### Cocoapods
+ 1. Make sure CocoaPods is [installed][CocoaPods Installation].
 
-To install **AKMaskField** for Swift 3.x using CocoaPods, include the following in your Podfile
+ 2. Update your Podfile to include the following:
 
-```swift
-pod 'AKMaskField', :git => 'https://github.com/artemkrachulov/AKMaskField.git', :tag => 'v2.0.1'
-```
+	``` ruby
+	use_frameworks!
+	pod 'AKMaskField'
+	```
 
-## Usage
+ 3. Run `pod install`.
+
+[CocoaPods]: https://cocoapods.org
+[CocoaPods Installation]: https://guides.cocoapods.org/using/getting-started.html#getting-started
+ 
+ 4. In your code import **AKMaskField** like so: `import AKMaskField`
+
+### Carthage
+
+[Carthage][] is a decentralized dependency manager that builds your dependencies and provides you with binary frameworks.
+To install **AKMaskField** with Carthage:
+
+1. Install Carthage via [Homebrew][]
+
+	```bash
+	$ brew update
+	$ brew install carthage
+	```
+
+2. Add `github "artemkrachulov/AKMaskField"` to your Cartfile.
+
+3. Run `carthage update`.
+
+4. Drag the built `$(SRCROOT)/Carthage/Build/iOS/AKMaskField.framework` into your Xcode project.
+
+[Carthage]: https://github.com/Carthage/Carthage
+[Homebrew]: http://brew.sh
+
+### Manual
+
+If you prefer not to use either of the aforementioned dependency managers, you can integrate **AKMaskField** into your project manually.
+
+1. Download and drop **AKMaskField** folder in your project.
+2. Done!
+
+## Usage example
 
 ### Storyboard
 
@@ -387,15 +429,25 @@ func pattern() -> String
 
 Returns regular expression pattern.
 
----
+## Contribute
 
-Please do not forget to ★ this repository to increases its visibility and encourages others to contribute.
+Please do not forget to ★ this repository to increases its visibility and encourages others to contribute. 
 
-### Author
+Got a bug fix, or a new feature? Create a pull request and go for it!
 
-Artem Krachulov: [www.artemkrachulov.com](http://www.artemkrachulov.com/)
-Mail: [artem.krachulov@gmail.com](mailto:artem.krachulov@gmail.com)
+## Meta
 
-### License
+Artem Krachulov – [www.artemkrachulov.com](http://www.artemkrachulov.com/) - [artem.krachulov@gmail.com](mailto:artem.krachulov@gmail.com)
 
 Released under the [MIT license](http://www.opensource.org/licenses/MIT)
+
+[https://github.com/artemkrachulov](https://github.com/dbader/)
+
+[swift-image]:https://img.shields.io/badge/swift-3.0-orange.svg
+[swift-url]: https://swift.org/
+[license-image]: https://img.shields.io/badge/License-MIT-blue.svg
+[license-url]: LICENSE
+[travis-image]: https://img.shields.io/travis/dbader/node-datadog-metrics/master.svg?style=flat-square
+[travis-url]: https://travis-ci.org/dbader/node-datadog-metrics
+[codebeat-image]: https://codebeat.co/badges/c19b47ea-2f9d-45df-8458-b2d952fe9dad
+[codebeat-url]: https://codebeat.co/projects/github-com-vsouza-awesomeios-com
