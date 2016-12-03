@@ -45,7 +45,7 @@ import UIKit
 
  */
 
-public class AKMaskField: UITextField {
+open class AKMaskField: UITextField, UITextFieldDelegate  {
     
     //  MARK: - Configuring the Mask Field
     
@@ -65,7 +65,7 @@ public class AKMaskField: UITextField {
      
      */
     
-    @IBInspectable public var maskExpression: String? {
+    @IBInspectable open var maskExpression: String? {
         didSet {
             
             if guardMask {
@@ -203,12 +203,7 @@ public class AKMaskField: UITextField {
      
      */
     
-    final public var maskBlockBrackets: AKMaskFieldBrackets = AKMaskFieldBrackets(left: "{", right: "}")
-    
-    public struct AKMaskFieldBrackets {
-        
-        let left, right: Character
-    }
+    open var maskBlockBrackets: AKMaskFieldBrackets = AKMaskFieldBrackets(left: "{", right: "}")
     
     //  MARK: - Mask Field actions
     
@@ -228,7 +223,7 @@ public class AKMaskField: UITextField {
     
     /// Manually refresh the mask field
     
-    public func refreshMask() {
+    open func refreshMask() {
         
         if maskStatus == .clear {
             if placeholder != nil {
@@ -247,13 +242,13 @@ public class AKMaskField: UITextField {
     
     /// The receiver’s delegate.
     
-    public weak var maskDelegate: AKMaskFieldDelegate?
+    open weak var maskDelegate: AKMaskFieldDelegate?
     
     //  MARK: - Getting the Mask Field status
     
     /// Returns the current status of the mask field. The value of the property is a constant.
     
-    public var maskStatus: AKMaskFieldStatus {
+    open var maskStatus: AKMaskFieldStatus {
         
         let maskBlocksChars = maskBlocks.flatMap { $0.chars }
         let completedChars  = maskBlocksChars.filter { $0.status == .complete }
@@ -269,7 +264,7 @@ public class AKMaskField: UITextField {
     
     /// Returns an array containing all the Mask Field blocks.
     
-    public var maskBlocks: [AKMaskFieldBlock] = [AKMaskFieldBlock]()
+    open var maskBlocks: [AKMaskFieldBlock] = [AKMaskFieldBlock]()
     
     //  MARK: - Displayed Properties
     
@@ -378,17 +373,14 @@ public class AKMaskField: UITextField {
         
         AKMaskFieldUtility.maskField(self, moveCaretToPosition: position)
     }
-}
 
-//  MARK: - UITextFieldDelegate
-
-extension AKMaskField: UITextFieldDelegate {
+    //  MARK: - UITextFieldDelegate
     
-    public func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+    open func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         return maskDelegate?.maskFieldShouldBeginEditing(self) ?? true
     }
     
-    public func textFieldDidBeginEditing(_ textField: UITextField) {
+    open func textFieldDidBeginEditing(_ textField: UITextField) {
         
         maskDelegate?.maskFieldDidBeginEditing(self)
         
@@ -397,15 +389,15 @@ extension AKMaskField: UITextFieldDelegate {
         moveCarret()
     }
     
-    public func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+    open func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         return maskDelegate?.maskFieldShouldEndEditing(self) ?? true
     }
     
-    public func textFieldDidEndEditing(_ textField: UITextField) {
+    open func textFieldDidEndEditing(_ textField: UITextField) {
         maskDelegate?.maskFieldDidEndEditing(self)
     }
     
-    public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+    open func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
         // CHECKS
         
@@ -649,13 +641,13 @@ extension AKMaskField: UITextFieldDelegate {
         return false
     }
     
-    public func textFieldShouldClear(_ textField: UITextField) -> Bool {
+    open func textFieldShouldClear(_ textField: UITextField) -> Bool {
         text = nil
         
         return false
     }
     
-    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    open func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         return maskDelegate?.maskFieldShouldReturn(self) ?? true
     }
     
