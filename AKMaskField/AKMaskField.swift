@@ -45,7 +45,7 @@ import UIKit
 
  */
 
-public class AKMaskField: UITextField {
+open class AKMaskField: UITextField {
     
     //  MARK: - Configuring the Mask Field
     
@@ -65,7 +65,7 @@ public class AKMaskField: UITextField {
      
      */
     
-    @IBInspectable public var maskExpression: String? {
+    @IBInspectable open var maskExpression: String? {
         didSet {
             
             if guardMask {
@@ -146,7 +146,7 @@ public class AKMaskField: UITextField {
      
     */
     
-    @IBInspectable public var maskTemplate: String = "*" {
+    @IBInspectable open var maskTemplate: String = "*" {
         didSet {
 
             if guardMask {

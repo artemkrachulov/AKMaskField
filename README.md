@@ -63,7 +63,9 @@ To install **AKMaskField** with Carthage:
 
 3. Run `carthage update`.
 
-4. Drag the built `$(SRCROOT)/Carthage/Build/iOS/AKMaskField.framework` into your Xcode project.
+4. Drag `AKMaskField.framework ` from the `Carthage/Build/iOS/` directory to the `Linked Frameworks and Libraries` section of your Xcode project’s `General` settings.
+
+5. Add `$(SRCROOT)/Carthage/Build/iOS/AKMaskField.framework ` to `Input Files` of Run Script Phase for Carthage.
 
 [Carthage]: https://github.com/Carthage/Carthage
 [Homebrew]: http://brew.sh
