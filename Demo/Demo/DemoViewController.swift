@@ -58,48 +58,48 @@ class DemoViewController: UIViewController {
       phone?.removeFromSuperview()
       license?.removeFromSuperview()
       
-      cardProgrammatically = AKMaskField(frame: CGRectMake(16, 96.5, 315, 30))
+      cardProgrammatically = AKMaskField(frame: CGRect(x: 16, y: 96.5, width: 315, height: 30))
       cardProgrammatically?.tag = 0
       cardProgrammatically?.setMask("{dddd}-{dddd}-{dddd}-{dddd}", withMaskTemplate: "{ABCD}-{EFGH}-{IJKL}-{MNOP}")
-      cardProgrammatically!.borderStyle = .RoundedRect
+      cardProgrammatically!.borderStyle = .roundedRect
       view.addSubview(cardProgrammatically!)
       
-      phoneProgrammatically = AKMaskField(frame: CGRectMake(16, 207.5, 315, 30))
+      phoneProgrammatically = AKMaskField(frame: CGRect(x: 16, y: 207.5, width: 315, height: 30))
       phoneProgrammatically?.tag = 1
       phoneProgrammatically?.setMask("+38 ({ddd}) {ddd}-{dd}-{dd}", withMaskTemplate: "+38 ({___}) {___}-{__}-{__}")
-      phoneProgrammatically!.borderStyle = .RoundedRect
+      phoneProgrammatically!.borderStyle = .roundedRect
       view.addSubview(phoneProgrammatically!)
       
-      keyProgrammatically = AKMaskField(frame: CGRectMake(16, 302.5, 315, 30))
+      keyProgrammatically = AKMaskField(frame: CGRect(x: 16, y: 302.5, width: 315, height: 30))
       keyProgrammatically?.tag = 2
       keyProgrammatically?.setMask("{aa}/{d} {d} {d}-{ddd}-{dd}", withMaskTemplate: "{AA}/{N} {N} {N}-{NNN}-{NN}")
-      keyProgrammatically!.borderStyle = .RoundedRect
+      keyProgrammatically!.borderStyle = .roundedRect
       view.addSubview(keyProgrammatically!)
       
-      licenseProgrammatically = AKMaskField(frame: CGRectMake(16, 357, 315, 30))
+      licenseProgrammatically = AKMaskField(frame: CGRect(x: 16, y: 357, width: 315, height: 30))
       licenseProgrammatically?.tag = 3
       licenseProgrammatically?.setMask("{.............................}", withMaskTemplate: nil)
       licenseProgrammatically?.placeholder = "past code here"
-      licenseProgrammatically!.borderStyle = .RoundedRect
+      licenseProgrammatically!.borderStyle = .roundedRect
       view.addSubview(licenseProgrammatically!)
     }
   }
 
   //  MARK:   Actions
 
-  @IBAction func clipboard(sender: UIButton) {
+  @IBAction func clipboard(_ sender: UIButton) {
     
     let tag = sender.tag
     let copyText = clipboard[tag].text!
     let message = "Text \"" + copyText + "\" copied to clibboard. Past text to field."
     
     // Copy text to clipboard
-    UIPasteboard.generalPasteboard().string = copyText
+    UIPasteboard.general.string = copyText
     
     // Show alert
-    let copyAlert = UIAlertController(title: "Clipboard", message: message, preferredStyle: .Alert)
+    let copyAlert = UIAlertController(title: "Clipboard", message: message, preferredStyle: .alert)
     
-    copyAlert.addAction(UIAlertAction(title: "Ok", style: .Default,
+    copyAlert.addAction(UIAlertAction(title: "Ok", style: .default,
       handler: { _ -> Void in
         
         switch tag {
@@ -120,10 +120,10 @@ class DemoViewController: UIViewController {
       }
     ))
     
-    presentViewController(copyAlert, animated: true, completion: nil)
+    present(copyAlert, animated: true, completion: nil)
   }
   
-  @IBAction func clearFields(sender: AnyObject) {
+  @IBAction func clearFields(_ sender: AnyObject) {
     
     card?.setMaskText(nil)
     cardProgrammatically?.setMaskText(nil)
@@ -143,19 +143,19 @@ class DemoViewController: UIViewController {
 
 extension DemoViewController: AKMaskFieldDelegate {
   
-  func maskField(maskField: AKMaskField, didChangedWithEvent event: AKMaskFieldEvent) {
+  func maskField(_ maskField: AKMaskField, didChangedWithEvent event: AKMaskFieldEvent) {
     
     var statusColor, eventColor: UIColor!
     
     // Status
     
     switch maskField.maskStatus {
-    case .Clear      : statusColor = UIColor.lightGrayColor()
-    case .Incomplete : statusColor = UIColor.blueColor()
-    case .Complete   : statusColor = UIColor.greenColor()
+    case .clear      : statusColor = UIColor.lightGray
+    case .incomplete : statusColor = UIColor.blue
+    case .complete   : statusColor = UIColor.green
     }
     
-    UIView.animateWithDuration(0.2, delay: 0, options: UIViewAnimationOptions.CurveEaseIn,
+    UIView.animate(withDuration: 0.2, delay: 0, options: UIViewAnimationOptions.curveEaseIn,
                                animations: { () -> Void in
                                 self.indicators[maskField.tag].backgroundColor = statusColor
       }, completion: nil)
@@ -163,20 +163,20 @@ extension DemoViewController: AKMaskFieldDelegate {
     // Event
     
     switch event {
-    case .Insert  : eventColor = UIColor.lightGrayColor().colorWithAlphaComponent(0.2)
-    case .Replace : eventColor = UIColor.brownColor().colorWithAlphaComponent(0.2)
-    case .Delete  : eventColor = UIColor.orangeColor().colorWithAlphaComponent(0.2)
-    case .Error   : eventColor = UIColor.redColor().colorWithAlphaComponent(0.2)
+    case .insert  : eventColor = UIColor.lightGray.withAlphaComponent(0.2)
+    case .replace : eventColor = UIColor.brown.withAlphaComponent(0.2)
+    case .delete  : eventColor = UIColor.orange.withAlphaComponent(0.2)
+    case .error   : eventColor = UIColor.red.withAlphaComponent(0.2)
     }
     
-    UIView.animateWithDuration(0.05, delay: 0, options: UIViewAnimationOptions.CurveEaseIn,
+    UIView.animate(withDuration: 0.05, delay: 0, options: UIViewAnimationOptions.curveEaseIn,
                                animations: { () -> Void in
                                 maskField.backgroundColor = eventColor
       }
     ) { (Bool) -> Void in
-      UIView.animateWithDuration(0.3, delay: 0, options: .CurveEaseOut,
+      UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut,
                                  animations: { () -> Void in
-                                  maskField.backgroundColor = UIColor.clearColor()
+                                  maskField.backgroundColor = UIColor.clear
         },completion: nil)
     }
   }

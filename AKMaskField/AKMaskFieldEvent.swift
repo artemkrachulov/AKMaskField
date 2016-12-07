@@ -10,5 +10,5 @@
 
 /// Event constant value received after manipulations with the Mask Field.
 public enum AKMaskFieldEvent {
-  case Error, Insert, Delete ,Replace
+  case error, insert, delete ,replace
 }

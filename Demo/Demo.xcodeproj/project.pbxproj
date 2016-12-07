@@ -188,6 +188,7 @@
 				TargetAttributes = {
 					437112FA1A4B22EF00FF6252 = {
 						CreatedOnToolsVersion = 6.1.1;
+						LastSwiftMigration = 0810;
 					};
 				};
 			};
@@ -361,6 +362,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = artem.krachulov.AKMaskField;
 				PRODUCT_NAME = Demo;
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -378,6 +380,7 @@
 				PRODUCT_NAME = Demo;
 				PROVISIONING_PROFILE = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
