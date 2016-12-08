@@ -346,6 +346,7 @@ extension AKMaskField: UITextFieldDelegate {
         case .complete    : position = maskBlocks.last!.templateRange.toRange()!.upperBound
         }
         
+        self.maskDelegate?.maskFieldDidBeginEditing(self)
         AKMaskFieldUtility.maskField(self, moveCaretToPosition: position)
     }
     
