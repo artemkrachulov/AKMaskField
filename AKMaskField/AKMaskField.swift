@@ -583,6 +583,14 @@ extension AKMaskField: UITextFieldDelegate {
         }
         
         // - - - - - - - - - - - -
+        // DISPLAYED TEXT
+        // - - - - - - - - - - - -
+        
+        refreshMask()
+        
+        AKMaskFieldUtility.maskField(self, moveCaretToPosition: location)
+        
+        // - - - - - - - - - - - -
         // EVENT
         // - - - - - - - - - - - -
         
@@ -597,14 +605,6 @@ extension AKMaskField: UITextFieldDelegate {
         if let event = event {
             maskDelegate?.maskField(self, didChangedWithEvent: event)
         }
-        
-        // - - - - - - - - - - - -
-        // DISPLAYED TEXT
-        // - - - - - - - - - - - -
-        
-        refreshMask()
-        
-        AKMaskFieldUtility.maskField(self, moveCaretToPosition: location)
         
         return false
     }
