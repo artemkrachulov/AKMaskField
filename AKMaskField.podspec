@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
 	s.name         = "AKMaskField"
-  s.version      = "2.0.3"
+  s.version      = "2.1.0"
   s.homepage     = "https://github.com/artemkrachulov/AKMaskField"
   s.summary      = "Enter data in the fixed quantity and in the certain format."
   s.description  = <<-DESC
@@ -21,5 +21,7 @@ Pod::Spec.new do |s|
 	}
 
  	s.source_files  = "AKMaskField/*.{swift}"
-  s.pod_target_xcconfig = { 'SWIFT_VERSION' => '3.0' }
+    s.pod_target_xcconfig = { 'SWIFT_VERSION' => '3.0' }
+	
+	s.dependency = 'SkyFloatingLabelTextField', '~> 2.0.0'
 end
