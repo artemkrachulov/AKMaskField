@@ -24,6 +24,9 @@
 		01959A231DF1BA7700C9E359 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01959A211DF1BA7700C9E359 /* LaunchScreen.storyboard */; };
 		01959A2E1DF1BCC700C9E359 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01959A2D1DF1BCC700C9E359 /* ViewController.swift */; };
 		01959A411DF1C0F700C9E359 /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 01959A401DF1C0F700C9E359 /* fontawesome-webfont.ttf */; };
+		386D8E5EF006526DE68C7C6F /* Pods_AKMaskFieldExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEB0CA9BFF6786CB840EB7F1 /* Pods_AKMaskFieldExample.framework */; };
+		D355548375C202EC7A4D45AA /* Pods_AKMaskField.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FF46F0B9FF8ADBD5430EB0E /* Pods_AKMaskField.framework */; };
+		DEEEBDFA1FA1D78657A08421 /* Pods_AKMaskFieldExample_AKMaskField.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F6B1F371B93B523ACD9EC48 /* Pods_AKMaskFieldExample_AKMaskField.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +73,15 @@
 		01959A241DF1BA7700C9E359 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		01959A2D1DF1BCC700C9E359 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		01959A401DF1C0F700C9E359 /* fontawesome-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fontawesome-webfont.ttf"; sourceTree = "<group>"; };
+		0F6B1F371B93B523ACD9EC48 /* Pods_AKMaskFieldExample_AKMaskField.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AKMaskFieldExample_AKMaskField.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0F9F3078DF37D4F83726E54D /* Pods-AKMaskFieldExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AKMaskFieldExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AKMaskFieldExample/Pods-AKMaskFieldExample.debug.xcconfig"; sourceTree = "<group>"; };
+		1D68FAC34A4437B9F5722B54 /* Pods-AKMaskFieldExample-AKMaskField.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AKMaskFieldExample-AKMaskField.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AKMaskFieldExample-AKMaskField/Pods-AKMaskFieldExample-AKMaskField.debug.xcconfig"; sourceTree = "<group>"; };
+		9FF46F0B9FF8ADBD5430EB0E /* Pods_AKMaskField.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AKMaskField.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B14CE1531F7ABC99025E2C32 /* Pods-AKMaskField.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AKMaskField.release.xcconfig"; path = "Pods/Target Support Files/Pods-AKMaskField/Pods-AKMaskField.release.xcconfig"; sourceTree = "<group>"; };
+		BD7AD9C5C3AAFC403BB0D00F /* Pods-AKMaskFieldExample-AKMaskField.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AKMaskFieldExample-AKMaskField.release.xcconfig"; path = "Pods/Target Support Files/Pods-AKMaskFieldExample-AKMaskField/Pods-AKMaskFieldExample-AKMaskField.release.xcconfig"; sourceTree = "<group>"; };
+		E1A47A67E79213258E95ABA8 /* Pods-AKMaskField.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AKMaskField.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AKMaskField/Pods-AKMaskField.debug.xcconfig"; sourceTree = "<group>"; };
+		E72AD7EB8A78A579AEC1DB61 /* Pods-AKMaskFieldExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AKMaskFieldExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-AKMaskFieldExample/Pods-AKMaskFieldExample.release.xcconfig"; sourceTree = "<group>"; };
+		FEB0CA9BFF6786CB840EB7F1 /* Pods_AKMaskFieldExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AKMaskFieldExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +89,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D355548375C202EC7A4D45AA /* Pods_AKMaskField.framework in Frameworks */,
+				DEEEBDFA1FA1D78657A08421 /* Pods_AKMaskFieldExample_AKMaskField.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +99,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				010F96111DF2BFB000321C94 /* AKMaskField.framework in Frameworks */,
+				386D8E5EF006526DE68C7C6F /* Pods_AKMaskFieldExample.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,6 +151,8 @@
 				01959A171DF1BA7700C9E359 /* AKMaskFieldExample */,
 				010F960B1DF2BFB000321C94 /* AKMaskField */,
 				437112FC1A4B22EF00FF6252 /* Products */,
+				BE2E9AA8FC532E16E670CE58 /* Pods */,
+				62F4D4374D135DCE5B117F81 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -146,6 +163,29 @@
 				010F960A1DF2BFB000321C94 /* AKMaskField.framework */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		62F4D4374D135DCE5B117F81 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9FF46F0B9FF8ADBD5430EB0E /* Pods_AKMaskField.framework */,
+				FEB0CA9BFF6786CB840EB7F1 /* Pods_AKMaskFieldExample.framework */,
+				0F6B1F371B93B523ACD9EC48 /* Pods_AKMaskFieldExample_AKMaskField.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BE2E9AA8FC532E16E670CE58 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E1A47A67E79213258E95ABA8 /* Pods-AKMaskField.debug.xcconfig */,
+				B14CE1531F7ABC99025E2C32 /* Pods-AKMaskField.release.xcconfig */,
+				0F9F3078DF37D4F83726E54D /* Pods-AKMaskFieldExample.debug.xcconfig */,
+				E72AD7EB8A78A579AEC1DB61 /* Pods-AKMaskFieldExample.release.xcconfig */,
+				1D68FAC34A4437B9F5722B54 /* Pods-AKMaskFieldExample-AKMaskField.debug.xcconfig */,
+				BD7AD9C5C3AAFC403BB0D00F /* Pods-AKMaskFieldExample-AKMaskField.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -166,10 +206,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 010F96131DF2BFB000321C94 /* Build configuration list for PBXNativeTarget "AKMaskField" */;
 			buildPhases = (
+				7786054E273520012792D89B /* [CP] Check Pods Manifest.lock */,
 				010F96051DF2BFB000321C94 /* Sources */,
 				010F96061DF2BFB000321C94 /* Frameworks */,
 				010F96071DF2BFB000321C94 /* Headers */,
 				010F96081DF2BFB000321C94 /* Resources */,
+				9246D715BF954D4EC984F8E3 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -184,10 +226,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 01959A251DF1BA7700C9E359 /* Build configuration list for PBXNativeTarget "AKMaskFieldExample" */;
 			buildPhases = (
+				906FAD3DB9C117E891FEF752 /* [CP] Check Pods Manifest.lock */,
 				01959A121DF1BA7700C9E359 /* Sources */,
 				01959A131DF1BA7700C9E359 /* Frameworks */,
 				01959A141DF1BA7700C9E359 /* Resources */,
 				01959A2C1DF1BAB900C9E359 /* Embed Frameworks */,
+				72F085C03370F1BE341DB736 /* [CP] Embed Pods Frameworks */,
+				4448CE4245234093A61B979B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -207,7 +252,7 @@
 			attributes = {
 				LastSwiftMigration = 0700;
 				LastSwiftUpdateCheck = 0810;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "Artem Krachulov";
 				TargetAttributes = {
 					010F96091DF2BFB000321C94 = {
@@ -260,6 +305,84 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4448CE4245234093A61B979B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AKMaskFieldExample/Pods-AKMaskFieldExample-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		72F085C03370F1BE341DB736 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AKMaskFieldExample/Pods-AKMaskFieldExample-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7786054E273520012792D89B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		906FAD3DB9C117E891FEF752 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		9246D715BF954D4EC984F8E3 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AKMaskFieldExample-AKMaskField/Pods-AKMaskFieldExample-AKMaskField-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		010F96051DF2BFB000321C94 /* Sources */ = {
@@ -318,14 +441,15 @@
 /* Begin XCBuildConfiguration section */
 		010F96141DF2BFB000321C94 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1D68FAC34A4437B9F5722B54 /* Pods-AKMaskFieldExample-AKMaskField.debug.xcconfig */;
 			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
+				APPLICATION_EXTENSION_API_ONLY = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
@@ -350,14 +474,15 @@
 		};
 		010F96151DF2BFB000321C94 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BD7AD9C5C3AAFC403BB0D00F /* Pods-AKMaskFieldExample-AKMaskField.release.xcconfig */;
 			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
+				APPLICATION_EXTENSION_API_ONLY = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -382,6 +507,7 @@
 		};
 		01959A261DF1BA7700C9E359 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0F9F3078DF37D4F83726E54D /* Pods-AKMaskFieldExample.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -404,6 +530,7 @@
 		};
 		01959A271DF1BA7700C9E359 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E72AD7EB8A78A579AEC1DB61 /* Pods-AKMaskFieldExample.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
