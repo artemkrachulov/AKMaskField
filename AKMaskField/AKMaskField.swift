@@ -27,6 +27,7 @@
 //
 
 import UIKit
+import SkyFloatingLabelTextField
 
 /**
  
@@ -45,7 +46,7 @@ import UIKit
 
  */
 
-open class AKMaskField: UITextField, UITextFieldDelegate  {
+open class AKMaskField: SkyFloatingLabelTextField, UITextFieldDelegate  {
     
     //  MARK: - Configuring the Mask Field
     
