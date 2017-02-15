@@ -133,8 +133,8 @@
 		437112F21A4B22EF00FF6252 = {
 			isa = PBXGroup;
 			children = (
-				01959A171DF1BA7700C9E359 /* AKMaskFieldExample */,
 				010F960B1DF2BFB000321C94 /* AKMaskField */,
+				01959A171DF1BA7700C9E359 /* AKMaskFieldExample */,
 				437112FC1A4B22EF00FF6252 /* Products */,
 			);
 			sourceTree = "<group>";

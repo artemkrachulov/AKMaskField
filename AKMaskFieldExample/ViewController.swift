@@ -83,8 +83,8 @@ final class ViewController: UIViewController {
     // MARK: - Life cycle
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        
+        super.viewDidLoad()        
+
         // Programmatically initialization
         
         /*
@@ -92,8 +92,8 @@ final class ViewController: UIViewController {
         cardProgrammatically?.tag = 0
         cardProgrammatically?.setMask("{dddd}-{dddd}-{dddd}-{dddd}", withMaskTemplate: "ABCD-EFGH-IJKL-MNOP")
         cardProgrammatically!.borderStyle = .roundedRect
-        view.addSubview(cardProgrammatically!)
-        
+        view.addSubview(cardProgrammatically!)        
+         
         phoneProgrammatically = AKMaskField(frame: CGRect(x: 16, y: 207.5, width: 315, height: 30))
         phoneProgrammatically?.tag = 1
         phoneProgrammatically?.setMask("+38 ({ddd}) {ddd}-{dd}-{dd}", withMaskTemplate: "+38 (___) ___-__-__")

@@ -1,15 +1,28 @@
 # AKMaskField
 
-[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-brightgreen.svg)](https://github.com/Carthage/Carthage) 
-[![Swift Version][swift-image]][swift-url]
-[![Build Status][travis-image]][travis-url]
-[![License][license-image]][license-url]
-[![CocoaPods Compatible](https://img.shields.io/cocoapods/v/EZSwiftExtensions.svg)](https://img.shields.io/cocoapods/v/LFAlertController.svg)  
-[![Platform](https://img.shields.io/cocoapods/p/LFAlertController.svg?style=flat)](http://cocoapods.org/pods/LFAlertController)
+[![Carthage compatible][carthage-bage]][carthage-bage] 
+[![CocoaPods Compatible][pods-bage]][pods-bage]
 
+[![Platform][platform-bage]][platform-bage]
+[![Swift Version][swift-bage]][swift-url]
+[![Build Status][travis-bage]][travis-url]
+[![License][license-bage]][license-url]
+
+[pods-bage]: https://img.shields.io/badge/COCOAPODS-compatible-fb0006.svg
+[pods-url]: https://cocoapods.org/
+[carthage-bage]: https://img.shields.io/badge/Carthage-compatible-brightgreen.svg
+[carthage-url]: https://github.com/Carthage/Carthage
+[platform-bage]: https://img.shields.io/cocoapods/p/LFAlertController.svg
+[platform-url]: http://cocoapods.org/pods/LFAlertController
+[swift-bage]:https://img.shields.io/badge/swift-3.0-orange.svg
+[swift-url]: https://swift.org/
+[license-bage]: https://img.shields.io/badge/License-MIT-blue.svg
+[license-url]: LICENSE
+[travis-bage]: https://img.shields.io/travis/dbader/node-datadog-metrics/master.svg
+[travis-url]: https://travis-ci.org/dbader/node-datadog-metrics
 AKMaskField is UITextField subclass which allows enter data in the fixed quantity and in the certain format (credit cards, telephone numbers, dates, etc.). You only need setup mask and mask template visible for user.
 
-![Preview](https://raw.githubusercontent.com/artemkrachulov/AKMaskField/master/Assets/preview.gif)
+![Preview](header.gif)
 
 ## Features
 
@@ -159,10 +172,19 @@ var maskBlockBrackets: AKMaskFieldBrackets
 Open and close bracket character for the mask block.
 Default value of this property is `{` and `}`.
 
+## Setup Mask Field behavior 
+
+```swift
+var jumpToPrevBlock: Bool { get set }
+```
+
+Jumps to previous block when cursor placed between brackets or before first character in current block. 
+Default value of this property is `false`.
+
 ## Accessing the Text Attributes
 
 ```swift
-public var text: String?
+var text: String? { get set }
 ```
 
 The text displayed by the mask field. 
@@ -179,7 +201,7 @@ Manually refresh the mask field
 ## Accessing the Delegate
 
 ```swift
-weak var maskDelegate: AKMaskFieldDelegate?
+weak var maskDelegate: AKMaskFieldDelegate? { get set }
 ```
 
 The receiver’s delegate.
@@ -444,12 +466,3 @@ Artem Krachulov – [www.artemkrachulov.com](http://www.artemkrachulov.com/) - [
 Released under the [MIT license](http://www.opensource.org/licenses/MIT)
 
 [https://github.com/artemkrachulov](https://github.com/dbader/)
-
-[swift-image]:https://img.shields.io/badge/swift-3.0-orange.svg
-[swift-url]: https://swift.org/
-[license-image]: https://img.shields.io/badge/License-MIT-blue.svg
-[license-url]: LICENSE
-[travis-image]: https://img.shields.io/travis/dbader/node-datadog-metrics/master.svg?style=flat-square
-[travis-url]: https://travis-ci.org/dbader/node-datadog-metrics
-[codebeat-image]: https://codebeat.co/badges/c19b47ea-2f9d-45df-8458-b2d952fe9dad
-[codebeat-url]: https://codebeat.co/projects/github-com-vsouza-awesomeios-com

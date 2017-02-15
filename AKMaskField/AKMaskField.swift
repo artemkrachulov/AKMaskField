@@ -225,6 +225,10 @@ open class AKMaskField: UITextField, UITextFieldDelegate  {
     
     open func refreshMask() {
         
+        if guardMask {
+            return
+        }
+        
         if maskStatus == .clear {
             if placeholder != nil {
                 super.text = nil
@@ -265,6 +269,12 @@ open class AKMaskField: UITextField, UITextFieldDelegate  {
     /// Returns an array containing all the Mask Field blocks.
     
     open var maskBlocks: [AKMaskFieldBlock] = [AKMaskFieldBlock]()
+    
+    //  MARK: - Options
+    
+    /// Jumps to previous block when cursor is placed between brackets or before first character in current block.
+    
+    open var jumpToPrevBlock: Bool = false
     
     //  MARK: - Displayed Properties
     
@@ -492,7 +502,7 @@ open class AKMaskField: UITextField, UITextFieldDelegate  {
             
             location += 1
         }
-        
+                
         // USER PROCESSING
         
         for (i, processedBlock) in processedBlocks.enumerated() {
@@ -553,7 +563,7 @@ open class AKMaskField: UITextField, UITextFieldDelegate  {
                     // UPDATE MASK TEXT
                     
                     // Replacement string
-                    
+
                     if !_string.isEmpty {
                         
                         var maskTextRange = NSMakeRange(_range.location, _string.characters.count)
@@ -621,6 +631,24 @@ open class AKMaskField: UITextField, UITextFieldDelegate  {
         // DISPLAYED TEXT
         
         refreshMask()
+
+        if jumpToPrevBlock {
+            for (i, maskBlock) in maskBlocks.enumerated().reversed() {
+
+                if i > 0 {
+                    
+                    let min = maskBlock.templateRange.location
+                    let max = maskBlocks[i-1].templateRange.location + maskBlocks[i-1].templateRange.length
+                    
+                    if min == location || (max < location && min > location) {
+                        
+                        location = max
+                        
+                        break
+                    }
+                }
+            }
+        }
         
         AKMaskFieldUtility.maskField(self, moveCaretToPosition: location)
         
@@ -637,6 +665,8 @@ open class AKMaskField: UITextField, UITextFieldDelegate  {
         if let event = event {
             maskDelegate?.maskField(self, didChangedWithEvent: event)
         }
+        
+
         
         return false
     }
