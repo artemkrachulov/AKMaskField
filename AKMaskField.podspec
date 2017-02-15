@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
 	s.name         = "AKMaskField"
-  	s.version      = "2.0.2"
+  	s.version      = "2.1.0"
   	s.homepage     = "https://github.com/artemkrachulov/AKMaskField"
   	s.authors      = {
   		"Artem Krachulov" => "artem.krachulov@gmail.com" 
@@ -25,4 +25,6 @@ Pod::Spec.new do |s|
  	s.framework  = "UIKit"
 
 	s.requires_arc = true
+
+	s.dependency = 'SkyFloatingLabelTextField', '~> 2.0.0'
 end
