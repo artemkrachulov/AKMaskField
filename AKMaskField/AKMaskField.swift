@@ -376,7 +376,7 @@ open class AKMaskField: UITextField, UITextFieldDelegate  {
         var position: Int
         
         switch maskStatus {
-        case .clear       : position = maskBlocks.first!.templateRange.location
+        case .clear       : position = maskBlocks.first?.templateRange.location ?? 0
         case .incomplete  : position = maskBlocks.flatMap { $0.chars.filter { $0.status == .clear } }.first!.templateRange.location
         case .complete    : position = maskBlocks.last!.templateRange.toRange()!.upperBound
         }
