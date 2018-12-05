@@ -31,7 +31,7 @@ public struct AKMaskFieldBlockCharacter {
     
     /// The mask pattern character.
     
-    public var pattern: AKMaskFieldPatternCharacter!
+    public var pattern: AKMaskFieldPatternCharacter
     
     /// Location of the pattern character in the mask.
     
@@ -41,7 +41,7 @@ public struct AKMaskFieldBlockCharacter {
     
     /// The mask template character.
     
-    public var template: Character!
+    public var template: Character
     
     /// Location of the mask template character in the mask template.
     
