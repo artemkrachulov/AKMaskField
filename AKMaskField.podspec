@@ -10,6 +10,7 @@ Pod::Spec.new do |s|
 
   s.license      = { :type => "MIT", :file => "LICENSE" }
   s.author       = { "Artem Krachulov" => "artem.krachulov@gmail.com"  }
+  s.swift_versions = [3.2, 5.0]
 
   # Source Info
 
