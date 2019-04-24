@@ -23,23 +23,14 @@ public class AKMaskFieldUtility {
             let to = String.Index(to16, within: string)
             else { return nil }
         return from ..< to
-        /*
-         
-         let from16 = string.utf16.startIndex.advancedBy(nsRange.location, limit: string.utf16.endIndex)
-         let to16 = from16.advancedBy(nsRange.length, limit: string.utf16.endIndex)
-         
-         if let from = String.Index(from16, within: string),
-         let to = String.Index(to16, within: string) {
-         return from ..< to
-         }
-         return nil*/
     }
     
     public class func substring(_ sourceString: String?, withNSRange range: NSRange) -> String {
-        guard let sourceString = sourceString else {
+        guard let sourceString = sourceString, let stringRange = Range(range, in: sourceString) else {
             return ""
         }
-        return sourceString.substring(with: rangeFromString(sourceString, nsRange: range))
+        
+        return String(sourceString[stringRange])
     }
     
     public class func replace(_ sourceString: inout String!, withString string: String, inRange range: NSRange) {
@@ -61,7 +52,7 @@ public class AKMaskFieldUtility {
     public class func matchesInString(_ string: String, pattern: String) -> [NSTextCheckingResult] {
         return  try!
             NSRegularExpression(pattern: pattern, options: .caseInsensitive)
-                .matches(in: string, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, string.characters.count))
+                .matches(in: string, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, string.count))
     }
     
     public class func findIntersection(_ ranges: [NSRange], withRange range: NSRange) -> [NSRange?] {

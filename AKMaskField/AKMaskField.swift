@@ -158,10 +158,10 @@ open class AKMaskField: UITextField, UITextFieldDelegate  {
             var copy: Bool = true
             var _maskTemplate = String(maskTemplateDefault)
             
-            if maskTemplate.characters.count == maskExpression!.characters.count - (maskBlocks.count * 2) {
+            if maskTemplate.count == maskExpression!.count - (maskBlocks.count * 2) {
                 copy = false
                 _maskTemplate = maskTemplate
-            } else if maskTemplate.characters.count == 1 {
+            } else if maskTemplate.count == 1 {
                 _maskTemplate = maskTemplate
             }
             
@@ -217,7 +217,7 @@ open class AKMaskField: UITextField, UITextFieldDelegate  {
                 return
             }
             
-            _ = textField(self, shouldChangeCharactersIn: NSMakeRange(0, maskText.characters.count), replacementString: text ?? "")
+            _ = textField(self, shouldChangeCharactersIn: NSMakeRange(0, maskText.count), replacementString: text ?? "")
         }
     }
     
@@ -378,7 +378,7 @@ open class AKMaskField: UITextField, UITextFieldDelegate  {
         switch maskStatus {
         case .clear       : position = maskBlocks.first!.templateRange.location
         case .incomplete  : position = maskBlocks.flatMap { $0.chars.filter { $0.status == .clear } }.first!.templateRange.location
-        case .complete    : position = maskBlocks.last!.templateRange.toRange()!.upperBound
+        case .complete    : position = Range(maskBlocks.last?.templateRange ?? NSRange(location: 0, length: 0))?.upperBound ?? 0
         }
         
         AKMaskFieldUtility.maskField(self, moveCaretToPosition: position)
@@ -457,8 +457,8 @@ open class AKMaskField: UITextField, UITextFieldDelegate  {
         var location      = range.location
         var savedLocation = range.location
         
-        for replacementCharacter in string.characters {
-            if location == maskText?.characters.count { break }
+        for replacementCharacter in string {
+            if location == maskText?.count { break }
             
             // Find next character
             // If character outside the block, jump to first character of the next block
@@ -545,7 +545,7 @@ open class AKMaskField: UITextField, UITextFieldDelegate  {
                         // Start carret position
                         var _location = _range.location
                         
-                        for replacementCharacter in _string.characters {
+                        for replacementCharacter in _string {
                             if _location > maskBlocks[i].templateRange.length { break }
                             
                             if matchTextCharacter(replacementCharacter, withMaskCharacter: maskBlocks[i].chars[_location]) {
@@ -566,7 +566,7 @@ open class AKMaskField: UITextField, UITextFieldDelegate  {
 
                     if !_string.isEmpty {
                         
-                        var maskTextRange = NSMakeRange(_range.location, _string.characters.count)
+                        var maskTextRange = NSMakeRange(_range.location, _string.count)
                         
                         // Object
                         
@@ -587,7 +587,7 @@ open class AKMaskField: UITextField, UITextFieldDelegate  {
                         
                         
                         // New carret position
-                        location = maskTextRange.toRange()!.upperBound
+                        location = Range(maskTextRange)?.upperBound ?? 0
                         
                         event = .insert
                         
@@ -695,9 +695,9 @@ open class AKMaskField: UITextField, UITextFieldDelegate  {
                 print("   index           : \(char.index)")
                 print("   blockIndex      : \(char.blockIndex)")
                 print("   status          : \(char.status)")
-                print("   pattern         : \(char.pattern)")
+                print("   pattern         : \(char.pattern ?? AKMaskFieldPatternCharacter.AnyChar)")
                 print("   patternRange    : \(char.patternRange)")
-                print("   template        : \(char.template)")
+                print("   template        : \(char.template ?? Character(""))") 
                 print("   templateRange   : \(char.templateRange)")
             }
             print("")
