@@ -14,7 +14,7 @@
 [carthage-url]: https://github.com/Carthage/Carthage
 [platform-bage]: https://img.shields.io/cocoapods/p/LFAlertController.svg
 [platform-url]: http://cocoapods.org/pods/LFAlertController
-[swift-bage]:https://img.shields.io/badge/swift-3.0-orange.svg
+[swift-bage]:https://img.shields.io/badge/swift-4.2-orange.svg
 [swift-url]: https://swift.org/
 [license-bage]: https://img.shields.io/badge/License-MIT-blue.svg
 [license-url]: LICENSE
