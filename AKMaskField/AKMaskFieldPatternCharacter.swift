@@ -18,6 +18,7 @@ public enum AKMaskFieldPatternCharacter: String {
     case NonDecimal    = "D"
     case NonWord       = "W"
     case Alphabet      = "a"
+    case Cirillic      = "k"
     case AnyChar       = "."
     
     /// Returns regular expression pattern.
@@ -28,6 +29,7 @@ public enum AKMaskFieldPatternCharacter: String {
         case .NonDecimal      : return "\\D"
         case .NonWord         : return "\\W"
         case .Alphabet        : return "[a-zA-Z]"
+        case .Cirillic        : return "[а-яА-Я]"
         default               : return "."
         }
     }
