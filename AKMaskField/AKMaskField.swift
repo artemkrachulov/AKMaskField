@@ -49,6 +49,12 @@ open class AKMaskField: UITextField, UITextFieldDelegate  {
     
     //  MARK: - Configuring the Mask Field
     
+    @IBInspectable open var shouldChangeKeyboardType: Bool = false {
+        didSet {
+            moveCarret()
+        }
+    }
+    
     /**
      
      The string value that has blocks with pattern symbols that determine the certain format of input data. Wrap each mask block with proper bracket character.
@@ -381,7 +387,24 @@ open class AKMaskField: UITextField, UITextFieldDelegate  {
         case .complete    : position = Range(maskBlocks.last!.templateRange)!.upperBound
         }
         
-        AKMaskFieldUtility.maskField(self, moveCaretToPosition: position)
+        defer {
+            AKMaskFieldUtility.maskField(self, moveCaretToPosition: position)
+        }
+        
+        guard shouldChangeKeyboardType else { return }
+        
+        var patternCharacter: AKMaskFieldPatternCharacter?
+        switch maskStatus {
+        case .clear:
+            patternCharacter = maskBlocks.first?.chars.first?.pattern
+        case .incomplete:
+            patternCharacter = maskBlocks.flatMap { $0.chars.filter { $0.status == .clear } }.first!.pattern
+        case .complete:
+            patternCharacter = maskBlocks.last?.chars.first?.pattern
+        }
+        
+        keyboardType = patternCharacter!.keyboardType()
+        reloadInputViews()
     }
 
     //  MARK: - UITextFieldDelegate
@@ -615,12 +638,12 @@ open class AKMaskField: UITextField, UITextFieldDelegate  {
                         
                         maskTextRange.location += maskBlocks[i].templateRange.location
                         
-                        let cuttedTempalte = AKMaskFieldUtility
+                        let cuttedTemplate = AKMaskFieldUtility
                             .substring(maskTemplateText, withNSRange: maskTextRange)
                         
                         AKMaskFieldUtility
                             .replace(&maskText,
-                                     withString : cuttedTempalte,
+                                     withString : cuttedTemplate,
                                      inRange    : maskTextRange)
                         
                     }
