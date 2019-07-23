@@ -9,6 +9,7 @@
 //
 
 /// Single block character pattern constant.
+import UIKit
 
 public enum AKMaskFieldPatternCharacter: String {
     
@@ -31,6 +32,13 @@ public enum AKMaskFieldPatternCharacter: String {
         case .Alphabet        : return "[a-zA-Z]"
         case .Cirillic        : return "[а-яА-Я]"
         default               : return "."
+        }
+    }
+    
+    func keyboardType() -> UIKeyboardType {
+        switch self {
+        case .NumberDecimal   : return .decimalPad
+        default               : return .default
         }
     }
 }
