@@ -55,6 +55,28 @@ open class AKMaskField: UITextField, UITextFieldDelegate  {
         }
     }
     
+    @IBInspectable open var placeholderColor: UIColor? {
+        didSet {
+            guard let maskText = maskText else {
+                super.text = text
+                return
+            }
+            
+            _ = textField(self, shouldChangeCharactersIn: NSMakeRange(0, maskText.count), replacementString: text ?? "")
+        }
+    }
+    
+    @IBInspectable open var placeholderFont: UIFont? {
+        didSet {
+            guard let maskText = maskText else {
+                super.text = text
+                return
+            }
+            
+            _ = textField(self, shouldChangeCharactersIn: NSMakeRange(0, maskText.count), replacementString: text ?? "")
+        }
+    }
+    
     /**
      
      The string value that has blocks with pattern symbols that determine the certain format of input data. Wrap each mask block with proper bracket character.
@@ -602,7 +624,6 @@ open class AKMaskField: UITextField, UITextFieldDelegate  {
                         maskTextRange.location += maskBlocks[i].templateRange.location
                         
                         // Mask text
-                        
                         AKMaskFieldUtility
                             .replace(&maskText,
                                      withString : _string,
@@ -671,6 +692,36 @@ open class AKMaskField: UITextField, UITextFieldDelegate  {
                     }
                 }
             }
+        }
+        
+        if placeholderFont != nil || placeholderColor != nil {
+            let attributedString = NSMutableAttributedString()
+            let defaultTextFont = UIFont.systemFont(ofSize: 17)
+            
+            do {
+                let string = AKMaskFieldUtility.substring(maskText,
+                                                          withNSRange: NSRange(location: 0, length: location))
+                let attributes: [NSAttributedString.Key: Any] = [ .font: super.font ?? defaultTextFont,
+                                                                  .strokeColor: super.textColor ?? UIColor.black ]
+                attributedString.append(NSAttributedString(string: string,
+                                                           attributes: attributes))
+            }
+
+            do {
+                let length = maskText.count - location
+                let string = AKMaskFieldUtility.substring(maskText,
+                                                          withNSRange: NSRange(location: location,
+                                                                               length: length))
+                let font = placeholderFont ?? super.font ?? defaultTextFont
+                let attributes: [NSAttributedString.Key: Any] = [ .font: font,
+                                                                  .foregroundColor: placeholderColor as Any ]
+                attributedString.append(NSAttributedString(string: string,
+                                                           attributes: attributes))
+            }
+            super.text = nil
+            
+            self.attributedText = attributedString
+            super.attributedText = attributedString
         }
         
         AKMaskFieldUtility.maskField(self, moveCaretToPosition: location)
