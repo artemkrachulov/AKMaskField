@@ -30,7 +30,7 @@ public enum AKMaskFieldPatternCharacter: String {
         case .NumberDecimal     : return "\\d"
         case .NonDecimal        : return "\\D"
         case .NonWord           : return "\\W"
-        case .Alphabet          : return "[a-zA-Z]"
+        case .Alphabet          : return "[a-zA-Zа-яА-Я]"
         case .Cirillic          : return "[а-яА-Я]"
         case .AlphabetOrDecimal : return "[a-zA-Zа-яА-Я0-9]"
         default                 : return "."
