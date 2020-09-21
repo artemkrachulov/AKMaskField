@@ -1,16 +1,6 @@
-//
-//  AKMaskFieldUtility.swift
-//  AKMaskField
-//  GitHub: https://github.com/artemkrachulov/AKMaskField
-//
-//  Created by Artem Krachulov
-//  Copyright (c) 2016 Artem Krachulov. All rights reserved.
-//  Website: http://www.artemkrachulov.com/
-//
-
 import UIKit
 
-public class AKMaskFieldUtility {
+public class TMaskFieldUtility {
     
     /// [Source](http://stackoverflow.com/questions/25138339/nsrange-to-rangestring-index)
     public class func rangeFromString(_ string: String, nsRange: NSRange) -> Range<String.Index>! {

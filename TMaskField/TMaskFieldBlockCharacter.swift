@@ -1,17 +1,7 @@
-//
-//  AKMaskFieldBlockCharacter.swift
-//  AKMaskField
-//  GitHub: https://github.com/artemkrachulov/AKMaskField
-//
-//  Created by Artem Krachulov
-//  Copyright (c) 2016 Artem Krachulov. All rights reserved.
-//  Website: http://www.artemkrachulov.com/
-//
-
 import Foundation
 
 /// A structure that contains the block character main properties.
-public struct AKMaskFieldBlockCharacter {
+public struct TMaskFieldBlockCharacter {
     
     //  MARK: - General
     
@@ -25,13 +15,13 @@ public struct AKMaskFieldBlockCharacter {
     
     /// Current character status.
     
-    public var status: AKMaskFieldStatus
+    public var status: TMaskFieldStatus
     
     //  MARK: - Pattern
     
     /// The mask pattern character.
     
-    public var pattern: AKMaskFieldPatternCharacter!
+    public var pattern: TMaskFieldPatternCharacter!
     
     /// Location of the pattern character in the mask.
     

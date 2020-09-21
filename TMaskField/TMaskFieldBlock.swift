@@ -1,18 +1,8 @@
-//
-//  AKMaskFieldBlock.swift
-//  AKMaskField
-//  GitHub: https://github.com/artemkrachulov/AKMaskField
-//
-//  Created by Artem Krachulov
-//  Copyright (c) 2016 Artem Krachulov. All rights reserved.
-//  Website: http://www.artemkrachulov.com/
-//
-
 import Foundation
 
 /// A structure that contains the mask block main properties.
 
-public struct AKMaskFieldBlock {
+public struct TMaskFieldBlock {
     
     //  MARK: - General
     
@@ -22,9 +12,9 @@ public struct AKMaskFieldBlock {
     
     /// Returns the current block status.
     
-    public var status: AKMaskFieldStatus {
+    public var status: TMaskFieldStatus {
         
-        let completedChars: [AKMaskFieldBlockCharacter] = chars.filter { return $0.status != .clear }
+        let completedChars: [TMaskFieldBlockCharacter] = chars.filter { return $0.status != .clear }
         
         switch completedChars.count {
         case 0           : return .clear
@@ -35,7 +25,7 @@ public struct AKMaskFieldBlock {
     
     /// An array containing all characters inside block.
     
-    public var chars: [AKMaskFieldBlockCharacter]
+    public var chars: [TMaskFieldBlockCharacter]
     
     //  MARK: - Pattern
     

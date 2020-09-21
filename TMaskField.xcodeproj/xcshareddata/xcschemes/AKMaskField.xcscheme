@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "010F96091DF2BFB000321C94"
-               BuildableName = "AKMaskField.framework"
-               BlueprintName = "AKMaskField"
-               ReferencedContainer = "container:AKMaskField.xcodeproj">
+               BuildableName = "TMaskField.framework"
+               BlueprintName = "TMaskField"
+               ReferencedContainer = "container:TMaskField.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -46,9 +46,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "010F96091DF2BFB000321C94"
-            BuildableName = "AKMaskField.framework"
-            BlueprintName = "AKMaskField"
-            ReferencedContainer = "container:AKMaskField.xcodeproj">
+            BuildableName = "TMaskField.framework"
+            BlueprintName = "TMaskField"
+            ReferencedContainer = "container:TMaskField.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -64,9 +64,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "010F96091DF2BFB000321C94"
-            BuildableName = "AKMaskField.framework"
-            BlueprintName = "AKMaskField"
-            ReferencedContainer = "container:AKMaskField.xcodeproj">
+            BuildableName = "TMaskField.framework"
+            BlueprintName = "TMaskField"
+            ReferencedContainer = "container:TMaskField.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

@@ -1,51 +1,6 @@
-//
-//  AKMaskField.swift
-//  AKMaskField
-//  GitHub: https://github.com/artemkrachulov/AKMaskField
-//
-//  Created by Artem Krachulov
-//  Copyright (c) 2016 Artem Krachulov. All rights reserved.
-//  Website: http://www.artemkrachulov.com/
-//
-// Permission is hereby granted, free of charge, to any person obtaining a copy of this software
-// and associated documentation files (the "Software"), to deal in the Software without restriction,
-// including without limitation the rights to use, copy, modify, merge, publish, distribute,
-// sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is
-// furnished to do so, subject to the following conditions:
-//
-// The above copyright notice and this permission notice shall be included in all copies or
-// substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
-// INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
-// PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE
-// FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
-// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-// DEALINGS IN THE SOFTWARE.
-//
-// v. 1.0
-//
-
 import UIKit
 
-/**
- 
- AKMaskField is UITextField subclass which allows enter data in the fixed quantity
- and in the certain format (credit cards, telephone numbers, dates, etc.).
- You only need setup mask and mask template visible for the user.
-
- Example of usage (programmatically):
-
- ```
- var field = AKMaskField()
- field.setMask("{dddd}-{DDDD}-{WaWa}-{aaaa}", withMaskTemplate: "ABCD-EFGH-IJKL-MNOP")
- ```
-
- For more information click here [GitHub](https://github.com/artemkrachulov/AKMaskField)
-
- */
-
-open class AKMaskField: UITextField, UITextFieldDelegate  {
+open class TMaskField: UITextField, UITextFieldDelegate  {
     
     //  MARK: - Configuring the Mask Field
     
@@ -100,7 +55,7 @@ open class AKMaskField: UITextField, UITextFieldDelegate  {
                 return
             }
             
-            let brackets = AKMaskFieldUtility.matchesInString(maskExpression!, pattern: "(?<=\\\(maskBlockBrackets.left)).*?(?=\\\(maskBlockBrackets.right))")
+            let brackets = TMaskFieldUtility.matchesInString(maskExpression!, pattern: "(?<=\\\(maskBlockBrackets.left)).*?(?=\\\(maskBlockBrackets.right))")
             
             if brackets.isEmpty {
                 return
@@ -114,13 +69,13 @@ open class AKMaskField: UITextField, UITextFieldDelegate  {
             
             // Create mast object
 
-            maskBlocks = [AKMaskFieldBlock]()
+            maskBlocks = [TMaskFieldBlock]()
             
             for (i, bracket) in brackets.enumerated() {
                 
                 // Characters
                 
-                var characters = [AKMaskFieldBlockCharacter]()
+                var characters = [TMaskFieldBlockCharacter]()
                 
                 for y in 0..<bracket.range.length {
                     
@@ -128,9 +83,9 @@ open class AKMaskField: UITextField, UITextFieldDelegate  {
                     var templateRange = patternRange
                     templateRange.location -=  i * 2 + 1
                     
-                    let pattern = AKMaskFieldPatternCharacter(rawValue: AKMaskFieldUtility.substring(maskExpression, withNSRange: patternRange))
+                    let pattern = TMaskFieldPatternCharacter(rawValue: TMaskFieldUtility.substring(maskExpression, withNSRange: patternRange))
                     
-                    characters.append(AKMaskFieldBlockCharacter(
+                    characters.append(TMaskFieldBlockCharacter(
                         index : y,
                         blockIndex : i,
                         status : .clear,
@@ -142,7 +97,7 @@ open class AKMaskField: UITextField, UITextFieldDelegate  {
                 
                 // Blocks
                 
-                maskBlocks.append(AKMaskFieldBlock(
+                maskBlocks.append(TMaskFieldBlock(
                     index : i,
                     chars : characters))
                 
@@ -153,7 +108,7 @@ open class AKMaskField: UITextField, UITextFieldDelegate  {
             
             updateMaskTemplateText()
             
-            #if AKMaskFieldDEBUG
+            #if TMaskFieldDEBUG
                 debugmaskBlocks()
             #endif
         }
@@ -197,7 +152,7 @@ open class AKMaskField: UITextField, UITextFieldDelegate  {
                 for char in block.chars {
                     maskBlocks[char.blockIndex].chars[char.index].template = copy
                         ? Character(_maskTemplate)
-                        : Character(AKMaskFieldUtility.substring(maskTemplate, withNSRange: char.templateRange))
+                        : Character(TMaskFieldUtility.substring(maskTemplate, withNSRange: char.templateRange))
                 }
                 
                 updateMaskTemplateTextFromBlock(block.index)
@@ -231,7 +186,7 @@ open class AKMaskField: UITextField, UITextFieldDelegate  {
      
      */
     
-    open var maskBlockBrackets: AKMaskFieldBrackets = AKMaskFieldBrackets(left: "{", right: "}")
+    open var maskBlockBrackets: TMaskFieldBrackets = TMaskFieldBrackets(left: "{", right: "}")
     
     //  MARK: - Mask Field actions
     
@@ -274,13 +229,13 @@ open class AKMaskField: UITextField, UITextFieldDelegate  {
     
     /// The receiver’s delegate.
     
-    open weak var maskDelegate: AKMaskFieldDelegate?
+    open weak var maskDelegate: TMaskFieldDelegate?
     
     //  MARK: - Getting the Mask Field status
     
     /// Returns the current status of the mask field. The value of the property is a constant.
     
-    open var maskStatus: AKMaskFieldStatus {
+    open var maskStatus: TMaskFieldStatus {
         
         let maskBlocksChars = maskBlocks.flatMap { $0.chars }
         let completedChars  = maskBlocksChars.filter { $0.status == .complete }
@@ -296,7 +251,7 @@ open class AKMaskField: UITextField, UITextFieldDelegate  {
     
     /// Returns an array containing all the Mask Field blocks.
     
-    open var maskBlocks: [AKMaskFieldBlock] = [AKMaskFieldBlock]()
+    open var maskBlocks: [TMaskFieldBlock] = [TMaskFieldBlock]()
     
     //  MARK: - Options
     
@@ -319,7 +274,7 @@ open class AKMaskField: UITextField, UITextFieldDelegate  {
     //  MARK: - Life cycle
     
     deinit {
-        #if AKMaskFieldDEBUG
+        #if TMaskFieldDEBUG
             print("\(type(of: self)) \(#function)")
         #endif
     }
@@ -343,7 +298,7 @@ open class AKMaskField: UITextField, UITextFieldDelegate  {
     
     /// Returns next character from target location
     
-    fileprivate func getNetCharacter(_ chars: [AKMaskFieldBlockCharacter], fromLocation location: Int) -> (char: AKMaskFieldBlockCharacter, outsideBlock: Bool) {
+    fileprivate func getNetCharacter(_ chars: [TMaskFieldBlockCharacter], fromLocation location: Int) -> (char: TMaskFieldBlockCharacter, outsideBlock: Bool) {
         
         var nextBlockIndex: Int!
         
@@ -370,14 +325,14 @@ open class AKMaskField: UITextField, UITextFieldDelegate  {
     
     /// Check if current character match with pattern
     
-    fileprivate func matchTextCharacter(_ textCharacter: Character, withMaskCharacter maskCharacter: AKMaskFieldBlockCharacter) -> Bool {
-        return !AKMaskFieldUtility
+    fileprivate func matchTextCharacter(_ textCharacter: Character, withMaskCharacter maskCharacter: TMaskFieldBlockCharacter) -> Bool {
+        return !TMaskFieldUtility
             .matchesInString(String(textCharacter),
                              pattern: maskCharacter.pattern.pattern()).isEmpty
     }
     
     fileprivate func updateMaskTemplateText() {
-        AKMaskFieldUtility
+        TMaskFieldUtility
             .replacingOccurrencesOfString(&maskTemplateText,
                                           target     : "[\(maskBlockBrackets.left)\(maskBlockBrackets.right)]",
                 withString : "")
@@ -389,13 +344,13 @@ open class AKMaskField: UITextField, UITextFieldDelegate  {
     
     fileprivate func updateMaskTemplateTextFromBlock(_ index: Int) {
         
-        AKMaskFieldUtility
+        TMaskFieldUtility
             .replace(&maskTemplateText,
                      withString : maskBlocks[index].template,
                      inRange    : maskBlocks[index].patternRange)
     }
     
-    fileprivate struct AKMaskFieldProcessedBlock {
+    fileprivate struct TMaskFieldProcessedBlock {
         var range  : NSRange?
         var string : String = ""
     }
@@ -410,12 +365,12 @@ open class AKMaskField: UITextField, UITextFieldDelegate  {
         }
         
         defer {
-            AKMaskFieldUtility.maskField(self, moveCaretToPosition: position)
+            TMaskFieldUtility.maskField(self, moveCaretToPosition: position)
         }
         
         guard shouldChangeKeyboardType else { return }
         
-        var patternCharacter: AKMaskFieldPatternCharacter?
+        var patternCharacter: TMaskFieldPatternCharacter?
         switch maskStatus {
         case .clear:
             patternCharacter = maskBlocks.first?.chars.first?.pattern
@@ -462,14 +417,14 @@ open class AKMaskField: UITextField, UITextFieldDelegate  {
         
         // EVENTS
         
-        var event: AKMaskFieldEvent!
+        var event: TMaskFieldEvent!
         
         var completed: Int = 0
         var cleared: Int   = 0
         
         // PREPARE BLOCKS FOR USER PROCESSING
         
-        var processedBlocks = [AKMaskFieldProcessedBlock]()
+        var processedBlocks = [TMaskFieldProcessedBlock]()
         
         // - - - - - - - - - - - -
         // STEP 1
@@ -479,14 +434,14 @@ open class AKMaskField: UITextField, UITextFieldDelegate  {
         
         // a) Prepare an array with interserted ranges
         
-        let intersertRanges = AKMaskFieldUtility
+        let intersertRanges = TMaskFieldUtility
             .findIntersection(maskBlocks.map { return $0.templateRange }, withRange: range)
         
         // b) Create an array with interserted blocks
         
         for (i, intersertRange) in intersertRanges.enumerated() {
             
-            var processedBlock = AKMaskFieldProcessedBlock()
+            var processedBlock = TMaskFieldProcessedBlock()
             processedBlock.range = intersertRange
             
             if let intersertRange = intersertRange {
@@ -515,7 +470,7 @@ open class AKMaskField: UITextField, UITextFieldDelegate  {
                 
                 // Check if replacement character match to mask template character in same location
                 
-                if replacementCharacter != Character(AKMaskFieldUtility.substring(maskTemplateText, withNSRange: NSMakeRange(location, 1))) &&
+                if replacementCharacter != Character(TMaskFieldUtility.substring(maskTemplateText, withNSRange: NSMakeRange(location, 1))) &&
                     replacementCharacter != " " {
                     
                     savedLocation = location
@@ -574,7 +529,7 @@ open class AKMaskField: UITextField, UITextFieldDelegate  {
                     if  processedBlock.range!.location != _range.location ||
                         processedBlock.range!.length   != _range.length {
                         
-                        if let validatedRange = AKMaskFieldUtility
+                        if let validatedRange = TMaskFieldUtility
                             .findIntersection([maskBlocks[i].templateRange], withRange: _range).first! as NSRange? {
                             
                             _range = validatedRange
@@ -624,7 +579,7 @@ open class AKMaskField: UITextField, UITextFieldDelegate  {
                         maskTextRange.location += maskBlocks[i].templateRange.location
                         
                         // Mask text
-                        AKMaskFieldUtility
+                        TMaskFieldUtility
                             .replace(&maskText,
                                      withString : _string,
                                      inRange    : maskTextRange)
@@ -659,10 +614,10 @@ open class AKMaskField: UITextField, UITextFieldDelegate  {
                         
                         maskTextRange.location += maskBlocks[i].templateRange.location
                         
-                        let cuttedTemplate = AKMaskFieldUtility
+                        let cuttedTemplate = TMaskFieldUtility
                             .substring(maskTemplateText, withNSRange: maskTextRange)
                         
-                        AKMaskFieldUtility
+                        TMaskFieldUtility
                             .replace(&maskText,
                                      withString : cuttedTemplate,
                                      inRange    : maskTextRange)
@@ -699,7 +654,7 @@ open class AKMaskField: UITextField, UITextFieldDelegate  {
             let defaultTextFont = UIFont.systemFont(ofSize: 17)
             
             do {
-                let string = AKMaskFieldUtility.substring(maskText,
+                let string = TMaskFieldUtility.substring(maskText,
                                                           withNSRange: NSRange(location: 0, length: location))
                 let attributes: [NSAttributedString.Key: Any] = [ .font: super.font ?? defaultTextFont,
                                                                   .strokeColor: super.textColor ?? UIColor.black ]
@@ -709,7 +664,7 @@ open class AKMaskField: UITextField, UITextFieldDelegate  {
 
             do {
                 let length = maskText.count - location
-                let string = AKMaskFieldUtility.substring(maskText,
+                let string = TMaskFieldUtility.substring(maskText,
                                                           withNSRange: NSRange(location: location,
                                                                                length: length))
                 let font = placeholderFont ?? super.font ?? defaultTextFont
@@ -724,7 +679,7 @@ open class AKMaskField: UITextField, UITextFieldDelegate  {
             super.attributedText = attributedString
         }
         
-        AKMaskFieldUtility.maskField(self, moveCaretToPosition: location)
+        TMaskFieldUtility.maskField(self, moveCaretToPosition: location)
         
         // EVENT
         
@@ -779,9 +734,9 @@ open class AKMaskField: UITextField, UITextFieldDelegate  {
     }
 }
 
-//  MARK: - AKMaskFieldDelegate
+//  MARK: - TMaskFieldDelegate
 
-public protocol AKMaskFieldDelegate: class {
+public protocol TMaskFieldDelegate: class {
     
     /**
      
@@ -791,7 +746,7 @@ public protocol AKMaskFieldDelegate: class {
      
     */
     
-    func maskFieldShouldBeginEditing(_ maskField: AKMaskField) -> Bool
+    func maskFieldShouldBeginEditing(_ maskField: TMaskField) -> Bool
 
     /**
  
@@ -801,7 +756,7 @@ public protocol AKMaskFieldDelegate: class {
  
      */
     
-    func maskFieldDidBeginEditing(_ maskField: AKMaskField)
+    func maskFieldDidBeginEditing(_ maskField: TMaskField)
     
     /**
  
@@ -811,7 +766,7 @@ public protocol AKMaskFieldDelegate: class {
  
      */
     
-    func maskFieldShouldEndEditing(_ maskField: AKMaskField) -> Bool
+    func maskFieldShouldEndEditing(_ maskField: TMaskField) -> Bool
     
     /**
  
@@ -821,7 +776,7 @@ public protocol AKMaskFieldDelegate: class {
  
      */
     
-    func maskFieldDidEndEditing(_ maskField: AKMaskField)
+    func maskFieldDidEndEditing(_ maskField: TMaskField)
 
     /**
      
@@ -832,7 +787,7 @@ public protocol AKMaskFieldDelegate: class {
     
     */
     
-    func maskField(_ maskField: AKMaskField, didChangedWithEvent event: AKMaskFieldEvent)
+    func maskField(_ maskField: TMaskField, didChangedWithEvent event: TMaskFieldEvent)
     
     /**
      
@@ -845,7 +800,7 @@ public protocol AKMaskFieldDelegate: class {
     
     */
     
-    func maskField(_ maskField: AKMaskField, shouldChangeBlock block: AKMaskFieldBlock, inRange range: inout NSRange, replacementString string: inout String) -> Bool
+    func maskField(_ maskField: TMaskField, shouldChangeBlock block: TMaskFieldBlock, inRange range: inout NSRange, replacementString string: inout String) -> Bool
     
     /**
      
@@ -855,30 +810,30 @@ public protocol AKMaskFieldDelegate: class {
     
     */
     
-    func maskFieldShouldReturn(_ maskField: AKMaskField) -> Bool
+    func maskFieldShouldReturn(_ maskField: TMaskField) -> Bool
 }
 
-public extension AKMaskFieldDelegate {
+public extension TMaskFieldDelegate {
     
-    func maskFieldShouldBeginEditing(_ maskField: AKMaskField) -> Bool {
+    func maskFieldShouldBeginEditing(_ maskField: TMaskField) -> Bool {
         return true
     }
     
-    func maskFieldDidBeginEditing(_ maskField: AKMaskField) {}
+    func maskFieldDidBeginEditing(_ maskField: TMaskField) {}
     
-    func maskFieldShouldEndEditing(_ maskField: AKMaskField) -> Bool {
+    func maskFieldShouldEndEditing(_ maskField: TMaskField) -> Bool {
         return true
     }
     
-    func maskFieldDidEndEditing(_ maskField: AKMaskField) {}
+    func maskFieldDidEndEditing(_ maskField: TMaskField) {}
     
-    func maskField(_ maskField: AKMaskField, didChangedWithEvent event: AKMaskFieldEvent) {}
+    func maskField(_ maskField: TMaskField, didChangedWithEvent event: TMaskFieldEvent) {}
     
-    func maskField(_ maskField: AKMaskField, shouldChangeBlock block: AKMaskFieldBlock, inRange range: inout NSRange, replacementString string: inout String) -> Bool {
+    func maskField(_ maskField: TMaskField, shouldChangeBlock block: TMaskFieldBlock, inRange range: inout NSRange, replacementString string: inout String) -> Bool {
         return true
     }
     
-    func maskFieldShouldReturn(_ maskField: AKMaskField) -> Bool {
+    func maskFieldShouldReturn(_ maskField: TMaskField) -> Bool {
         return true
     }
 }

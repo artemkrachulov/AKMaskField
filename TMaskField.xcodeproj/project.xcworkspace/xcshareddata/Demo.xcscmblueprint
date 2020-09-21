@@ -11,10 +11,10 @@
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "47329B10-2F80-4C7A-8CC1-BFADFA215725",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
-    "9517F49643BCAEBFF187DC7C816A074D3F831F5B" : "AKMaskField\/Vendor\/UIView-loadFromXibNib\/",
-    "9441B72A876448A863874E6A08969E710D1F58D1" : "AKMaskField\/",
-    "78558585540D6A03C4B47C1A04640D7B2BD34C66" : "AKMaskField\/Demo\/Vendor\/Extensions\/Range\/",
-    "68FD8564FD3FE5E8F36E32107A8F870DD0D5EC16" : "AKMaskField\/Demo\/Vendor\/Extensions\/String\/"
+    "9517F49643BCAEBFF187DC7C816A074D3F831F5B" : "TMaskField\/Vendor\/UIView-loadFromXibNib\/",
+    "9441B72A876448A863874E6A08969E710D1F58D1" : "TMaskField\/",
+    "78558585540D6A03C4B47C1A04640D7B2BD34C66" : "TMaskField\/Demo\/Vendor\/Extensions\/Range\/",
+    "68FD8564FD3FE5E8F36E32107A8F870DD0D5EC16" : "TMaskField\/Demo\/Vendor\/Extensions\/String\/"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "Demo",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
@@ -31,7 +31,7 @@
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "78558585540D6A03C4B47C1A04640D7B2BD34C66"
     },
     {
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/artemkrachulov\/AKMaskField.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/artemkrachulov\/TMaskField.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "9441B72A876448A863874E6A08969E710D1F58D1"
     },

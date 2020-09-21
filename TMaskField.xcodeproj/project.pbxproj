@@ -7,23 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		010358AD1DF2DE03002538B6 /* AKMaskFieldBrackets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010358AC1DF2DE03002538B6 /* AKMaskFieldBrackets.swift */; };
-		010F960E1DF2BFB000321C94 /* AKMaskField.h in Headers */ = {isa = PBXBuildFile; fileRef = 010F960C1DF2BFB000321C94 /* AKMaskField.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		010F96111DF2BFB000321C94 /* AKMaskField.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 010F960A1DF2BFB000321C94 /* AKMaskField.framework */; };
-		010F96121DF2BFB000321C94 /* AKMaskField.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 010F960A1DF2BFB000321C94 /* AKMaskField.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		010F961E1DF2C04B00321C94 /* AKMaskField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010F96171DF2C04B00321C94 /* AKMaskField.swift */; };
-		010F961F1DF2C04B00321C94 /* AKMaskFieldBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010F96181DF2C04B00321C94 /* AKMaskFieldBlock.swift */; };
-		010F96201DF2C04B00321C94 /* AKMaskFieldBlockCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010F96191DF2C04B00321C94 /* AKMaskFieldBlockCharacter.swift */; };
-		010F96211DF2C04B00321C94 /* AKMaskFieldEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010F961A1DF2C04B00321C94 /* AKMaskFieldEvent.swift */; };
-		010F96221DF2C04B00321C94 /* AKMaskFieldPatternCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010F961B1DF2C04B00321C94 /* AKMaskFieldPatternCharacter.swift */; };
-		010F96231DF2C04B00321C94 /* AKMaskFieldStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010F961C1DF2C04B00321C94 /* AKMaskFieldStatus.swift */; };
-		010F96241DF2C04B00321C94 /* AKMaskFieldUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010F961D1DF2C04B00321C94 /* AKMaskFieldUtility.swift */; };
-		01959A191DF1BA7700C9E359 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01959A181DF1BA7700C9E359 /* AppDelegate.swift */; };
-		01959A1E1DF1BA7700C9E359 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01959A1C1DF1BA7700C9E359 /* Main.storyboard */; };
-		01959A201DF1BA7700C9E359 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01959A1F1DF1BA7700C9E359 /* Assets.xcassets */; };
-		01959A231DF1BA7700C9E359 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01959A211DF1BA7700C9E359 /* LaunchScreen.storyboard */; };
-		01959A2E1DF1BCC700C9E359 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01959A2D1DF1BCC700C9E359 /* ViewController.swift */; };
-		01959A411DF1C0F700C9E359 /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 01959A401DF1C0F700C9E359 /* fontawesome-webfont.ttf */; };
+		010358AD1DF2DE03002538B6 /* TMaskFieldBrackets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010358AC1DF2DE03002538B6 /* TMaskFieldBrackets.swift */; };
+		010F960E1DF2BFB000321C94 /* TMaskField.h in Headers */ = {isa = PBXBuildFile; fileRef = 010F960C1DF2BFB000321C94 /* TMaskField.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		010F96111DF2BFB000321C94 /* TMaskField.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 010F960A1DF2BFB000321C94 /* TMaskField.framework */; };
+		010F96121DF2BFB000321C94 /* TMaskField.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 010F960A1DF2BFB000321C94 /* TMaskField.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		010F961E1DF2C04B00321C94 /* TMaskField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010F96171DF2C04B00321C94 /* TMaskField.swift */; };
+		010F961F1DF2C04B00321C94 /* TMaskFieldBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010F96181DF2C04B00321C94 /* TMaskFieldBlock.swift */; };
+		010F96201DF2C04B00321C94 /* TMaskFieldBlockCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010F96191DF2C04B00321C94 /* TMaskFieldBlockCharacter.swift */; };
+		010F96211DF2C04B00321C94 /* TMaskFieldEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010F961A1DF2C04B00321C94 /* TMaskFieldEvent.swift */; };
+		010F96221DF2C04B00321C94 /* TMaskFieldPatternCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010F961B1DF2C04B00321C94 /* TMaskFieldPatternCharacter.swift */; };
+		010F96231DF2C04B00321C94 /* TMaskFieldStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010F961C1DF2C04B00321C94 /* TMaskFieldStatus.swift */; };
+		010F96241DF2C04B00321C94 /* TMaskFieldUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010F961D1DF2C04B00321C94 /* TMaskFieldUtility.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,7 +26,7 @@
 			containerPortal = 437112F31A4B22EF00FF6252 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 010F96091DF2BFB000321C94;
-			remoteInfo = AKMaskField;
+			remoteInfo = TMaskField;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -43,7 +37,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				010F96121DF2BFB000321C94 /* AKMaskField.framework in Embed Frameworks */,
+				010F96121DF2BFB000321C94 /* TMaskField.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -51,25 +45,18 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		010358AC1DF2DE03002538B6 /* AKMaskFieldBrackets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AKMaskFieldBrackets.swift; sourceTree = "<group>"; };
-		010F960A1DF2BFB000321C94 /* AKMaskField.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AKMaskField.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		010F960C1DF2BFB000321C94 /* AKMaskField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AKMaskField.h; sourceTree = "<group>"; };
+		010358AC1DF2DE03002538B6 /* TMaskFieldBrackets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMaskFieldBrackets.swift; sourceTree = "<group>"; };
+		010F960A1DF2BFB000321C94 /* TMaskField.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TMaskField.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		010F960C1DF2BFB000321C94 /* TMaskField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TMaskField.h; sourceTree = "<group>"; };
 		010F960D1DF2BFB000321C94 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		010F96171DF2C04B00321C94 /* AKMaskField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AKMaskField.swift; sourceTree = "<group>"; };
-		010F96181DF2C04B00321C94 /* AKMaskFieldBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AKMaskFieldBlock.swift; sourceTree = "<group>"; };
-		010F96191DF2C04B00321C94 /* AKMaskFieldBlockCharacter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AKMaskFieldBlockCharacter.swift; sourceTree = "<group>"; };
-		010F961A1DF2C04B00321C94 /* AKMaskFieldEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AKMaskFieldEvent.swift; sourceTree = "<group>"; };
-		010F961B1DF2C04B00321C94 /* AKMaskFieldPatternCharacter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AKMaskFieldPatternCharacter.swift; sourceTree = "<group>"; };
-		010F961C1DF2C04B00321C94 /* AKMaskFieldStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AKMaskFieldStatus.swift; sourceTree = "<group>"; };
-		010F961D1DF2C04B00321C94 /* AKMaskFieldUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AKMaskFieldUtility.swift; sourceTree = "<group>"; };
-		01959A161DF1BA7700C9E359 /* AKMaskFieldExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AKMaskFieldExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		01959A181DF1BA7700C9E359 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		01959A1D1DF1BA7700C9E359 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		01959A1F1DF1BA7700C9E359 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		01959A221DF1BA7700C9E359 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		01959A241DF1BA7700C9E359 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		01959A2D1DF1BCC700C9E359 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		01959A401DF1C0F700C9E359 /* fontawesome-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fontawesome-webfont.ttf"; sourceTree = "<group>"; };
+		010F96171DF2C04B00321C94 /* TMaskField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMaskField.swift; sourceTree = "<group>"; };
+		010F96181DF2C04B00321C94 /* TMaskFieldBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMaskFieldBlock.swift; sourceTree = "<group>"; };
+		010F96191DF2C04B00321C94 /* TMaskFieldBlockCharacter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMaskFieldBlockCharacter.swift; sourceTree = "<group>"; };
+		010F961A1DF2C04B00321C94 /* TMaskFieldEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMaskFieldEvent.swift; sourceTree = "<group>"; };
+		010F961B1DF2C04B00321C94 /* TMaskFieldPatternCharacter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMaskFieldPatternCharacter.swift; sourceTree = "<group>"; };
+		010F961C1DF2C04B00321C94 /* TMaskFieldStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMaskFieldStatus.swift; sourceTree = "<group>"; };
+		010F961D1DF2C04B00321C94 /* TMaskFieldUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMaskFieldUtility.swift; sourceTree = "<group>"; };
+		01959A161DF1BA7700C9E359 /* TMaskFieldExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TMaskFieldExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,57 +71,42 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				010F96111DF2BFB000321C94 /* AKMaskField.framework in Frameworks */,
+				010F96111DF2BFB000321C94 /* TMaskField.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		010F960B1DF2BFB000321C94 /* AKMaskField */ = {
+		010F960B1DF2BFB000321C94 /* TMaskField */ = {
 			isa = PBXGroup;
 			children = (
-				010F96171DF2C04B00321C94 /* AKMaskField.swift */,
-				010F96181DF2C04B00321C94 /* AKMaskFieldBlock.swift */,
-				010F96191DF2C04B00321C94 /* AKMaskFieldBlockCharacter.swift */,
-				010358AC1DF2DE03002538B6 /* AKMaskFieldBrackets.swift */,
-				010F961A1DF2C04B00321C94 /* AKMaskFieldEvent.swift */,
-				010F961B1DF2C04B00321C94 /* AKMaskFieldPatternCharacter.swift */,
-				010F961C1DF2C04B00321C94 /* AKMaskFieldStatus.swift */,
-				010F961D1DF2C04B00321C94 /* AKMaskFieldUtility.swift */,
+				010F96171DF2C04B00321C94 /* TMaskField.swift */,
+				010F96181DF2C04B00321C94 /* TMaskFieldBlock.swift */,
+				010F96191DF2C04B00321C94 /* TMaskFieldBlockCharacter.swift */,
+				010358AC1DF2DE03002538B6 /* TMaskFieldBrackets.swift */,
+				010F961A1DF2C04B00321C94 /* TMaskFieldEvent.swift */,
+				010F961B1DF2C04B00321C94 /* TMaskFieldPatternCharacter.swift */,
+				010F961C1DF2C04B00321C94 /* TMaskFieldStatus.swift */,
+				010F961D1DF2C04B00321C94 /* TMaskFieldUtility.swift */,
 				010F96161DF2C03C00321C94 /* Supporting Files */,
 			);
-			path = AKMaskField;
+			path = TMaskField;
 			sourceTree = "<group>";
 		};
 		010F96161DF2C03C00321C94 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				010F960C1DF2BFB000321C94 /* AKMaskField.h */,
+				010F960C1DF2BFB000321C94 /* TMaskField.h */,
 				010F960D1DF2BFB000321C94 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		01959A171DF1BA7700C9E359 /* AKMaskFieldExample */ = {
-			isa = PBXGroup;
-			children = (
-				01959A181DF1BA7700C9E359 /* AppDelegate.swift */,
-				01959A2D1DF1BCC700C9E359 /* ViewController.swift */,
-				01959A1C1DF1BA7700C9E359 /* Main.storyboard */,
-				01959A401DF1C0F700C9E359 /* fontawesome-webfont.ttf */,
-				01959A1F1DF1BA7700C9E359 /* Assets.xcassets */,
-				01959A211DF1BA7700C9E359 /* LaunchScreen.storyboard */,
-				01959A241DF1BA7700C9E359 /* Info.plist */,
-			);
-			path = AKMaskFieldExample;
-			sourceTree = "<group>";
-		};
 		437112F21A4B22EF00FF6252 = {
 			isa = PBXGroup;
 			children = (
-				010F960B1DF2BFB000321C94 /* AKMaskField */,
-				01959A171DF1BA7700C9E359 /* AKMaskFieldExample */,
+				010F960B1DF2BFB000321C94 /* TMaskField */,
 				437112FC1A4B22EF00FF6252 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -142,8 +114,8 @@
 		437112FC1A4B22EF00FF6252 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				01959A161DF1BA7700C9E359 /* AKMaskFieldExample.app */,
-				010F960A1DF2BFB000321C94 /* AKMaskField.framework */,
+				01959A161DF1BA7700C9E359 /* TMaskFieldExample.app */,
+				010F960A1DF2BFB000321C94 /* TMaskField.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -155,16 +127,16 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				010F960E1DF2BFB000321C94 /* AKMaskField.h in Headers */,
+				010F960E1DF2BFB000321C94 /* TMaskField.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		010F96091DF2BFB000321C94 /* AKMaskField */ = {
+		010F96091DF2BFB000321C94 /* TMaskField */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 010F96131DF2BFB000321C94 /* Build configuration list for PBXNativeTarget "AKMaskField" */;
+			buildConfigurationList = 010F96131DF2BFB000321C94 /* Build configuration list for PBXNativeTarget "TMaskField" */;
 			buildPhases = (
 				010F96051DF2BFB000321C94 /* Sources */,
 				010F96061DF2BFB000321C94 /* Frameworks */,
@@ -175,14 +147,14 @@
 			);
 			dependencies = (
 			);
-			name = AKMaskField;
-			productName = AKMaskField;
-			productReference = 010F960A1DF2BFB000321C94 /* AKMaskField.framework */;
+			name = TMaskField;
+			productName = TMaskField;
+			productReference = 010F960A1DF2BFB000321C94 /* TMaskField.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		01959A151DF1BA7700C9E359 /* AKMaskFieldExample */ = {
+		01959A151DF1BA7700C9E359 /* TMaskFieldExample */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 01959A251DF1BA7700C9E359 /* Build configuration list for PBXNativeTarget "AKMaskFieldExample" */;
+			buildConfigurationList = 01959A251DF1BA7700C9E359 /* Build configuration list for PBXNativeTarget "TMaskFieldExample" */;
 			buildPhases = (
 				01959A121DF1BA7700C9E359 /* Sources */,
 				01959A131DF1BA7700C9E359 /* Frameworks */,
@@ -194,9 +166,9 @@
 			dependencies = (
 				010F96101DF2BFB000321C94 /* PBXTargetDependency */,
 			);
-			name = AKMaskFieldExample;
-			productName = AKMaskFieldExample;
-			productReference = 01959A161DF1BA7700C9E359 /* AKMaskFieldExample.app */;
+			name = TMaskFieldExample;
+			productName = TMaskFieldExample;
+			productReference = 01959A161DF1BA7700C9E359 /* TMaskFieldExample.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -222,7 +194,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 437112F61A4B22EF00FF6252 /* Build configuration list for PBXProject "AKMaskField" */;
+			buildConfigurationList = 437112F61A4B22EF00FF6252 /* Build configuration list for PBXProject "TMaskField" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -235,8 +207,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				010F96091DF2BFB000321C94 /* AKMaskField */,
-				01959A151DF1BA7700C9E359 /* AKMaskFieldExample */,
+				010F96091DF2BFB000321C94 /* TMaskField */,
+				01959A151DF1BA7700C9E359 /* TMaskFieldExample */,
 			);
 		};
 /* End PBXProject section */
@@ -253,10 +225,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				01959A231DF1BA7700C9E359 /* LaunchScreen.storyboard in Resources */,
-				01959A411DF1C0F700C9E359 /* fontawesome-webfont.ttf in Resources */,
-				01959A201DF1BA7700C9E359 /* Assets.xcassets in Resources */,
-				01959A1E1DF1BA7700C9E359 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,14 +235,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				010F961F1DF2C04B00321C94 /* AKMaskFieldBlock.swift in Sources */,
-				010F961E1DF2C04B00321C94 /* AKMaskField.swift in Sources */,
-				010F96201DF2C04B00321C94 /* AKMaskFieldBlockCharacter.swift in Sources */,
-				010F96241DF2C04B00321C94 /* AKMaskFieldUtility.swift in Sources */,
-				010F96221DF2C04B00321C94 /* AKMaskFieldPatternCharacter.swift in Sources */,
-				010F96231DF2C04B00321C94 /* AKMaskFieldStatus.swift in Sources */,
-				010F96211DF2C04B00321C94 /* AKMaskFieldEvent.swift in Sources */,
-				010358AD1DF2DE03002538B6 /* AKMaskFieldBrackets.swift in Sources */,
+				010F961F1DF2C04B00321C94 /* TMaskFieldBlock.swift in Sources */,
+				010F961E1DF2C04B00321C94 /* TMaskField.swift in Sources */,
+				010F96201DF2C04B00321C94 /* TMaskFieldBlockCharacter.swift in Sources */,
+				010F96241DF2C04B00321C94 /* TMaskFieldUtility.swift in Sources */,
+				010F96221DF2C04B00321C94 /* TMaskFieldPatternCharacter.swift in Sources */,
+				010F96231DF2C04B00321C94 /* TMaskFieldStatus.swift in Sources */,
+				010F96211DF2C04B00321C94 /* TMaskFieldEvent.swift in Sources */,
+				010358AD1DF2DE03002538B6 /* TMaskFieldBrackets.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,8 +250,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				01959A2E1DF1BCC700C9E359 /* ViewController.swift in Sources */,
-				01959A191DF1BA7700C9E359 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,29 +258,10 @@
 /* Begin PBXTargetDependency section */
 		010F96101DF2BFB000321C94 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 010F96091DF2BFB000321C94 /* AKMaskField */;
+			target = 010F96091DF2BFB000321C94 /* TMaskField */;
 			targetProxy = 010F960F1DF2BFB000321C94 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		01959A1C1DF1BA7700C9E359 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				01959A1D1DF1BA7700C9E359 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		01959A211DF1BA7700C9E359 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				01959A221DF1BA7700C9E359 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		010F96141DF2BFB000321C94 /* Debug */ = {
@@ -334,16 +281,16 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = AKMaskField/Info.plist;
+				INFOPLIST_FILE = TMaskField/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.togishiro.AKMaskField;
+				PRODUCT_BUNDLE_IDENTIFIER = com.togishiro.TMaskField;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -367,15 +314,15 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = AKMaskField/Info.plist;
+				INFOPLIST_FILE = TMaskField/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.togishiro.AKMaskField;
+				PRODUCT_BUNDLE_IDENTIFIER = com.togishiro.TMaskField;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -393,10 +340,10 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = Q7FZER3X48;
-				INFOPLIST_FILE = AKMaskFieldExample/Info.plist;
+				INFOPLIST_FILE = TMaskFieldExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.togishiro.AKMaskFieldExample;
+				PRODUCT_BUNDLE_IDENTIFIER = com.togishiro.TMaskFieldExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_VERSION = 4.2;
@@ -416,10 +363,10 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = Q7FZER3X48;
-				INFOPLIST_FILE = AKMaskFieldExample/Info.plist;
+				INFOPLIST_FILE = TMaskFieldExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.togishiro.AKMaskFieldExample;
+				PRODUCT_BUNDLE_IDENTIFIER = com.togishiro.TMaskFieldExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 4.2;
@@ -533,7 +480,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		010F96131DF2BFB000321C94 /* Build configuration list for PBXNativeTarget "AKMaskField" */ = {
+		010F96131DF2BFB000321C94 /* Build configuration list for PBXNativeTarget "TMaskField" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				010F96141DF2BFB000321C94 /* Debug */,
@@ -542,7 +489,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		01959A251DF1BA7700C9E359 /* Build configuration list for PBXNativeTarget "AKMaskFieldExample" */ = {
+		01959A251DF1BA7700C9E359 /* Build configuration list for PBXNativeTarget "TMaskFieldExample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				01959A261DF1BA7700C9E359 /* Debug */,
@@ -551,7 +498,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		437112F61A4B22EF00FF6252 /* Build configuration list for PBXProject "AKMaskField" */ = {
+		437112F61A4B22EF00FF6252 /* Build configuration list for PBXProject "TMaskField" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				437113181A4B22EF00FF6252 /* Debug */,
