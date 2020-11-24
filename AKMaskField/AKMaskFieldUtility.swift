@@ -61,7 +61,7 @@ public class AKMaskFieldUtility {
     public class func matchesInString(_ string: String, pattern: String) -> [NSTextCheckingResult] {
         return  try!
             NSRegularExpression(pattern: pattern, options: .caseInsensitive)
-                .matches(in: string, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, string.characters.count))
+                .matches(in: string, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, string.count))
     }
     
     public class func findIntersection(_ ranges: [NSRange], withRange range: NSRange) -> [NSRange?] {
