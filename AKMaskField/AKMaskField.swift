@@ -158,7 +158,7 @@ open class AKMaskField: UITextField, UITextFieldDelegate  {
             var copy: Bool = true
             var _maskTemplate = String(maskTemplateDefault)
             
-            if maskTemplate.characters.count == maskExpression!.count - (maskBlocks.count * 2) {
+            if maskTemplate.count == maskExpression!.count - (maskBlocks.count * 2) {
                 copy = false
                 _maskTemplate = maskTemplate
             } else if maskTemplate.count == 1 {
